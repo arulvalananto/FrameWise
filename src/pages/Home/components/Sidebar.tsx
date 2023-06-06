@@ -1,0 +1,72 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+
+import { navLinks } from '../../../static/data';
+import logoIcon from '../../../assets/logo-icon.svg';
+import { LinkProps } from '../../../interfaces/common';
+import logo from '../../../assets/logo-transparent.svg';
+import MemoziedCustomLink from '../../../components/CustomLink';
+
+const Sidebar: React.FC = () => {
+    const handleLogout = (): void => {
+        console.log('Logout');
+    };
+
+    return (
+        <div className="w-[65px] md:w-[240px] h-full flex-none min-w-[50px] border-r border-zinc-900 p-2 pb-10 flex flex-col items-center gap-5 justify-between">
+            <div>
+                <Link
+                    to="/"
+                    className="w-16 md:w-48 h-16 md:h-32 flex items-center justify-center"
+                >
+                    <img
+                        src={logo}
+                        alt="framewise"
+                        className="w-48 hidden md:block"
+                    />
+                    <img
+                        src={logoIcon}
+                        alt="framewise"
+                        className="w-16 h-16 block md:hidden"
+                    />
+                </Link>
+                <div className="w-full h-16 rounded-full my-16 flex-col gap-2 items-center hidden md:flex">
+                    <img
+                        src="https://xsgames.co/randomusers/avatar.php?g=pixel"
+                        alt="profile"
+                        className="w-16 h-full rounded-full"
+                    />
+                    <p>Guest</p>
+                </div>
+                <div className="flex flex-col items-center w-full md:w-48 gap-5 mt-20 md:mt-0">
+                    {navLinks?.map((link: LinkProps) => (
+                        <MemoziedCustomLink link={link} />
+                    ))}
+                </div>
+            </div>
+            <div className="flex flex-col gap-6 items-center">
+                <div className="w-10 h-10 md:hidden">
+                    <img
+                        src="https://xsgames.co/randomusers/avatar.php?g=pixel"
+                        alt="profile"
+                        className="w-full h-full rounded-full"
+                    />
+                </div>
+                <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="w-10 md:w-48 flex items-center gap-3 py-2 px-3 rounded-md text-white hover:bg-primary hover:text-black"
+                >
+                    <FontAwesomeIcon icon={faRightFromBracket} fontSize={20} />
+                    <p className="text-base font-semibold hidden md:block">
+                        Logout
+                    </p>
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export default Sidebar;
