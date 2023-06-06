@@ -15,8 +15,8 @@ const Sidebar: React.FC = () => {
     };
 
     return (
-        <div className="w-[65px] md:w-[240px] h-full flex-none min-w-[50px] border-r border-zinc-900 p-2 pb-10 flex flex-col items-center gap-5 justify-between">
-            <div>
+        <div className="w-[65px] md:w-[240px] h-full flex-none min-w-[50px] border-r border-zinc-900 py-10 md:p-2 md:pb-10 flex flex-col items-center gap-5 justify-between">
+            <div className="flex flex-col gap-6">
                 <Link
                     to="/"
                     className="w-16 md:w-48 h-16 md:h-32 flex items-center justify-center"
@@ -24,7 +24,7 @@ const Sidebar: React.FC = () => {
                     <img
                         src={logo}
                         alt="framewise"
-                        className="w-48 hidden md:block"
+                        className="w-48 hidden md:block scale-125"
                     />
                     <img
                         src={logoIcon}
