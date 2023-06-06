@@ -15,7 +15,10 @@ const Sidebar: React.FC = () => {
     };
 
     return (
-        <div className="w-[65px] md:w-[240px] h-full flex-none min-w-[50px] border-r border-zinc-900 py-10 md:p-2 md:pb-10 flex flex-col items-center gap-5 justify-between">
+        <section
+            id="sidebar"
+            className="w-[65px] md:w-[240px] h-full flex-none min-w-[50px] border-r border-zinc-900 py-10 md:p-2 md:pb-10 flex flex-col items-center gap-5 justify-between"
+        >
             <div className="flex flex-col gap-6">
                 <Link
                     to="/"
@@ -40,11 +43,11 @@ const Sidebar: React.FC = () => {
                     />
                     <p>Guest</p>
                 </div>
-                <div className="flex flex-col items-center w-full md:w-48 gap-5 mt-20 md:mt-0">
+                <ul className="flex flex-col items-center w-full md:w-48 gap-5 mt-20 md:mt-0">
                     {navLinks?.map((link: LinkProps) => (
-                        <MemoziedCustomLink link={link} />
+                        <MemoziedCustomLink key={link?.title} link={link} />
                     ))}
-                </div>
+                </ul>
             </div>
             <div className="flex flex-col gap-6 items-center">
                 <div className="w-10 h-10 md:hidden">
@@ -65,7 +68,7 @@ const Sidebar: React.FC = () => {
                     </p>
                 </button>
             </div>
-        </div>
+        </section>
     );
 };
 

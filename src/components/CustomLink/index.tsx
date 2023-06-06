@@ -17,7 +17,7 @@ const CustomLink: React.FC<CustomLinkProps> = ({ link, ...props }) => {
             }
         >
             <FontAwesomeIcon icon={icon} fontSize={20} />
-            <p className="text-base font-semibold hidden md:block">{title}</p>
+            <li className="text-base font-semibold hidden md:block">{title}</li>
         </NavLink>
     );
 };

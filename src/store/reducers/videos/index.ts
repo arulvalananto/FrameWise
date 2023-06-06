@@ -2,19 +2,56 @@ import { createSlice } from '@reduxjs/toolkit';
 // import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '../..';
-
-export interface VideosState {
-    value: number;
-}
+import { fetchAllVideos } from './index.thunk';
+import { VideoDeleteState, VideoState, VideosState } from './index.interface';
 
 const initialState: VideosState = {
-    value: 0,
+    isLoading: true,
+    videos: [],
 };
 
 export const videosSlice = createSlice({
     name: 'videos',
     initialState,
-    reducers: {},
+    reducers: {
+        deleteByVideoId: (state, action) => {
+            const { videoId }: VideoDeleteState = action.payload;
+            const filteredVideos = state?.videos?.filter(
+                (video: VideoState) => video?.id !== videoId
+            );
+
+            state.videos = filteredVideos;
+        },
+        updateVideoProcessingState: (state, action) => {
+            const { videoId, videoProcessingState, videoState } =
+                action.payload;
+            const updatedVideos = state.videos?.map((video: VideoState) =>
+                video.id === videoId
+                    ? {
+                          ...video,
+                          processingProgress: videoProcessingState,
+                          state: videoState,
+                      }
+                    : video
+            );
+
+            state.videos = updatedVideos;
+        },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchAllVideos.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchAllVideos.fulfilled, (state, action) => {
+                const { videos }: any = action.payload;
+                state.videos = videos;
+                state.isLoading = false;
+            })
+            .addCase(fetchAllVideos.rejected, (state) => {
+                state.isLoading = false;
+            });
+    },
 });
 
 // export const {  } = videosSlice.actions;
