@@ -5,7 +5,7 @@ import AllVideos from './components/AllVideos';
 
 const Dashboard: React.FC = () => {
     return (
-        <section id="dashboard">
+        <section id="dashboard" className="w-full h-full flex flex-col">
             <Header />
             <AllVideos />
         </section>

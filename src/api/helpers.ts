@@ -64,3 +64,35 @@ export const getAllVideos = async () => {
         }
     });
 };
+
+/**
+ * Get the video thumbnail by video id and thumbnail id
+ * @param {string} videoId
+ * @param {string} thumbnailId
+ * @returns
+ */
+export const getThumbnail = async (
+    videoId: string,
+    thumbnailId: string
+): Promise<string> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await checkTokenExpiry();
+
+            const response = await axiosInstance.get(
+                `/trial/accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/videos/${videoId}/thumbnails/${thumbnailId}?format=Base64`
+            );
+
+            if (response) {
+                resolve(response?.data);
+            } else {
+                reject(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) reject(error?.message);
+            else if (error instanceof AxiosError)
+                reject(error?.response?.data?.message);
+            else reject(error);
+        }
+    });
+};

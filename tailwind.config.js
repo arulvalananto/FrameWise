@@ -7,6 +7,11 @@ export default {
                 primary: '#BFED37',
                 secondary: '#1A1C1E',
                 tertiary: '#332461',
+                darkgrey: '#1B1D1E',
+            },
+            fontFamily: {
+                raleway: ['Raleway', 'sans-serif'],
+                cherry: ['Cherry Bomb One', 'cursive'],
             },
         },
     },

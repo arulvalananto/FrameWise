@@ -2,7 +2,8 @@
     "TOKEN_NAME": "fw_token",
     "AZURE_VIDEO_INDEXER": {
         "SUBSCRIPTION_KEY": "f472288beabf4146b6729fbfdea131d7",
-        "ACCOUNT_ID": "dd73ffe1-6a72-4af9-b565-7bec166593af"
+        "ACCOUNT_ID": "dd73ffe1-6a72-4af9-b565-7bec166593af",
+        "IMAGE_URL_PREFIX": "data:image/jpeg;base64,"
     },
     "ERROR_MESSAGE": {
         "SOMETHING_WENT_WRONG": "Something went wrong"

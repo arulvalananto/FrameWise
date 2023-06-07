@@ -4,6 +4,7 @@ export interface VideoState {
     durationInSeconds: number;
     state: 'Processed' | 'Processing';
     processingProgress: string;
+    thumbnailId: string;
 }
 
 export interface VideosState {

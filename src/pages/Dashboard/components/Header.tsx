@@ -19,8 +19,8 @@ const Header: React.FC = () => {
     };
 
     return (
-        <div className="flex items-center justify-between flex-col md:flex-row gap-4">
-            <div className="bg-secondary flex flex-row gap-2 items-center px-4 py-2 rounded w-full md:w-1/4">
+        <div className="flex items-center justify-between flex-col md:flex-row gap-4 h-14 flex-none">
+            <div className="bg-secondary flex flex-row gap-2 items-center px-4 py-2 rounded w-full md:w-1/2 lg:w-1/4">
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
                 <input
                     type="search"
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
                     className="bg-transparent w-full border-none outline-none"
                 />
             </div>
-            <div className="flex flex-row gap-3 items-center self-end">
+            <div className="flex flex-row gap-3 items-center self-end md:self-center">
                 <button
                     type="button"
                     onClick={handleUploadFile}
