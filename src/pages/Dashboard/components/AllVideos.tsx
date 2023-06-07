@@ -16,8 +16,6 @@ const AllVideos: React.FC = () => {
         } else return [];
     }, [videos, sortedBy]);
 
-    console.log(sortedVideos.length, sortedVideos);
-
     if (isLoading) {
         return (
             <div className="container-center">

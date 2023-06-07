@@ -7,5 +7,9 @@
     },
     "ERROR_MESSAGE": {
         "SOMETHING_WENT_WRONG": "Something went wrong"
+    },
+    "TOOLTIP": {
+        "UPLOAD_FILE": "Upload file",
+        "SORT_BY": "Sort by"
     }
 }

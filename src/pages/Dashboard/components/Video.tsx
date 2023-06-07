@@ -21,12 +21,11 @@ const Video: React.FC<VideoProps> = ({ video }) => {
     const shouldRender = useRef(true);
 
     const handlePlayVideo = (event: React.MouseEvent<HTMLDivElement>) => {
-        console.log(event);
+        // handle play video
     };
 
     const handleDeleteVideo = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
-        console.log('delete', event);
         setIsDeleteProcessing(true);
         setIsDeleteProcessing(false);
     };

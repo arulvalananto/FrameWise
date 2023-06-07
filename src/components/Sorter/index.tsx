@@ -1,13 +1,11 @@
 import * as React from 'react';
-import Menu from '@mui/material/Menu';
 import { useDispatch } from 'react-redux';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Tooltip, MenuItem, Menu, ListItemIcon } from '@mui/material';
 
 import { AppDispatch } from '../../store';
+import constants from '../../static/constants.json';
 import { changeSortBy } from '../../store/reducers/videos';
 import { SorterOptionProps } from '../../interfaces/common';
 
@@ -54,7 +52,7 @@ const Sorter: React.FC<SorterProps> = ({ options }) => {
 
     return (
         <React.Fragment>
-            <Tooltip title="Account settings">
+            <Tooltip title={constants.TOOLTIP.SORT_BY} arrow>
                 <button
                     type="button"
                     onClick={handleClick}
@@ -77,7 +75,7 @@ const Sorter: React.FC<SorterProps> = ({ options }) => {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 {options?.map(({ title, icon, value }) => (
-                    <MenuItem onClick={() => handleSelect(value)}>
+                    <MenuItem key={title} onClick={() => handleSelect(value)}>
                         <ListItemIcon>
                             <FontAwesomeIcon icon={icon} color="white" />
                         </ListItemIcon>

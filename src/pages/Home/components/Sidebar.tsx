@@ -11,7 +11,7 @@ import MemoziedCustomLink from '../../../components/CustomLink';
 
 const Sidebar: React.FC = () => {
     const handleLogout = (): void => {
-        console.log('Logout');
+        //
     };
 
     return (
@@ -43,11 +43,11 @@ const Sidebar: React.FC = () => {
                     />
                     <p>Guest</p>
                 </div>
-                <ul className="flex flex-col items-center w-full md:w-48 gap-5 mt-20 md:mt-0">
+                <div className="flex flex-col items-center w-full md:w-48 gap-5 mt-20 md:mt-0">
                     {navLinks?.map((link: LinkProps) => (
                         <MemoziedCustomLink key={link?.title} link={link} />
                     ))}
-                </ul>
+                </div>
             </div>
             <div className="flex flex-col gap-6 items-center">
                 <div className="w-10 h-10 md:hidden">
