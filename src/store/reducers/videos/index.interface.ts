@@ -5,11 +5,13 @@ export interface VideoState {
     state: 'Processed' | 'Processing';
     processingProgress: string;
     thumbnailId: string;
+    lastModified: Date;
 }
 
 export interface VideosState {
     isLoading: boolean;
-    videos?: VideoState[];
+    videos: VideoState[];
+    sortedBy: 'name' | '-name' | 'lastModified' | '-lastModified';
 }
 
 export interface VideoDeleteState {

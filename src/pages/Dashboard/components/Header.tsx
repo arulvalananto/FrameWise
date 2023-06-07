@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faArrowDownAZ,
-    // faArrowUpZA,
-    faMagnifyingGlass,
-    faPlus,
-} from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
+
+import Sorter from '../../../components/Sorter';
+import { sorterOptions } from '../../../static/data';
 
 const Header: React.FC = () => {
     const [searchText, setSearchText] = useState<string>('');
@@ -32,15 +30,7 @@ const Header: React.FC = () => {
                 />
             </div>
             <div className="flex flex-row gap-3 items-center self-end md:self-center">
-                <button
-                    type="button"
-                    onClick={handleUploadFile}
-                    aria-label="Upload"
-                    className="bg-white text-black px-4 py-2 rounded hover:scale-95 transition-all"
-                >
-                    <FontAwesomeIcon icon={faArrowDownAZ} />
-                    {/* <FontAwesomeIcon icon={faArrowUpZA} /> */}
-                </button>
+                <Sorter options={sorterOptions} />
                 <button
                     type="button"
                     onClick={handleUploadFile}
@@ -54,4 +44,5 @@ const Header: React.FC = () => {
     );
 };
 
-export default Header;
+const MemoziedHeader = memo(Header);
+export default MemoziedHeader;

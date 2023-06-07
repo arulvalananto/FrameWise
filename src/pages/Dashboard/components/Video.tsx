@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { AxiosError } from 'axios';
+import toast from 'react-hot-toast';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getThumbnail } from '../../../api/helpers';
@@ -15,8 +17,8 @@ const Video: React.FC<VideoProps> = ({ video }) => {
     const { id, thumbnailId } = video;
 
     const [thumbnail, setThumbnail] = useState('');
-    const [isThumbnailLoading, setIsThumbnailLoading] = useState(true);
     const [isDeleteProcessing, setIsDeleteProcessing] = useState(false);
+    const shouldRender = useRef(true);
 
     const handlePlayVideo = (event: React.MouseEvent<HTMLDivElement>) => {
         console.log(event);
@@ -25,18 +27,22 @@ const Video: React.FC<VideoProps> = ({ video }) => {
     const handleDeleteVideo = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
         console.log('delete', event);
+        setIsDeleteProcessing(true);
+        setIsDeleteProcessing(false);
     };
 
     useEffect(() => {
         (async () => {
-            try {
-                const response = await getThumbnail(id, thumbnailId);
-                setThumbnail(response);
-                setIsThumbnailLoading(false);
-            } catch (error) {
-                console.error(error);
-                // toast.error(error?.message);
-                setIsThumbnailLoading(false);
+            if (shouldRender.current) {
+                shouldRender.current = false;
+                try {
+                    const response = await getThumbnail(id, thumbnailId);
+                    setThumbnail(response);
+                } catch (error: unknown) {
+                    if (error instanceof Error) toast.error(error?.message);
+                    else if (error instanceof AxiosError)
+                        toast.error(error?.response?.data?.message);
+                }
             }
         })();
     }, [id, thumbnailId]);
@@ -60,6 +66,7 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                 type="button"
                 aria-label="delete video"
                 className="bg-darkgrey absolute text-xs bg-opacity-75 rounded px-2 py-1 top-4 lg:top-2 right-2 hover:scale-95"
+                disabled={isDeleteProcessing}
                 onClick={handleDeleteVideo}
             >
                 <FontAwesomeIcon icon={faTrashCan} />
@@ -71,4 +78,5 @@ const Video: React.FC<VideoProps> = ({ video }) => {
     );
 };
 
-export default Video;
+const MemoziedVideo = memo(Video);
+export default MemoziedVideo;

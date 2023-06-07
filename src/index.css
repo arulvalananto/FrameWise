@@ -16,3 +16,9 @@ body {
     background: #000000;
     color: #ffffff;
 }
+
+@layer components {
+    .container-center {
+        @apply w-full h-full flex items-center justify-center;
+    }
+}

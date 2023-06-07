@@ -9,3 +9,9 @@ export interface LinkProps {
 export interface CustomLinkProps {
     link: LinkProps;
 }
+
+export interface SorterOptionProps {
+    icon: IconProp | IconDefinition;
+    title: string;
+    value: 'name' | '-name' | 'lastModified' | '-lastModified';
+}

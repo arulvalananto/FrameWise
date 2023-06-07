@@ -8,12 +8,16 @@ import { VideoDeleteState, VideoState, VideosState } from './index.interface';
 const initialState: VideosState = {
     isLoading: true,
     videos: [],
+    sortedBy: '-lastModified',
 };
 
 export const videosSlice = createSlice({
     name: 'videos',
     initialState,
     reducers: {
+        changeSortBy: (state, action) => {
+            state.sortedBy = action.payload;
+        },
         deleteByVideoId: (state, action) => {
             const { videoId }: VideoDeleteState = action.payload;
             const filteredVideos = state?.videos?.filter(
@@ -54,7 +58,8 @@ export const videosSlice = createSlice({
     },
 });
 
-// export const {  } = videosSlice.actions;
+export const { changeSortBy, deleteByVideoId, updateVideoProcessingState } =
+    videosSlice.actions;
 export const videosSelector = (state: RootState) => state.videos;
 
 export default videosSlice.reducer;
