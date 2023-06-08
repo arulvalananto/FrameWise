@@ -1,6 +1,6 @@
-import { AxiosError } from 'axios';
+import axios, { AxiosError } from 'axios';
 
-import axiosInstance, { headerConfig } from '.';
+import axiosInstance, { fast_api_url, headerConfig } from '.';
 import constants from '../static/constants.json';
 import { isTokenExpired } from '../common/helpers';
 import { VideoState } from '../store/reducers/videos/index.interface';
@@ -88,6 +88,68 @@ export const getThumbnail = (
                 resolve(response?.data);
             } else {
                 throw new Error(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) reject(error?.message);
+            else if (error instanceof AxiosError)
+                reject(error?.response?.data?.message);
+        }
+    });
+};
+
+/**
+ *
+ * Post Video to video indexer
+ * @param {*} fileName
+ * @param {*} url
+ */
+export const postVideo = async (
+    fileName: string,
+    url: string
+): Promise<VideoState> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await checkTokenExpiry();
+
+            const response = await axiosInstance.post(
+                `/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos?name=${fileName}&privacy=Private&language=en-US&videoUrl=${url}&indexingPreset=Default&streamingPreset=SingleBitrate`
+            );
+            if (response?.status === 200 && response?.data) {
+                resolve(response.data);
+            } else {
+                reject({
+                    message: constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG,
+                });
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) reject(error?.message);
+            else if (error instanceof AxiosError)
+                reject(error?.response?.data?.message);
+        }
+    });
+};
+
+/**
+ * Upload video to Azure blob storage
+ * @param imageFile
+ * @returns Promise<{ filename: string; blob_url: string }>
+ */
+export const uploadVideo = (
+    imageFile: FormData
+): Promise<{ filename: string; blob_url: string }> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await checkTokenExpiry();
+
+            const response = await axios.post(
+                `${fast_api_url}/api/uploadfile/`,
+                imageFile
+            );
+
+            if (response?.data && response.status === 200) {
+                resolve(response?.data);
+            } else {
+                reject(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
             }
         } catch (error: unknown) {
             if (error instanceof Error) reject(error?.message);

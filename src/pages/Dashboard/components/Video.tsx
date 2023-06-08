@@ -23,6 +23,7 @@ const Video: React.FC<VideoProps> = ({ video }) => {
 
     const handlePlayVideo = (event: React.MouseEvent<HTMLDivElement>) => {
         // handle play video
+        console.log(event.target);
     };
 
     const handleDeleteVideo = (event: React.MouseEvent<HTMLButtonElement>) => {
