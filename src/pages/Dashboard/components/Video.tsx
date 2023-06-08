@@ -1,13 +1,14 @@
 import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
+import { Tooltip } from '@mui/material';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import React, { memo, useEffect, useRef, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getThumbnail } from '../../../api/helpers';
 import constants from '../../../static/constants.json';
 import { fancyTimeFormat, trimStr } from '../../../common/helpers';
 import { VideoState } from '../../../store/reducers/videos/index.interface';
+import MemoziedConfirmationModal from '../../../components/DeleteConfirmationModal';
 
 interface VideoProps {
     video: VideoState;
@@ -58,18 +59,18 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                     alt="thumb"
                 />
             </div>
-            <p className="bg-darkgrey absolute hidden sm:block text-xs lg:text-sm top-4 lg:top-2 left-2 bg-opacity-75 rounded px-2 py-1 cursor-default">
-                {trimStr(video?.name)}
-            </p>
-            <button
-                type="button"
-                aria-label="delete video"
-                className="bg-darkgrey absolute text-xs bg-opacity-75 rounded px-2 py-1 top-4 lg:top-2 right-2 hover:scale-95"
-                disabled={isDeleteProcessing}
-                onClick={handleDeleteVideo}
-            >
-                <FontAwesomeIcon icon={faTrashCan} />
-            </button>
+            <Tooltip title={video?.name} placement="top" arrow>
+                <p className="bg-darkgrey absolute hidden sm:block text-xs lg:text-sm top-4 lg:top-2 left-2 bg-opacity-75 rounded px-2 py-1 cursor-default">
+                    {trimStr(video?.name)}
+                </p>
+            </Tooltip>
+            <MemoziedConfirmationModal
+                title="Delete"
+                handleSubmit={handleDeleteVideo}
+                buttonIcon={faTrashCan}
+                // disabled={!isProcessedVideo}
+                isDeleteProcessing={isDeleteProcessing}
+            />
             <p className="bg-darkgrey absolute text-xs lg:text-sm bottom-4 lg:bottom-2 font-cherry right-2 bg-opacity-75 rounded px-2 py-1 cursor-default">
                 {fancyTimeFormat(video?.durationInSeconds)}
             </p>
