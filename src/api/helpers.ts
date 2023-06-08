@@ -3,6 +3,7 @@ import { AxiosError } from 'axios';
 import axiosInstance, { headerConfig } from '.';
 import constants from '../static/constants.json';
 import { isTokenExpired } from '../common/helpers';
+import { VideoState } from '../store/reducers/videos/index.interface';
 
 /**
  * Check Token is expiry or not
@@ -17,7 +18,7 @@ const checkTokenExpiry = async () => {
 /**
  * Generate Access Token
  */
-export const getAuthToken = () => {
+export const getAuthToken = (): Promise<string> => {
     return new Promise(async (resolve, reject) => {
         try {
             const response = await axiosInstance.get(
@@ -26,15 +27,15 @@ export const getAuthToken = () => {
             );
             if (response?.status === 200 && response?.data) {
                 localStorage.setItem(constants.TOKEN_NAME, response?.data);
-                resolve(response);
+                const token: string = response?.data;
+                resolve(token);
             } else {
-                reject(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+                throw new Error(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
             }
         } catch (error: unknown) {
             if (error instanceof Error) reject(error?.message);
             else if (error instanceof AxiosError)
                 reject(error?.response?.data?.message);
-            else reject(error);
         }
     });
 };
@@ -42,7 +43,7 @@ export const getAuthToken = () => {
 /**
  * Get All Videos
  */
-export const getAllVideos = async () => {
+export const getAllVideos = (): Promise<VideoState[]> => {
     return new Promise(async (resolve, reject) => {
         try {
             await checkTokenExpiry();
@@ -52,15 +53,15 @@ export const getAllVideos = async () => {
             );
 
             if (response?.status === 200 && response?.data?.results) {
-                resolve(response.data.results);
+                const videos: VideoState[] = response.data?.results;
+                resolve(videos);
             } else {
-                reject(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+                throw new Error(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
             }
         } catch (error: unknown) {
             if (error instanceof Error) reject(error?.message);
             else if (error instanceof AxiosError)
                 reject(error?.response?.data?.message);
-            else reject(error);
         }
     });
 };
@@ -71,7 +72,7 @@ export const getAllVideos = async () => {
  * @param {string} thumbnailId
  * @returns
  */
-export const getThumbnail = async (
+export const getThumbnail = (
     videoId: string,
     thumbnailId: string
 ): Promise<string> => {
@@ -86,13 +87,12 @@ export const getThumbnail = async (
             if (response) {
                 resolve(response?.data);
             } else {
-                reject(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+                throw new Error(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
             }
         } catch (error: unknown) {
             if (error instanceof Error) reject(error?.message);
             else if (error instanceof AxiosError)
                 reject(error?.response?.data?.message);
-            else reject(error);
         }
     });
 };

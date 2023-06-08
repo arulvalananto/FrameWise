@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import type { PayloadAction } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '../..';
 import { fetchAllVideos } from './index.thunk';
@@ -9,12 +9,16 @@ const initialState: VideosState = {
     isLoading: true,
     videos: [],
     sortedBy: '-lastModified',
+    searchText: '',
 };
 
 export const videosSlice = createSlice({
     name: 'videos',
     initialState,
     reducers: {
+        changeSearchText: (state, action) => {
+            state.searchText = action.payload;
+        },
         changeSortBy: (state, action) => {
             state.sortedBy = action.payload;
         },
@@ -48,7 +52,7 @@ export const videosSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(fetchAllVideos.fulfilled, (state, action) => {
-                const { videos }: any = action.payload;
+                const { videos } = action.payload;
                 state.videos = videos;
                 state.isLoading = false;
             })
@@ -58,8 +62,12 @@ export const videosSlice = createSlice({
     },
 });
 
-export const { changeSortBy, deleteByVideoId, updateVideoProcessingState } =
-    videosSlice.actions;
+export const {
+    changeSearchText,
+    changeSortBy,
+    deleteByVideoId,
+    updateVideoProcessingState,
+} = videosSlice.actions;
 export const videosSelector = (state: RootState) => state.videos;
 
 export default videosSlice.reducer;

@@ -8,13 +8,20 @@ import MemoziedLoader from '../../../components/Loader';
 import { dynamicSort } from '../../../common/helpers';
 
 const AllVideos: React.FC = () => {
-    const { videos, isLoading, sortedBy } = useSelector(videosSelector);
+    const { videos, isLoading, sortedBy, searchText } =
+        useSelector(videosSelector);
 
     const sortedVideos = useMemo(() => {
         if (videos.length) {
             return videos?.slice()?.sort(dynamicSort(sortedBy));
         } else return [];
     }, [videos, sortedBy]);
+
+    const filteredVideos = useMemo(() => {
+        return sortedVideos?.filter((video) =>
+            video?.name?.toLowerCase()?.includes(searchText)
+        );
+    }, [sortedVideos, searchText]);
 
     if (isLoading) {
         return (
@@ -35,7 +42,7 @@ const AllVideos: React.FC = () => {
     return (
         <div className="mt-20 md:mt-10 flex-1 overflow-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-stretch gap-2">
-                {sortedVideos?.map((video: VideoState) => (
+                {filteredVideos?.map((video: VideoState) => (
                     <Video video={video} key={video?.id} />
                 ))}
             </div>

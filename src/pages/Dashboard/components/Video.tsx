@@ -8,6 +8,7 @@ import { getThumbnail } from '../../../api/helpers';
 import constants from '../../../static/constants.json';
 import { fancyTimeFormat, trimStr } from '../../../common/helpers';
 import { VideoState } from '../../../store/reducers/videos/index.interface';
+import { Tooltip } from '@mui/material';
 
 interface VideoProps {
     video: VideoState;
@@ -58,9 +59,11 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                     alt="thumb"
                 />
             </div>
-            <p className="bg-darkgrey absolute hidden sm:block text-xs lg:text-sm top-4 lg:top-2 left-2 bg-opacity-75 rounded px-2 py-1 cursor-default">
-                {trimStr(video?.name)}
-            </p>
+            <Tooltip title={video?.name} placement="top" arrow>
+                <p className="bg-darkgrey absolute hidden sm:block text-xs lg:text-sm top-4 lg:top-2 left-2 bg-opacity-75 rounded px-2 py-1 cursor-default">
+                    {trimStr(video?.name)}
+                </p>
+            </Tooltip>
             <button
                 type="button"
                 aria-label="delete video"
