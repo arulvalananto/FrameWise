@@ -38,6 +38,15 @@ body {
 }
 /* Custom Scrollbar Ends */
 
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1a1c1e inset !important;
+    -webkit-text-fill-color: #999999;
+}
+
 @layer components {
     .container-center {
         @apply w-full h-full flex items-center justify-center;

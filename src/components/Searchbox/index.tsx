@@ -24,7 +24,7 @@ const Searchbox: React.FC = () => {
                 value={searchText}
                 onChange={handleSearchChange}
                 aria-label="Search"
-                className="bg-transparent w-full border-none outline-none"
+                className="bg-transparent w-full border-none outline-none text-input"
             />
         </div>
     );
