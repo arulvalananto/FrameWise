@@ -1,14 +1,13 @@
 import { useSelector } from 'react-redux';
-import React, { memo, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import Face from './Face';
 import FaceDetails from './FaceDetails';
 import MemoziedTimeline from '../Timeline';
-// import InsightSection from '../InsightSection';
+import MemoziedInsightSection from '../InsightSection';
 import { getTimelineInfo } from '../../../../common/helpers';
 import { TimelineProps } from '../../../../interfaces/common';
 import * as videoDetails from '../../../../store/reducers/videoDetails';
-import MemoziedInsightSection from '../InsightSection';
 
 const Faces: React.FC = () => {
     const { selectedInsight, insights } = useSelector(

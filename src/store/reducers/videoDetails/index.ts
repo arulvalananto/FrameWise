@@ -45,7 +45,23 @@ export const videosSlice = createSlice({
         },
         changeSelectedInsight: (state, action) => {
             const { key, value } = action.payload;
-            state.selectedInsight[key] = value;
+            if (key === 'keyword') {
+                state.selectedInsight.keyword = value;
+            } else if (key === 'label') {
+                state.selectedInsight.label = value;
+            } else if (key === 'namedLocation') {
+                state.selectedInsight.namedLocation = value;
+            } else if (key === 'topic') {
+                state.selectedInsight.topic = value;
+            } else if (key === 'brand') {
+                state.selectedInsight.brand = value;
+            } else if (key === 'face') {
+                state.selectedInsight.face = value;
+            } else if (key === 'emotion') {
+                state.selectedInsight.emotion = value;
+            } else if (key === 'namedPerson') {
+                state.selectedInsight.namedPerson = value;
+            }
         },
     },
     extraReducers: (builder) => {

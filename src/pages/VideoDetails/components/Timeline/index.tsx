@@ -19,7 +19,7 @@ const Timeline: React.FC<TimelineCompProps> = ({ timeline }) => {
                 width="100%"
                 height="25"
                 xmlns="http://www.w3.org/2000/svg"
-                tabIndex="-1"
+                tabIndex={-1}
                 className="border-none outline-none"
             >
                 <rect
