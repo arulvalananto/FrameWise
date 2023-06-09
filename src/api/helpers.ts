@@ -4,6 +4,7 @@ import axiosInstance, { headerConfig } from '.';
 import constants from '../static/constants.json';
 import { isTokenExpired } from '../common/helpers';
 import { VideoState } from '../store/reducers/videos/index.interface';
+import { VideoDetails } from '../store/reducers/videoDetails/index.interface';
 
 /**
  * Check Token is expiry or not
@@ -31,6 +32,34 @@ export const getAuthToken = (): Promise<string> => {
                 resolve(token);
             } else {
                 throw new Error(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) reject(error?.message);
+            else if (error instanceof AxiosError)
+                reject(error?.response?.data?.message);
+        }
+    });
+};
+
+/**
+ * Get access token for video streaming service
+ * @param videoId
+ * @returns
+ */
+export const getVideoAccessToken = (videoId: string): Promise<string> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await checkTokenExpiry();
+
+            const response = await axiosInstance.get(
+                `/Auth/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos/${videoId}/AccessToken?allowEdit=true`,
+                headerConfig
+            );
+
+            if (response?.data) {
+                resolve(response?.data);
+            } else {
+                reject(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
             }
         } catch (error: unknown) {
             if (error instanceof Error) reject(error?.message);
@@ -88,6 +117,94 @@ export const getThumbnail = (
                 resolve(response?.data);
             } else {
                 throw new Error(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) reject(error?.message);
+            else if (error instanceof AxiosError)
+                reject(error?.response?.data?.message);
+        }
+    });
+};
+
+/**
+ * Get Video Details by video id
+ * @param {*} videoId
+ * @returns
+ */
+export const getVideoIndexDetails = (
+    videoId: string
+): Promise<VideoDetails> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await checkTokenExpiry();
+
+            const response = await axiosInstance.get(
+                `/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos/${videoId}/Index`
+            );
+            if (response?.status === 200 && response.data) {
+                resolve(response.data);
+            } else {
+                reject(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) reject(error?.message);
+            else if (error instanceof AxiosError)
+                reject(error?.response?.data?.message);
+        }
+    });
+};
+
+/**
+ *
+ * Post Video to video indexer
+ * @param {*} fileName
+ * @param {*} url
+ */
+export const uploadVideo = async (
+    fileName: string,
+    url: string
+): Promise<VideoState> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await checkTokenExpiry();
+
+            const response = await axiosInstance.post(
+                `/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos?name=${fileName}&privacy=Private&language=en-US&videoUrl=${url}&indexingPreset=Default&streamingPreset=SingleBitrate`
+            );
+            if (response?.status === 200 && response?.data) {
+                resolve(response.data);
+            } else {
+                reject({
+                    message: constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG,
+                });
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) reject(error?.message);
+            else if (error instanceof AxiosError)
+                reject(error?.response?.data?.message);
+        }
+    });
+};
+
+/**
+ * Delete video
+ * @param {*} videoId
+ * @returns
+ */
+export const deleteVideo = (videoId: string): Promise<{ status: number }> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await checkTokenExpiry();
+
+            const response = await axiosInstance.delete(
+                `/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos/${videoId}`
+            );
+            if (response?.status === 204) {
+                resolve({ status: response?.status });
+            } else {
+                reject({
+                    message: constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG,
+                });
             }
         } catch (error: unknown) {
             if (error instanceof Error) reject(error?.message);

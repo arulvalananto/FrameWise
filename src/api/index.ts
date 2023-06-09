@@ -27,4 +27,9 @@ export const headerConfig = {
     },
 };
 
+export const fast_api_url =
+    process.env.NODE_ENV === 'development'
+        ? constants.FAST_API_DEV_ENDPOINT
+        : constants.FAST_API_PROD_ENDPOINT; 
+
 export default axiosInstance;

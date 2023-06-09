@@ -1,18 +1,44 @@
 {
+    "FAST_API_DEV_ENDPOINT": "http://127.0.0.1:8000",
+    "FAST_API_PROD_ENDPOINT": "http://127.0.0.1:8000",
     "TOKEN_NAME": "fw_token",
+    "VIDEO_FILE_FORMAT": "video",
+    "FILE_SIZE_LIMIT": 500000000,
+    "VIDEO_PROCESSED": "processed",
+    "UPLOAD_VIDEO_STATUS": "uploaded",
+    "VIDEO_PROCESSING_API_CALL": 15000,
+    "VIDEO_INDEXING_MESSAGE": "Indexing",
+    "VIDEO_PLAYER_ID": "framewise-player",
+    "GOOGLE_MAP_PREFIX": "https://www.google.com/maps/place/",
+    "GOOGLE_PREFIX": "https://www.google.com/search?q=",
+    "IMAGE_URL_PREFIX": "data:image/jpeg;base64,",
     "AZURE_VIDEO_INDEXER": {
         "SUBSCRIPTION_KEY": "f472288beabf4146b6729fbfdea131d7",
         "ACCOUNT_ID": "dd73ffe1-6a72-4af9-b565-7bec166593af",
         "IMAGE_URL_PREFIX": "data:image/jpeg;base64,"
     },
+    "MESSAGE": {
+        "DELETE_PROMPT_DEFAULT": "Are you sure you want to delete this item?"
+    },
+    "SUCCESS_MESSAGE": {
+        "FILE_UPLOAD": "File uploaded successfully",
+        "VIDEO_DELETED": "Video deleted successfully"
+    },
     "ERROR_MESSAGE": {
-        "SOMETHING_WENT_WRONG": "Something went wrong"
+        "SOMETHING_WENT_WRONG": "Something went wrong",
+        "UNSUPPORTED_FILE_TYPE": "Please upload supported file types",
+        "FILE_LIMIT_EXIST": "File exceeds maximum allowed upload size of 50MB",
+        "UPLOAD_FAILED": "Upload failed",
+        "VIDEO_TOKEN_AUTHENTICATION_FAILED": "Authentication failed",
+        "VIDEO_NEXT_MOVE": "Something went wrong with moving video to specific point"
     },
     "TOOLTIP": {
         "UPLOAD_FILE": "Upload file",
         "SORT_BY": "Sort by"
     },
-    "MESSAGE": {
-        "DELETE_PROMPT_DEFAULT": "Are you sure you want to delete this item?"
+    "NO_CONTENT": {
+        "DESCRIPTION": "No description found",
+        "KEYWORDS": "No keywords found",
+        "LABELS": "No labels found"
     }
 }

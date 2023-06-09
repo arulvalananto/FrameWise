@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import { Divider } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,8 +28,14 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationProps> = ({
     message = constants.MESSAGE.DELETE_PROMPT_DEFAULT,
 }) => {
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event?.stopPropagation();
+        setOpen(true);
+    };
+    const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event?.stopPropagation();
+        setOpen(false);
+    };
 
     return (
         <>

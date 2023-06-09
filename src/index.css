@@ -20,26 +20,39 @@ body {
 /* Custom Scrollbar Starts */
 /* Width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #bfed37;
-    border-radius: 10px;
+    background: white;
+    border-radius: 8px;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #bfed37cd;
+    background: lightgrey;
 }
 /* Custom Scrollbar Ends */
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1a1c1e inset !important;
+    -webkit-text-fill-color: #999999;
+}
 
 @layer components {
     .container-center {
         @apply w-full h-full flex items-center justify-center;
     }
+}
+
+.MuiPaper-root {
+    background: black !important;
 }
