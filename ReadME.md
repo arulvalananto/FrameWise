@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://framewiise.web.app/">
+    <img alt="Framewise" src="https://github.com/arulvalananto/FrameWise/blob/main/src/assets/logo-transparent.svg" width="600" height="400" />
+  </a>
+</p>
+
 # Framewise
 
 ## Prerequisites
