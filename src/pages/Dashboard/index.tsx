@@ -15,7 +15,7 @@ const Dashboard: React.FC = () => {
             shouldRender.current = false;
             dispatch(fetchAllVideos());
         }
-    }, []);
+    }, [dispatch]);
 
     return (
         <section id="dashboard" className="w-full h-full flex flex-col">

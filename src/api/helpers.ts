@@ -1,6 +1,6 @@
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 
-import axiosInstance, { fast_api_url, headerConfig } from '.';
+import axiosInstance, { headerConfig } from '.';
 import constants from '../static/constants.json';
 import { isTokenExpired } from '../common/helpers';
 import { VideoState } from '../store/reducers/videos/index.interface';
@@ -103,7 +103,7 @@ export const getThumbnail = (
  * @param {*} fileName
  * @param {*} url
  */
-export const postVideo = async (
+export const uploadVideo = async (
     fileName: string,
     url: string
 ): Promise<VideoState> => {
@@ -130,26 +130,24 @@ export const postVideo = async (
 };
 
 /**
- * Upload video to Azure blob storage
- * @param imageFile
- * @returns Promise<{ filename: string; blob_url: string }>
+ * Delete video
+ * @param {*} videoId
+ * @returns
  */
-export const uploadVideo = (
-    imageFile: FormData
-): Promise<{ filename: string; blob_url: string }> => {
+export const deleteVideo = (videoId: string): Promise<{ status: number }> => {
     return new Promise(async (resolve, reject) => {
         try {
             await checkTokenExpiry();
 
-            const response = await axios.post(
-                `${fast_api_url}/api/uploadfile/`,
-                imageFile
+            const response = await axiosInstance.delete(
+                `/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos/${videoId}`
             );
-
-            if (response?.data && response.status === 200) {
-                resolve(response?.data);
+            if (response?.status === 204) {
+                resolve({ status: response?.status });
             } else {
-                reject(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+                reject({
+                    message: constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG,
+                });
             }
         } catch (error: unknown) {
             if (error instanceof Error) reject(error?.message);

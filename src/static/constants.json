@@ -4,7 +4,10 @@
     "TOKEN_NAME": "fw_token",
     "VIDEO_FILE_FORMAT": "video",
     "FILE_SIZE_LIMIT": 500000000,
+    "VIDEO_PROCESSED": "processed",
     "UPLOAD_VIDEO_STATUS": "uploaded",
+    "VIDEO_PROCESSING_API_CALL": 15000,
+    "VIDEO_INDEXING_MESSAGE": "Indexing",
     "AZURE_VIDEO_INDEXER": {
         "SUBSCRIPTION_KEY": "f472288beabf4146b6729fbfdea131d7",
         "ACCOUNT_ID": "dd73ffe1-6a72-4af9-b565-7bec166593af",

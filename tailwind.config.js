@@ -8,6 +8,7 @@ export default {
                 secondary: '#1A1C1E',
                 tertiary: '#332461',
                 darkgrey: '#1B1D1E',
+                'light-secondary': '#1A1C1E01',
             },
             fontFamily: {
                 raleway: ['Raleway', 'sans-serif'],

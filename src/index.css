@@ -20,17 +20,17 @@ body {
 /* Custom Scrollbar Starts */
 /* Width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #bfed37;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
@@ -42,4 +42,8 @@ body {
     .container-center {
         @apply w-full h-full flex items-center justify-center;
     }
+}
+
+.MuiPaper-root {
+    background: black !important;
 }

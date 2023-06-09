@@ -36,7 +36,7 @@ const Sorter: React.FC<SorterProps> = ({ options }) => {
 
     const open = Boolean(anchorEl);
 
-    const currentSelectedOption: SorterOptionProps = React.useMemo(
+    const currentSelectedOption: SorterOptionProps | undefined = React.useMemo(
         () => options.find((opt) => opt.value === sortedBy),
         [options, sortedBy]
     );
@@ -63,7 +63,9 @@ const Sorter: React.FC<SorterProps> = ({ options }) => {
                     aria-label="Upload"
                     className="bg-white text-black px-4 py-2 rounded hover:scale-95 transition-all"
                 >
-                    <FontAwesomeIcon icon={currentSelectedOption?.icon} />
+                    {currentSelectedOption?.icon && (
+                        <FontAwesomeIcon icon={currentSelectedOption?.icon} />
+                    )}
                 </button>
             </Tooltip>
             <Menu

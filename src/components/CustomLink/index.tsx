@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { CustomLinkProps } from '../../interfaces/common';
 
-const CustomLink: React.FC<CustomLinkProps> = ({ link, ...props }) => {
+const CustomLink: React.FC<CustomLinkProps> = ({ link }) => {
     const { title, to, icon } = link;
 
     return (
