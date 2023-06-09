@@ -30,8 +30,8 @@ const VideoDetails: React.FC = () => {
     }
 
     return (
-        <section className="w-full h-full flex flex-col xl:flex-row overflow-auto bg-secondary">
-            <div className="xl:flex-1 rounded">
+        <section className="w-full h-full flex flex-col xl:flex-row overflow-auto ">
+            <div className="xl:flex-1 rounded bg-secondary">
                 <VideoPlayer />
             </div>
             <div className="flex-none xl:w-[400px] 2xl:w-[600px] border-t-2 border-t-zinc-900 xl:border-t-0 xl:border-l-2 xl:border-l-zinc-900 p-2">

@@ -89,3 +89,16 @@ export const getSeenDuration = (
         return 0;
     }
 };
+
+export const getTimelineInfo = (insight: Instance) => {
+    const start = getTimeInSeconds(insight?.start);
+    const end = getTimeInSeconds(insight?.end);
+    const totalLength = end - start;
+
+    return {
+        start,
+        end,
+        width: totalLength < 1 ? totalLength + 2 : totalLength,
+        period: `${insight?.start} - ${insight?.end}`,
+    };
+};

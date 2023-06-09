@@ -15,3 +15,10 @@ export interface SorterOptionProps {
     title: string;
     value: 'name' | '-name' | 'lastModified' | '-lastModified';
 }
+
+export interface TimelineProps {
+    start: number;
+    end: number;
+    width: number;
+    period: string;
+}

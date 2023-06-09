@@ -1,0 +1,15 @@
+.transition {
+    transform-origin: left;
+    -moz-transition: transform 0.2s, opacity 0.2s, x 0.2s, width 0.2s;
+    -o-transition: transform 0.2s, opacity 0.2s, x 0.2s, width 0.2s;
+    -webkit-transition: transform 0.2s, opacity 0.2s, x 0.2s, width 0.2s;
+    transition: transform 0.2s, opacity 0.2s, x 0.2s, width 0.2s;
+}
+
+.bar {
+    fill: black;
+}
+
+.item {
+    fill: white;
+}

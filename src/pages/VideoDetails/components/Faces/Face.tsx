@@ -44,7 +44,7 @@ const Face: React.FC<FaceProps> = ({ face }) => {
     return (
         <div className="" onClick={handleMoveToSpecificTime}>
             <div
-                className={`w-[60px] h-[60px] rounded-full p-1 ${
+                className={`w-[45px] h-[45px] rounded-full p-1 ${
                     selectedInsight?.face?.id === face?.id
                         ? 'border-2 border-primary'
                         : ''
@@ -52,7 +52,7 @@ const Face: React.FC<FaceProps> = ({ face }) => {
             >
                 {!isThumbnailLoading ? (
                     <img
-                        className="object-cover w-full h-full rounded-3xl"
+                        className="object-cover w-full h-full rounded-full"
                         src={`${constants.IMAGE_URL_PREFIX}${thumbnail}`}
                         alt="thumb"
                     ></img>
