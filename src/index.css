@@ -29,12 +29,12 @@ body {
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #bfed37;
+    background: white;
     border-radius: 8px;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #bfed37cd;
+    background: lightgrey;
 }
 /* Custom Scrollbar Ends */
 

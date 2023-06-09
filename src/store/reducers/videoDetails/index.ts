@@ -20,6 +20,7 @@ const initialState: VideoDetailsState = {
         name: '',
         userName: '',
         id: '',
+        durationInSeconds: 0,
     },
     currentStartTime: 0,
     selectedInsight: {

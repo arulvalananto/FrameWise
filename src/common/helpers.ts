@@ -95,10 +95,11 @@ export const getTimelineInfo = (insight: Instance) => {
     const end = getTimeInSeconds(insight?.end);
     const totalLength = end - start;
 
+    console.log(totalLength);
     return {
         start,
         end,
-        width: totalLength < 1 ? totalLength + 2 : totalLength,
+        width: totalLength < 15 ? totalLength + 15 : totalLength,
         period: `${insight?.start} - ${insight?.end}`,
     };
 };

@@ -33,5 +33,10 @@
     "TOOLTIP": {
         "UPLOAD_FILE": "Upload file",
         "SORT_BY": "Sort by"
+    },
+    "NO_CONTENT": {
+        "DESCRIPTION": "No description found",
+        "KEYWORDS": "No keywords found",
+        "LABELS": "No labels found"
     }
 }

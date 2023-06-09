@@ -44,7 +44,7 @@ const Face: React.FC<FaceProps> = ({ face }) => {
     return (
         <div className="" onClick={handleMoveToSpecificTime}>
             <div
-                className={`w-[45px] h-[45px] rounded-full p-1 ${
+                className={`w-[48px] h-[48px] rounded-full p-1 ${
                     selectedInsight?.face?.id === face?.id
                         ? 'border-2 border-primary'
                         : ''

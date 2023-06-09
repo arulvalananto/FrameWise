@@ -10,14 +10,15 @@ import { videoDetailsSelector } from '../../../store/reducers/videoDetails';
 const VideoPlayer: React.FC = () => {
     const [videoAccessToken, setVideoAccessToken] = useState<string>('');
 
-    const {
-        currentStartTime,
-        videoDetails: { name, userName, id },
-    } = useSelector(videoDetailsSelector);
+    const { currentStartTime, videoDetails } =
+        useSelector(videoDetailsSelector);
 
     const videoURL = useMemo(
-        () => getVideoPlayerURL(id, videoAccessToken),
-        [videoAccessToken, id]
+        () =>
+            videoDetails?.id
+                ? getVideoPlayerURL(videoDetails?.id, videoAccessToken)
+                : '',
+        [videoAccessToken, videoDetails?.id]
     );
 
     const moveToSpecificTime = useCallback(() => {
@@ -52,15 +53,19 @@ const VideoPlayer: React.FC = () => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await getVideoAccessToken(id);
-                setVideoAccessToken(response);
+                if (videoDetails?.id) {
+                    const response = await getVideoAccessToken(
+                        videoDetails?.id
+                    );
+                    setVideoAccessToken(response);
+                }
             } catch (error) {
                 toast.error(
                     constants.ERROR_MESSAGE.VIDEO_TOKEN_AUTHENTICATION_FAILED
                 );
             }
         })();
-    }, [id]);
+    }, [videoDetails?.id]);
 
     return (
         <div className="p-2 w-full h-full flex flex-col gap-3">
@@ -75,9 +80,9 @@ const VideoPlayer: React.FC = () => {
                 ></iframe>
             </div>
             <div className="flex flex-col gap-2">
-                <h5 className="xl:text-2xl font-bold">{name}</h5>
+                <h5 className="xl:text-2xl font-bold">{videoDetails?.name}</h5>
                 <p className="text-gray-500 text-sm xl:text-base">
-                    Created by: {userName}
+                    Created by: {videoDetails?.userName}
                 </p>
             </div>
         </div>

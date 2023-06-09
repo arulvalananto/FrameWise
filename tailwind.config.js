@@ -10,6 +10,8 @@ export default {
                 darkgrey: '#1B1D1E',
                 'light-secondary': '#1A1C1E01',
                 input: '#999999',
+                chip: '#FFC850',
+                place: '#6BE898',
             },
             fontFamily: {
                 raleway: ['Raleway', 'sans-serif'],

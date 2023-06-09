@@ -14,7 +14,7 @@ const InsightSection: React.FC<InsightSectionProps> = ({
     className = '',
 }) => {
     return (
-        <div className={`rounded ${className}`}>
+        <div className={`rounded overflow-hidden ${className}`}>
             <div className="p-3 flex justify-between text-sm bg-secondary items-center">
                 <div className="flex flex-row gap-2 items-center">
                     <h1 className="font-semibold capitalize text-gray-600">
