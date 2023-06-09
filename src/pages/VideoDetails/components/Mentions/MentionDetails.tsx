@@ -8,17 +8,17 @@ import constants from '../../../../static/constants.json';
 import MemoziedRedirectLink from '../../../../components/RedirectLink';
 import { videoDetailsSelector } from '../../../../store/reducers/videoDetails';
 
-const BrandDetails: React.FC = () => {
+const MentionDetails: React.FC = () => {
     const [isShowDescription, setIsShowDescription] = useState(false);
     const {
-        selectedInsight: { brand },
+        selectedInsight: { namedPerson },
     } = useSelector(videoDetailsSelector);
 
     const toggleShowDescription = () => {
         setIsShowDescription(!isShowDescription);
     };
 
-    if (!brand?.description) {
+    if (!namedPerson?.description) {
         return null;
     }
 
@@ -26,7 +26,9 @@ const BrandDetails: React.FC = () => {
         <div className="flex flex-col gap-4">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row gap-3 items-center">
-                    <h5 className="text-chip font-bold">{brand?.name}</h5>
+                    <h5 className="text-white font-bold">
+                        {namedPerson?.name}
+                    </h5>
                     <button
                         className="text-xs flex flex-row items-center gap-1"
                         type="button"
@@ -41,7 +43,7 @@ const BrandDetails: React.FC = () => {
                     </button>
                 </div>
                 <MemoziedRedirectLink
-                    href={`${constants.GOOGLE_PREFIX}${brand?.name}`}
+                    href={`${constants.GOOGLE_PREFIX}${namedPerson?.name}`}
                 >
                     <p className="text-xs bg-black px-2 py-1 border rounded flex items-center gap-2">
                         <span>Find on Google</span>
@@ -50,10 +52,10 @@ const BrandDetails: React.FC = () => {
             </div>
             {isShowDescription && (
                 <p className="text-xs">
-                    {trimStr(brand?.description, 150)}
-                    {brand?.referenceUrl && (
+                    {trimStr(namedPerson?.description, 150)}
+                    {namedPerson?.referenceUrl && (
                         <MemoziedRedirectLink
-                            href={brand?.referenceUrl}
+                            href={namedPerson?.referenceUrl}
                             title="Read More"
                             className="font-bold ml-1"
                         />
@@ -64,4 +66,4 @@ const BrandDetails: React.FC = () => {
     );
 };
 
-export default BrandDetails;
+export default MentionDetails;

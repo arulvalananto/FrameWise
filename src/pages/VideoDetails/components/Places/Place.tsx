@@ -28,7 +28,7 @@ const Place: React.FC<PlaceProps> = ({ namedLocation }) => {
         <div
             className={`px-2 py-1 rounded text-sm  cursor-pointer select-none ${
                 namedLocation?.id === selectedInsight?.namedLocation?.id
-                    ? 'bg-place text-black'
+                    ? 'bg-place text-black font-bold'
                     : ''
             }`}
             onClick={handleMoveToSpecificTime}

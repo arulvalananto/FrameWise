@@ -1,32 +1,38 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import {
+    faAngleDown,
+    faAngleUp,
+    faEarthOceania,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { trimStr } from '../../../../common/helpers';
 import constants from '../../../../static/constants.json';
 import MemoziedRedirectLink from '../../../../components/RedirectLink';
 import { videoDetailsSelector } from '../../../../store/reducers/videoDetails';
 
-const BrandDetails: React.FC = () => {
+const PlaceDetails: React.FC = () => {
     const [isShowDescription, setIsShowDescription] = useState(false);
+
     const {
-        selectedInsight: { brand },
+        selectedInsight: { namedLocation },
     } = useSelector(videoDetailsSelector);
 
     const toggleShowDescription = () => {
         setIsShowDescription(!isShowDescription);
     };
 
-    if (!brand?.description) {
+    if (!namedLocation?.description) {
         return null;
     }
-
     return (
         <div className="flex flex-col gap-4">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row gap-3 items-center">
-                    <h5 className="text-chip font-bold">{brand?.name}</h5>
+                    <h5 className="text-place font-bold">
+                        {namedLocation?.name}
+                    </h5>
                     <button
                         className="text-xs flex flex-row items-center gap-1"
                         type="button"
@@ -41,19 +47,24 @@ const BrandDetails: React.FC = () => {
                     </button>
                 </div>
                 <MemoziedRedirectLink
-                    href={`${constants.GOOGLE_PREFIX}${brand?.name}`}
+                    href={`${constants.GOOGLE_MAP_PREFIX}${namedLocation?.name}`}
                 >
                     <p className="text-xs bg-black px-2 py-1 border rounded flex items-center gap-2">
-                        <span>Find on Google</span>
+                        <FontAwesomeIcon
+                            icon={faEarthOceania}
+                            spinPulse
+                            className="text-place"
+                        />
+                        <span>Find on Google Maps</span>
                     </p>
                 </MemoziedRedirectLink>
             </div>
             {isShowDescription && (
                 <p className="text-xs">
-                    {trimStr(brand?.description, 150)}
-                    {brand?.referenceUrl && (
+                    {trimStr(namedLocation?.description, 150)}
+                    {namedLocation?.referenceUrl && (
                         <MemoziedRedirectLink
-                            href={brand?.referenceUrl}
+                            href={namedLocation?.referenceUrl}
                             title="Read More"
                             className="font-bold ml-1"
                         />
@@ -64,4 +75,4 @@ const BrandDetails: React.FC = () => {
     );
 };
 
-export default BrandDetails;
+export default PlaceDetails;

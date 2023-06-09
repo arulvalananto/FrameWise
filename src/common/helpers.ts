@@ -29,7 +29,8 @@ export const fancyTimeFormat = (duration: number): string => {
 };
 
 export const trimStr = (str: string, maxLength = 30): string => {
-    return str.length > maxLength ? str.substring(0, maxLength) + '...' : str;
+    if (!str) return '';
+    return str?.length > maxLength ? str.substring(0, maxLength) + '...' : str;
 };
 
 export const dynamicSort = (property: string) => {
@@ -95,7 +96,6 @@ export const getTimelineInfo = (insight: Instance) => {
     const end = getTimeInSeconds(insight?.end);
     const totalLength = end - start;
 
-    console.log(totalLength);
     return {
         start,
         end,

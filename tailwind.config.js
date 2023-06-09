@@ -12,6 +12,8 @@ export default {
                 input: '#999999',
                 chip: '#FFC850',
                 place: '#6BE898',
+                topic: '#CD92D8',
+                mention: '#E05000',
             },
             fontFamily: {
                 raleway: ['Raleway', 'sans-serif'],

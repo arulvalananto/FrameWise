@@ -9,6 +9,8 @@
     "VIDEO_PROCESSING_API_CALL": 15000,
     "VIDEO_INDEXING_MESSAGE": "Indexing",
     "VIDEO_PLAYER_ID": "framewise-player",
+    "GOOGLE_MAP_PREFIX": "https://www.google.com/maps/place/",
+    "GOOGLE_PREFIX": "https://www.google.com/search?q=",
     "IMAGE_URL_PREFIX": "data:image/jpeg;base64,",
     "AZURE_VIDEO_INDEXER": {
         "SUBSCRIPTION_KEY": "f472288beabf4146b6729fbfdea131d7",

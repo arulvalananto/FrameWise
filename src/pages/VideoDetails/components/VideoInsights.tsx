@@ -3,6 +3,8 @@ import React from 'react';
 import Faces from './Faces';
 import Brands from './Brands';
 import Places from './Places';
+import Topics from './Topics';
+import Mentions from './Mentions';
 
 const VideoInsights: React.FC = () => {
     return (
@@ -10,6 +12,8 @@ const VideoInsights: React.FC = () => {
             <Faces />
             <Brands />
             <Places />
+            <Topics />
+            <Mentions />
         </div>
     );
 };
