@@ -35,7 +35,7 @@ const Mentions: React.FC = () => {
             isExpanded={isExpanded}
             handleIsExpanded={handleIsExpanded}
         >
-            <div className="flex flex-col w-full gap-4">
+            <div className="flex flex-col w-full gap-5">
                 <div
                     className={`flex flex-row flex-wrap gap-2 overflow-hidden ${
                         isExpanded ||
