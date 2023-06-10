@@ -50,7 +50,7 @@ const Sidebar: React.FC = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-6 items-center">
-                <div className="w-10 h-10 md:hidden">
+                <div className="w-8 h-8 md:hidden">
                     <img
                         src="https://xsgames.co/randomusers/avatar.php?g=pixel"
                         alt="profile"
@@ -60,12 +60,10 @@ const Sidebar: React.FC = () => {
                 <button
                     type="button"
                     onClick={handleLogout}
-                    className="w-10 md:w-48 flex items-center gap-3 py-2 px-3 rounded-md text-white hover:bg-primary hover:text-black"
+                    className="w-10 md:w-48 items-center gap-3 py-2 px-3 rounded-md text-white hover:bg-primary hover:text-black hidden md:flex"
                 >
                     <FontAwesomeIcon icon={faRightFromBracket} fontSize={20} />
-                    <p className="text-base font-semibold hidden md:block">
-                        Logout
-                    </p>
+                    <p className="text-base font-semibold">Logout</p>
                 </button>
             </div>
         </section>

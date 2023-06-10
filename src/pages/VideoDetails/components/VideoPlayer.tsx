@@ -69,7 +69,7 @@ const VideoPlayer: React.FC = () => {
 
     return (
         <div className="p-2 w-full h-full flex flex-col gap-3">
-            <div className="w-full h-[250px] sm:h-[350px] md:h-[350px] lg:h-[500px] xl:h-[600px]">
+            <div className="w-full h-[250px] sm:h-[350px] md:h-[300px] lg:h-[450px] xl:h-[600px]">
                 <iframe
                     id={constants.VIDEO_PLAYER_ID}
                     src={videoURL}
@@ -80,8 +80,10 @@ const VideoPlayer: React.FC = () => {
                 ></iframe>
             </div>
             <div className="flex flex-col gap-2">
-                <h5 className="xl:text-2xl font-bold">{videoDetails?.name}</h5>
-                <p className="text-gray-500 text-sm xl:text-base">
+                <h5 className="text-sm md:text-base xl:text-2xl font-bold">
+                    {videoDetails?.name}
+                </h5>
+                <p className="text-gray-500 text-xs md:text-sm xl:text-base">
                     Created by: {videoDetails?.userName}
                 </p>
             </div>

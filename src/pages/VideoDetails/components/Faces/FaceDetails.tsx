@@ -39,7 +39,9 @@ const FaceDetails: React.FC = () => {
 
     return (
         <div className="flex gap-4 items-center mt-2">
-            <div className={`w-[100px] h-[100px] rounded-full p-1`}>
+            <div
+                className={`w-[50px] h-[50px] md:w-[100px] md:h-[100px] rounded-full p-1`}
+            >
                 {!isThumbnailLoading ? (
                     <img
                         className="object-cover w-full h-full rounded-full"
@@ -49,7 +51,7 @@ const FaceDetails: React.FC = () => {
                 ) : null}
             </div>
             <div>
-                <h4 className="text-xl">{face?.name}</h4>
+                <h4 className="text-base md:text-xl">{face?.name}</h4>
                 <p className="text-xs">
                     Appears in {seenDuration?.toFixed(2)}% of video
                 </p>

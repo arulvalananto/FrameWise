@@ -23,7 +23,7 @@ const Mention: React.FC<MentionProps> = ({ mention }) => {
 
     return (
         <div
-            className={`px-2 py-1 rounded text-sm cursor-pointer select-none ${
+            className={`px-2 py-1 rounded text-xs md:text-sm cursor-pointer select-none ${
                 mention?.id === namedPerson?.id
                     ? 'bg-black text-white font-bold'
                     : ''

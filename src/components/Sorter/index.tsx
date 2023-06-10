@@ -61,7 +61,7 @@ const Sorter: React.FC<SorterProps> = ({ options }) => {
                     type="button"
                     onClick={handleClick}
                     aria-label="Upload"
-                    className="bg-white text-black px-4 py-2 rounded hover:scale-95 transition-all"
+                    className="bg-white text-black px-4 py-2 rounded hover:scale-95 transition-all text-xs md:text-base"
                 >
                     {currentSelectedOption?.icon && (
                         <FontAwesomeIcon icon={currentSelectedOption?.icon} />

@@ -35,7 +35,7 @@ const VideoDetails: React.FC = () => {
             <div className="xl:flex-1 rounded bg-secondary">
                 <VideoPlayer />
             </div>
-            <div className="flex-1 overflow-auto xl:flex-none xl:w-[400px] 2xl:w-[600px]">
+            <div className="flex-1 insights xl:overflow-auto xl:flex-none xl:w-[400px] 2xl:w-[600px]">
                 <VideoInsights />
             </div>
             <MemoziedBackButton
