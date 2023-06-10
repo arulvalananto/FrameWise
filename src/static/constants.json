@@ -40,5 +40,7 @@
         "DESCRIPTION": "No description found",
         "KEYWORDS": "No keywords found",
         "LABELS": "No labels found"
-    }
+    },
+    "FIND_ON_GOOGLE": "Find on Google",
+    "FIND_ON_GOOGLE_MAPS": "Find on Google Maps"
 }

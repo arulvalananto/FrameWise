@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import {
+    faAngleDown,
+    faAngleUp,
+    faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { trimStr } from '../../../../common/helpers';
 import constants from '../../../../static/constants.json';
@@ -26,13 +30,17 @@ const BrandDetails: React.FC = () => {
         <div className="flex flex-col gap-4">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row gap-3 items-center">
-                    <h5 className="text-chip font-bold">{brand?.name}</h5>
+                    <h5 className="text-chip font-bold text-sm md:text-base">
+                        {brand?.name}
+                    </h5>
                     <button
                         className="text-xs flex flex-row items-center gap-1"
                         type="button"
                         onClick={toggleShowDescription}
                     >
-                        <span>show description</span>
+                        <span className="hidden sm:block">
+                            show description
+                        </span>
                         {isShowDescription ? (
                             <FontAwesomeIcon icon={faAngleUp} />
                         ) : (
@@ -44,7 +52,10 @@ const BrandDetails: React.FC = () => {
                     href={`${constants.GOOGLE_PREFIX}${brand?.name}`}
                 >
                     <p className="text-xs bg-black px-2 py-1 border rounded flex items-center gap-2">
-                        <span>Find on Google</span>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        <span className="hidden sm:block">
+                            {constants.FIND_ON_GOOGLE}
+                        </span>
                     </p>
                 </MemoziedRedirectLink>
             </div>
