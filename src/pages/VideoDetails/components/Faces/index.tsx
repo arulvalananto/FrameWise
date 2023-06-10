@@ -1,15 +1,18 @@
 import { useSelector } from 'react-redux';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import Face from './Face';
 import FaceDetails from './FaceDetails';
 import MemoziedTimeline from '../Timeline';
 import MemoziedInsightSection from '../InsightSection';
+import constants from '../../../../static/constants.json';
 import { getTimelineInfo } from '../../../../common/helpers';
 import { TimelineProps } from '../../../../interfaces/common';
 import * as videoDetails from '../../../../store/reducers/videoDetails';
 
 const Faces: React.FC = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
     const { selectedInsight, insights } = useSelector(
         videoDetails.videoDetailsSelector
     );
@@ -21,17 +24,32 @@ const Faces: React.FC = () => {
             : [];
     }, [selectedInsight?.face?.instances]);
 
-    if (!insights?.faces?.length) {
+    const facesLength = useMemo(
+        () => insights?.faces?.length,
+        [insights?.faces]
+    );
+
+    const handleIsExpanded = () => setIsExpanded(!isExpanded);
+
+    if (!facesLength) {
         return null;
     }
 
     return (
         <MemoziedInsightSection
             title="faces"
-            count={insights?.faces?.length || 0}
+            count={facesLength || 0}
+            isExpanded={isExpanded}
+            handleIsExpanded={handleIsExpanded}
         >
             <div className="flex flex-col w-full gap-4">
-                <div className="flex flex-row flex-wrap items-center">
+                <div
+                    className={`flex flex-row flex-wrap items-center overflow-hidden ${
+                        isExpanded || facesLength < constants.EXPAND_MAX_LIMIT
+                            ? 'h-auto'
+                            : 'h-12'
+                    }`}
+                >
                     {insights?.faces?.map((face) => (
                         <Face face={face} key={face?.id} />
                     ))}

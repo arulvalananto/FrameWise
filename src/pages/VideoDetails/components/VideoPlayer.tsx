@@ -69,7 +69,7 @@ const VideoPlayer: React.FC = () => {
 
     return (
         <div className="p-2 w-full h-full flex flex-col gap-3">
-            <div className="w-full h-[250px] sm:h-[350px] md:h-[300px] lg:h-[450px] xl:h-[600px]">
+            <div className="w-full h-[200px] xs:h-[250px] sm:h-[350px] md:h-[300px] lg:h-[450px] xl:[475px] 2xl:[600px]">
                 <iframe
                     id={constants.VIDEO_PLAYER_ID}
                     src={videoURL}
