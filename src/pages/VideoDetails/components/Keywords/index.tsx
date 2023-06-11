@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import MemoziedTimeline from '../Timeline';
+import KeywordDetails from './KeywordDetails';
 import MemoziedInsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
 import { getTimelineInfo } from '../../../../common/helpers';
@@ -28,6 +29,7 @@ const Keywords: React.FC = () => {
             showExpand={false}
         >
             <div className="flex flex-col w-full gap-5">
+                <KeywordDetails />
                 <MemoziedTimeline timeline={timeline} />
             </div>
         </MemoziedInsightSection>

@@ -12,9 +12,7 @@ export const fetchVideoDetails = createAsyncThunk(
             );
 
             const videoDetails = response;
-            const insights = videoDetails.videos
-                ? videoDetails?.videos[0]?.insights
-                : null;
+            const insights = videoDetails.videos[0].insights;
 
             return { videoDetails, insights };
         } catch (error) {

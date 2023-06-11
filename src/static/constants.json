@@ -50,6 +50,7 @@
         "MENTIONS": "mentions",
         "PLACES": "named locations (Places)",
         "TOPICS": "topics",
-        "KEYWORDS": "keywords"
+        "KEYWORDS": "keywords",
+        "LABELS": "labels"
     }
 }

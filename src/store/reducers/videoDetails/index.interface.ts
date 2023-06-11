@@ -105,13 +105,13 @@ export interface VideoDetails {
     userName: string;
     durationInSeconds: number;
     summarizedInsights?: Insights;
-    videos?: VideoInsightDetail[];
+    videos: VideoInsightDetail[];
 }
 
 export interface VideoDetailsState {
     isLoading: boolean;
-    insights: Insights | null;
-    videoDetails: VideoDetails | null;
+    insights: Insights;
+    videoDetails: VideoDetails;
     currentStartTime: number;
     selectedInsight: {
         keyword: Keyword | null;

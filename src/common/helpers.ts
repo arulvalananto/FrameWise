@@ -2,6 +2,7 @@ import jwtDecode from 'jwt-decode';
 
 import constants from '../static/constants.json';
 import { Instance } from '../store/reducers/videoDetails/index.interface';
+
 interface IJWTToken {
     exp: number;
 }
@@ -102,4 +103,10 @@ export const getTimelineInfo = (insight: Instance) => {
         width: totalLength < 15 ? totalLength + 15 : totalLength,
         period: `${insight?.start} - ${insight?.end}`,
     };
+};
+
+export const sortInsightByInstances = (insightList: any[]) => {
+    return insightList
+        ?.filter((insight) => insight?.instances?.length)
+        ?.sort((a: any, b: any) => b?.instances?.length - a?.instances?.length);
 };
