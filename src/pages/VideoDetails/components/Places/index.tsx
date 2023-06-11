@@ -31,7 +31,7 @@ const Places: React.FC = () => {
 
     return (
         <InsightSection
-            title="named locations (Places)"
+            title={constants.INSIGHTS.PLACES}
             count={insights?.namedLocations?.length || 0}
             isExpanded={isExpanded}
             handleIsExpanded={handleIsExpanded}

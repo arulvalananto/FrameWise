@@ -34,7 +34,7 @@ const Brands: React.FC = () => {
 
     return (
         <InsightSection
-            title="brands"
+            title={constants.INSIGHTS.BRANDS}
             count={insights?.brands?.length || 0}
             isExpanded={isExpanded}
             handleIsExpanded={handleIsExpanded}

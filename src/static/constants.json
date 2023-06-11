@@ -43,5 +43,12 @@
         "LABELS": "No labels found"
     },
     "FIND_ON_GOOGLE": "Find on Google",
-    "FIND_ON_GOOGLE_MAPS": "Find on Google Maps"
+    "FIND_ON_GOOGLE_MAPS": "Find on Google Maps",
+    "INSIGHTS": {
+        "BRANDS": "brands",
+        "FACES": "faces",
+        "MENTIONS": "mentions",
+        "PLACES": "named locations (Places)",
+        "TOPICS": "topics"
+    }
 }

@@ -37,7 +37,7 @@ const Faces: React.FC = () => {
 
     return (
         <MemoziedInsightSection
-            title="faces"
+            title={constants.INSIGHTS.FACES}
             count={facesLength || 0}
             isExpanded={isExpanded}
             handleIsExpanded={handleIsExpanded}

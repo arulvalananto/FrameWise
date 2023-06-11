@@ -28,7 +28,7 @@ const Topics: React.FC = () => {
 
     return (
         <InsightSection
-            title="topics"
+            title={constants.INSIGHTS.TOPICS}
             count={insights?.topics?.length}
             isExpanded={isExpanded}
             handleIsExpanded={handleIsExpanded}

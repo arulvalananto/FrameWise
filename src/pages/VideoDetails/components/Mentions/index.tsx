@@ -30,7 +30,7 @@ const Mentions: React.FC = () => {
 
     return (
         <InsightSection
-            title="mentions"
+            title={constants.INSIGHTS.MENTIONS}
             count={insights?.namedPeople?.length}
             isExpanded={isExpanded}
             handleIsExpanded={handleIsExpanded}
