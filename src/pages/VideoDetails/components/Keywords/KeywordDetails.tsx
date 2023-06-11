@@ -6,6 +6,7 @@ import {
     changeSelectedInsight,
     videoDetailsSelector,
 } from '../../../../store/reducers/videoDetails';
+import CustomSelect from '../../../../components/CustomSelect';
 
 const KeywordDetails: React.FC = () => {
     const { insights, selectedInsight } = useSelector(videoDetailsSelector);
@@ -54,17 +55,11 @@ const KeywordDetails: React.FC = () => {
             </div>
             <div className="flex flex-row items-center gap-3">
                 {insights?.keywords && (
-                    <select
+                    <CustomSelect
                         value={selectedKeyword}
                         onChange={handleChangeKeyword}
-                        className="bg-black text-white p-2 border-none outline-none rounded"
-                    >
-                        {insights?.keywords?.map((keyword) => (
-                            <option key={keyword.id} value={keyword.text}>
-                                {keyword.text}
-                            </option>
-                        ))}
-                    </select>
+                        options={insights?.keywords}
+                    />
                 )}
                 <p className="text-xs">
                     {selectedInsight?.keyword?.instances?.length} Occurences

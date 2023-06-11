@@ -7,13 +7,15 @@ import Topics from './Topics';
 import Labels from './Labels';
 import Mentions from './Mentions';
 import Keywords from './Keywords';
+import Emotions from './Emotions';
 
 const VideoInsights: React.FC = () => {
     return (
         <div className="flex flex-col gap-2">
+            <Keywords />
             <Faces />
             <Brands />
-            <Keywords />
+            <Emotions />
             <Places />
             <Topics />
             <Labels />

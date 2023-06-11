@@ -42,7 +42,7 @@ const Mentions: React.FC = () => {
                         insights?.namedPeople?.length <
                             constants.EXPAND_MAX_LIMIT
                             ? 'h-auto'
-                            : 'h-7'
+                            : 'h-6 md:h-7'
                     }`}
                 >
                     {insights?.namedPeople?.map((mention) => (

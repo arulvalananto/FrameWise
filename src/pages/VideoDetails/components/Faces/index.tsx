@@ -8,14 +8,12 @@ import MemoziedInsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
 import { getTimelineInfo } from '../../../../common/helpers';
 import { TimelineProps } from '../../../../interfaces/common';
-import * as videoDetails from '../../../../store/reducers/videoDetails';
+import { videoDetailsSelector } from '../../../../store/reducers/videoDetails';
 
 const Faces: React.FC = () => {
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const { selectedInsight, insights } = useSelector(
-        videoDetails.videoDetailsSelector
-    );
+    const { selectedInsight, insights } = useSelector(videoDetailsSelector);
 
     const timeline: TimelineProps[] = useMemo(() => {
         const faceInstances = selectedInsight?.face?.instances;
@@ -47,7 +45,7 @@ const Faces: React.FC = () => {
                     className={`flex flex-row flex-wrap items-center overflow-hidden ${
                         isExpanded || facesLength < constants.EXPAND_MAX_LIMIT
                             ? 'h-auto'
-                            : 'h-12'
+                            : 'h-8 md:h-12'
                     }`}
                 >
                     {insights?.faces?.map((face) => (

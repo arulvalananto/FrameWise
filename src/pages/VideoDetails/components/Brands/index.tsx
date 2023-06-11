@@ -45,7 +45,7 @@ const Brands: React.FC = () => {
                         isExpanded ||
                         insights.brands.length < constants.EXPAND_MAX_LIMIT
                             ? 'h-auto'
-                            : 'h-9'
+                            : 'h-6 md:h-9'
                     }`}
                 >
                     {insights?.brands?.map((brand) => (

@@ -43,7 +43,7 @@ const Places: React.FC = () => {
                         insights?.namedLocations?.length <
                             constants.EXPAND_MAX_LIMIT
                             ? 'h-auto'
-                            : 'h-10'
+                            : 'h-6 md:h-10'
                     }`}
                 >
                     {insights?.namedLocations?.map((namedLocation) => (

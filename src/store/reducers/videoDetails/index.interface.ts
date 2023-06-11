@@ -20,6 +20,7 @@ export interface Emotion {
     id: string;
     type: string;
     instances: Instance[];
+    seenDurationRatio?: number;
 }
 
 export interface Face {

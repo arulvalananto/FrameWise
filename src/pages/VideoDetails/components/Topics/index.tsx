@@ -39,7 +39,7 @@ const Topics: React.FC = () => {
                         isExpanded ||
                         insights?.topics?.length < constants.EXPAND_MAX_LIMIT
                             ? 'h-auto'
-                            : 'h-10'
+                            : 'h-6 md:h-10'
                     }`}
                 >
                     {insights?.topics?.map((topic) => (

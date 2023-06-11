@@ -48,9 +48,10 @@
         "BRANDS": "brands",
         "FACES": "faces",
         "MENTIONS": "mentions",
-        "PLACES": "named locations (Places)",
+        "PLACES": "places",
         "TOPICS": "topics",
         "KEYWORDS": "keywords",
-        "LABELS": "labels"
+        "LABELS": "labels",
+        "EMOTIONS": "emotions"
     }
 }
