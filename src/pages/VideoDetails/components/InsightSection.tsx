@@ -10,6 +10,7 @@ interface InsightSectionProps {
     children: React.ReactNode;
     className?: string;
     isExpanded?: boolean;
+    showExpand?: boolean;
     handleIsExpanded?: () => void;
 }
 
@@ -19,6 +20,7 @@ const InsightSection: React.FC<InsightSectionProps> = ({
     children,
     handleIsExpanded,
     isExpanded = false,
+    showExpand = true,
     className = '',
 }) => {
     return (
@@ -31,7 +33,7 @@ const InsightSection: React.FC<InsightSectionProps> = ({
                     <p className="text-xs font-semibold text-gray-400">
                         ({count} items)
                     </p>
-                    {count > constants.EXPAND_MAX_LIMIT && (
+                    {count > constants.EXPAND_MAX_LIMIT && showExpand && (
                         <button
                             type="button"
                             className="text-xs bg-black px-2 py-1 rounded"
