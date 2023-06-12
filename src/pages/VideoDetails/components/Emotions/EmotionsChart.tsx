@@ -58,7 +58,7 @@ const EmotionsChart: React.FC = () => {
     if (!videoDetails.summarizedInsights?.emotions) {
         return null;
     }
-    
+
     return (
         <div>
             <Chart
@@ -67,24 +67,30 @@ const EmotionsChart: React.FC = () => {
                     labels: emotion.labels,
                     legend: {
                         horizontalAlign: 'center',
-                        position: 'right',
+                        position: isMobile ? 'bottom' : 'right',
                         showForSingleSeries: true,
                         showForNullSeries: true,
                         showForZeroSeries: true,
                         floating: true,
-                        fontSize: '14px',
+                        fontSize: isMobile ? '10px' : '14px',
                         fontWeight: 'bold',
-                        offsetY: 80,
-                        offsetX: isMobile ? 80 : 0,
                         labels: {
                             useSeriesColors: true,
                         },
                     },
+                    plotOptions: {
+                        pie: {
+                            customScale: isMobile ? 0.8 : 1,
+                        },
+                    },
+                    xaxis: {
+                        type: 'category',
+                    },
+                    yaxis: {},
                 }}
                 series={emotion.series}
                 type="donut"
-                width="100%"
-                height={300}
+                height={isMobile ? 200 : 250}
             />
         </div>
     );
