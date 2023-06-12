@@ -13,7 +13,7 @@ export default {
                 chip: '#FFC850',
                 place: '#6BE898',
                 topic: '#CD92D8',
-                mention: '#E05000',
+                mention: '#825A50',
             },
             fontFamily: {
                 raleway: ['Raleway', 'sans-serif'],

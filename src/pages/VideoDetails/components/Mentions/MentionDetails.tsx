@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import { trimStr } from '../../../../common/helpers';
 import constants from '../../../../static/constants.json';
@@ -26,7 +26,7 @@ const MentionDetails: React.FC = () => {
         <div className="flex flex-col gap-4">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row gap-3 items-center">
-                    <h5 className="text-white font-bold">
+                    <h5 className="text-white font-bold text-sm md:text-base">
                         {namedPerson?.name}
                     </h5>
                     <button
@@ -34,7 +34,9 @@ const MentionDetails: React.FC = () => {
                         type="button"
                         onClick={toggleShowDescription}
                     >
-                        <span>show description</span>
+                        <span className="hidden md:block">
+                            show description
+                        </span>
                         {isShowDescription ? (
                             <FontAwesomeIcon icon={faAngleUp} />
                         ) : (
@@ -46,7 +48,10 @@ const MentionDetails: React.FC = () => {
                     href={`${constants.GOOGLE_PREFIX}${namedPerson?.name}`}
                 >
                     <p className="text-xs bg-black px-2 py-1 border rounded flex items-center gap-2">
-                        <span>Find on Google</span>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        <span className="hidden md:block">
+                            {constants.FIND_ON_GOOGLE}
+                        </span>
                     </p>
                 </MemoziedRedirectLink>
             </div>

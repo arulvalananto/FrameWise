@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import React, { memo, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { DialogContent, DialogTitle, Dialog, Tooltip } from '@mui/material';
@@ -196,7 +196,7 @@ const FileUploader: React.FC = () => {
                     type="button"
                     onClick={handleOpen}
                     aria-label="Upload"
-                    className="bg-primary text-black px-4 py-2 rounded hover:scale-95 transition-all"
+                    className="bg-primary text-black px-4 py-2 rounded hover:scale-95 transition-all text-xs md:text-base"
                 >
                     <FontAwesomeIcon icon={faPlus} />
                 </button>
@@ -280,5 +280,4 @@ const FileUploader: React.FC = () => {
     );
 };
 
-const MemoziedFileUploader = memo(FileUploader);
-export default MemoziedFileUploader;
+export default FileUploader;

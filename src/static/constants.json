@@ -9,6 +9,7 @@
     "VIDEO_PROCESSING_API_CALL": 15000,
     "VIDEO_INDEXING_MESSAGE": "Indexing",
     "VIDEO_PLAYER_ID": "framewise-player",
+    "EXPAND_MAX_LIMIT": 20,
     "GOOGLE_MAP_PREFIX": "https://www.google.com/maps/place/",
     "GOOGLE_PREFIX": "https://www.google.com/search?q=",
     "IMAGE_URL_PREFIX": "data:image/jpeg;base64,",
@@ -40,5 +41,18 @@
         "DESCRIPTION": "No description found",
         "KEYWORDS": "No keywords found",
         "LABELS": "No labels found"
+    },
+    "FIND_ON_GOOGLE": "Find on Google",
+    "FIND_ON_GOOGLE_MAPS": "Find on Google Maps",
+    "INSIGHTS": {
+        "BRANDS": "brand detection",
+        "FACES": "face detection",
+        "MENTIONS": "mentions",
+        "PLACES": "places",
+        "TOPICS": "key topics",
+        "KEYWORDS": "keywords",
+        "LABELS": "labels",
+        "EMOTIONS": "emotion detection",
+        "SENTIMENTS": "sentiment analysis"
     }
 }

@@ -30,7 +30,7 @@ const PlaceDetails: React.FC = () => {
         <div className="flex flex-col gap-4">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row gap-3 items-center">
-                    <h5 className="text-place font-bold">
+                    <h5 className="text-place font-bold text-sm md:text-base">
                         {namedLocation?.name}
                     </h5>
                     <button
@@ -38,7 +38,9 @@ const PlaceDetails: React.FC = () => {
                         type="button"
                         onClick={toggleShowDescription}
                     >
-                        <span>show description</span>
+                        <span className="hidden sm:block">
+                            show description
+                        </span>
                         {isShowDescription ? (
                             <FontAwesomeIcon icon={faAngleUp} />
                         ) : (
@@ -55,7 +57,9 @@ const PlaceDetails: React.FC = () => {
                             spinPulse
                             className="text-place"
                         />
-                        <span>Find on Google Maps</span>
+                        <span className="hidden sm:block">
+                            {constants.FIND_ON_GOOGLE_MAPS}
+                        </span>
                     </p>
                 </MemoziedRedirectLink>
             </div>

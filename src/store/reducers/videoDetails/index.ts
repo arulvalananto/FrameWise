@@ -3,6 +3,15 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../..';
 import { fetchVideoDetails } from './index.thunk';
 import { VideoDetailsState } from './index.interface';
+import { sortInsightByInstances } from '../../../common/helpers';
+
+const videoDetailsInitialState = {
+    name: '',
+    userName: '',
+    id: '',
+    durationInSeconds: 0,
+    videos: [],
+};
 
 const initialState: VideoDetailsState = {
     isLoading: true,
@@ -15,13 +24,9 @@ const initialState: VideoDetailsState = {
         namedPeople: [],
         faces: [],
         topics: [],
+        sentiments: [],
     },
-    videoDetails: {
-        name: '',
-        userName: '',
-        id: '',
-        durationInSeconds: 0,
-    },
+    videoDetails: videoDetailsInitialState,
     currentStartTime: 0,
     selectedInsight: {
         keyword: null,
@@ -32,6 +37,7 @@ const initialState: VideoDetailsState = {
         face: null,
         emotion: null,
         namedPerson: null,
+        sentiment: null,
     },
 };
 
@@ -61,6 +67,8 @@ export const videosSlice = createSlice({
                 state.selectedInsight.emotion = value;
             } else if (key === 'namedPerson') {
                 state.selectedInsight.namedPerson = value;
+            } else if (key === 'sentiment') {
+                state.selectedInsight.sentiment = value;
             }
         },
     },
@@ -75,14 +83,18 @@ export const videosSlice = createSlice({
                 state.videoDetails = videoDetails;
                 state.isLoading = false;
 
-                state.insights = insights ? insights : null;
+                const sortedKeywords = sortInsightByInstances(
+                    insights.keywords
+                );
+                const sortedLabels = sortInsightByInstances(insights.labels);
+
+                state.insights = insights;
+                state.insights.keywords = sortedKeywords;
+                state.insights.labels = sortedLabels;
+
                 state.selectedInsight = {
-                    keyword: insights?.keywords?.length
-                        ? insights?.keywords[0]
-                        : null,
-                    label: insights?.labels?.length
-                        ? insights?.labels[0]
-                        : null,
+                    keyword: sortedKeywords?.length ? sortedKeywords[0] : null,
+                    label: sortedLabels?.length ? sortedLabels[0] : null,
                     topic: insights?.topics?.length
                         ? insights?.topics[0]
                         : null,
@@ -99,10 +111,13 @@ export const videosSlice = createSlice({
                     namedLocation: insights?.namedLocations?.length
                         ? insights?.namedLocations[0]
                         : null,
+                    sentiment: insights?.sentiments?.length
+                        ? insights?.sentiments[0]
+                        : null,
                 };
             })
             .addCase(fetchVideoDetails.rejected, (state) => {
-                state.videoDetails = null;
+                state.videoDetails = videoDetailsInitialState;
                 state.isLoading = false;
             });
     },

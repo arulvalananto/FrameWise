@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,7 @@ const Searchbox: React.FC = () => {
     };
 
     return (
-        <div className="bg-secondary flex flex-row gap-2 items-center px-4 py-2 rounded w-full md:w-1/2 lg:w-1/4">
+        <div className="bg-secondary flex flex-row gap-2 items-center px-4 py-2 rounded w-full md:w-1/2 lg:w-1/4 mt-2 md:mt-0  text-sm md:text-base">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             <input
                 name="search"
@@ -30,5 +30,4 @@ const Searchbox: React.FC = () => {
     );
 };
 
-const MemoziedSearchbox = memo(Searchbox);
-export default MemoziedSearchbox;
+export default Searchbox;

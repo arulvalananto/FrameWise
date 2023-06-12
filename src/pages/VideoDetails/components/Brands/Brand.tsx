@@ -29,7 +29,7 @@ const Brand: React.FC<BrandProps> = ({ brand }) => {
 
     return (
         <p
-            className={`py-2 px-4 text-xs md:text-sm text-black rounded-full cursor-pointer select-none flex gap-2 ${
+            className={`py-1 px-2 md:py-2 md:px-4 text-xs md:text-sm text-black rounded-full cursor-pointer select-none flex gap-2 ${
                 brand?.id === selectedInsight?.brand?.id
                     ? 'font-bold bg-chip'
                     : 'bg-white'

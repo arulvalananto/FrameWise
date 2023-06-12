@@ -33,7 +33,7 @@ const Topic: React.FC<TopicProps> = ({ topic }) => {
 
     return (
         <div
-            className={`px-2 py-1 text-sm rounded cursor-pointer select-none flex items-center gap-1 ${
+            className={`px-2 py-1 text-xs md:text-sm rounded cursor-pointer select-none flex items-center gap-1 ${
                 topic?.id === selectedInsight?.topic?.id
                     ? 'bg-topic text-black font-bold'
                     : ''
@@ -53,7 +53,7 @@ const Topic: React.FC<TopicProps> = ({ topic }) => {
                     <>
                         <span>|</span>
                         <MemoziedRedirectLink href={topic?.referenceUrl}>
-                            <Tooltip title="Learn more" placement='top' arrow>
+                            <Tooltip title="Learn more" placement="top" arrow>
                                 <FontAwesomeIcon icon={faLink} />
                             </Tooltip>
                         </MemoziedRedirectLink>

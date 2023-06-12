@@ -3,17 +3,21 @@ import CircularProgress, {
     CircularProgressProps,
 } from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import useIsMobile from '../../hooks/useIsMobile';
 
 const CircularProgressWithLabel = (
-    props: CircularProgressProps & { value: number }
+    props: CircularProgressProps & { value: number; color?: string }
 ) => {
+    const isMobile = useIsMobile();
+
     return (
         <Box sx={{ position: 'relative', display: 'inline-flex' }}>
             <CircularProgress
                 variant="determinate"
+                size={isMobile ? '3rem' : 100}
                 {...props}
                 sx={{
-                    color: '#BFED37',
+                    color: props.color ? '' : '#BFED37',
                 }}
             />
             <Box

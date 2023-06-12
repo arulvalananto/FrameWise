@@ -20,6 +20,7 @@ export interface Emotion {
     id: string;
     type: string;
     instances: Instance[];
+    seenDurationRatio?: number;
 }
 
 export interface Face {
@@ -80,6 +81,13 @@ export interface Topic {
     instances: Instance[];
 }
 
+export interface Sentiment {
+    id: number;
+    averageScore: number;
+    instances: Instance[];
+    sentimentType: string;
+}
+
 export interface Insights {
     brands: Brand[];
     emotions: Emotion[];
@@ -89,6 +97,7 @@ export interface Insights {
     keywords: Keyword[];
     labels: Label[];
     namedLocations: NamedLocation[];
+    sentiments: Sentiment[];
 }
 
 export interface VideoInsightDetail {
@@ -105,13 +114,13 @@ export interface VideoDetails {
     userName: string;
     durationInSeconds: number;
     summarizedInsights?: Insights;
-    videos?: VideoInsightDetail[];
+    videos: VideoInsightDetail[];
 }
 
 export interface VideoDetailsState {
     isLoading: boolean;
-    insights: Insights | null;
-    videoDetails: VideoDetails | null;
+    insights: Insights;
+    videoDetails: VideoDetails;
     currentStartTime: number;
     selectedInsight: {
         keyword: Keyword | null;
@@ -122,6 +131,7 @@ export interface VideoDetailsState {
         face: Face | null;
         emotion: Emotion | null;
         namedPerson: NamedPerson | null;
+        sentiment: Sentiment | null;
     };
 }
 

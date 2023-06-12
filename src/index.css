@@ -56,3 +56,9 @@ input:-webkit-autofill:active {
 .MuiPaper-root {
     background: black !important;
 }
+
+@media (max-width: 768px) {
+    .insights {
+        overflow-y: auto !important;
+    }
+}
