@@ -125,7 +125,7 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                 <img
                     className="w-full h-full object-cover lg:max-h-60 xl:max-h-48 2xl:max-h-52"
                     src={`${constants.AZURE_VIDEO_INDEXER.IMAGE_URL_PREFIX}${thumbnail}`}
-                    alt="thumb"
+                    alt={trimStr(name)}
                 />
             </div>
             {isProcessedVideo ? (
