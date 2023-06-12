@@ -61,9 +61,6 @@ const KeywordDetails: React.FC = () => {
                         options={insights?.keywords}
                     />
                 )}
-                <p className="text-xs">
-                    {selectedInsight?.keyword?.instances?.length} Occurences
-                </p>
             </div>
         </div>
     );

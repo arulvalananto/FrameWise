@@ -1,18 +1,27 @@
 import React, { memo } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { CustomLinkProps } from '../../interfaces/common';
 
 const CustomLink: React.FC<CustomLinkProps> = ({ link }) => {
     const { title, to, icon } = link;
+    const location = useLocation();
+    console.log(
+        location.pathname === 'library',
+        to,
+        to === '/' && location.pathname.includes('library')
+    );
 
     return (
         <NavLink
             to={to}
             className={({ isActive }) =>
                 `w-10 md:w-full flex items-center justify-center text-sm md:text-base md:justify-start gap-3 py-2 px-3 rounded-md ${
-                    isActive ? 'bg-primary text-black' : 'text-white'
+                    isActive ||
+                    (to === '/' && location.pathname.includes('library'))
+                        ? 'bg-primary text-black'
+                        : 'text-white'
                 }`
             }
         >

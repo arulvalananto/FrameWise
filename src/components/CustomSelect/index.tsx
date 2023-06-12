@@ -15,11 +15,11 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
         <select
             value={value}
             onChange={onChange}
-            className="bg-black text-white p-2 border-none outline-none rounded"
+            className="bg-black text-white p-2 border-none outline-none rounded text-xs md:text-base"
         >
             {options?.map((option) => (
                 <option key={option.id} value={option.text || option.type}>
-                    {option.text || option.type}
+                    {option.text || option.type} ({option.instances.length})
                 </option>
             ))}
         </select>

@@ -9,10 +9,12 @@ import Mentions from './Mentions';
 import Keywords from './Keywords';
 import Emotions from './Emotions';
 import Sentiments from './Sentiments';
+// import InsightHeader from './InsightHeader';
 
 const VideoInsights: React.FC = () => {
     return (
         <div className="flex flex-col gap-2">
+            {/* <InsightHeader /> */}
             <Keywords />
             <Faces />
             <Brands />

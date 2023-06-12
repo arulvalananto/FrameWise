@@ -49,3 +49,12 @@ export const chartColors = [
 ];
 
 export const sentimentColors = ['chip', 'place', 'topic'];
+
+export const emotionsColors: any = {
+    angry: '#E71E24',
+    sad: '#1A61AF',
+    joy: '#48B83E',
+    surprised: '#FBE925',
+    fear: '#F6911F',
+    disgusted: '#612D91',
+};

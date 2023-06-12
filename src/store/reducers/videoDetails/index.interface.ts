@@ -18,7 +18,7 @@ export interface Brand {
 
 export interface Emotion {
     id: string;
-    type: string;
+    type: 'angry' | 'joy' | 'surprised' | 'sad' | 'fear';
     instances: Instance[];
     seenDurationRatio?: number;
 }
