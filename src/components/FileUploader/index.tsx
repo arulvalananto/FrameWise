@@ -178,7 +178,6 @@ const FileUploader: React.FC = () => {
                 const { files } = event.dataTransfer;
 
                 await handleFileUpload(files);
-                handleClose();
             } catch (error: unknown) {
                 if (error instanceof Error || error instanceof AxiosError) {
                     toast.error(error?.message);
