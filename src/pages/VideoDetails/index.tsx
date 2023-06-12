@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
-import React, { memo, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import React, { memo, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch } from '../../store';
@@ -12,15 +12,23 @@ import MemoziedBackButton from '../../components/BackButton';
 
 const VideoDetails: React.FC = () => {
     const { id } = useParams();
+    const shouldRender = useRef(true);
+    const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
 
     const { isLoading } = useSelector(videoDetailsSelector);
 
     useEffect(() => {
         if (id) {
-            dispatch(fetchVideoDetails({ id }));
+            if (shouldRender.current) {
+                shouldRender.current = false;
+                dispatch(fetchVideoDetails({ id }));
+            }
+        } else {
+            navigate('/');
         }
-    }, [dispatch, id]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     if (isLoading) {
         return (

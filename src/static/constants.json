@@ -45,13 +45,14 @@
     "FIND_ON_GOOGLE": "Find on Google",
     "FIND_ON_GOOGLE_MAPS": "Find on Google Maps",
     "INSIGHTS": {
-        "BRANDS": "brands",
-        "FACES": "faces",
+        "BRANDS": "brand detection",
+        "FACES": "face detection",
         "MENTIONS": "mentions",
         "PLACES": "places",
-        "TOPICS": "topics",
+        "TOPICS": "key topics",
         "KEYWORDS": "keywords",
         "LABELS": "labels",
-        "EMOTIONS": "emotions"
+        "EMOTIONS": "emotion detection",
+        "SENTIMENTS": "sentiment analysis"
     }
 }

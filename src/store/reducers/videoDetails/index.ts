@@ -24,6 +24,7 @@ const initialState: VideoDetailsState = {
         namedPeople: [],
         faces: [],
         topics: [],
+        sentiments: [],
     },
     videoDetails: videoDetailsInitialState,
     currentStartTime: 0,
@@ -36,6 +37,7 @@ const initialState: VideoDetailsState = {
         face: null,
         emotion: null,
         namedPerson: null,
+        sentiment: null,
     },
 };
 
@@ -65,6 +67,8 @@ export const videosSlice = createSlice({
                 state.selectedInsight.emotion = value;
             } else if (key === 'namedPerson') {
                 state.selectedInsight.namedPerson = value;
+            } else if (key === 'sentiment') {
+                state.selectedInsight.sentiment = value;
             }
         },
     },
@@ -106,6 +110,9 @@ export const videosSlice = createSlice({
                         : null,
                     namedLocation: insights?.namedLocations?.length
                         ? insights?.namedLocations[0]
+                        : null,
+                    sentiment: insights?.sentiments?.length
+                        ? insights?.sentiments[0]
                         : null,
                 };
             })

@@ -7,7 +7,7 @@ import {
     faArrowDownShortWide,
 } from '@fortawesome/free-solid-svg-icons';
 
-import constants from './constants.json'; 
+import constants from './constants.json';
 import { LinkProps, SorterOptionProps } from '../interfaces/common';
 
 export const navLinks: LinkProps[] = [
@@ -39,3 +39,13 @@ export const sorterOptions: SorterOptionProps[] = [
 ];
 
 export const fileSupportTypes = [constants.VIDEO_FILE_FORMAT];
+
+export const chartColors = [
+    '#FFC850',
+    '#6BE898',
+    '#CD92D8',
+    '#825A50',
+    '#999999',
+];
+
+export const sentimentColors = ['chip', 'place', 'topic'];

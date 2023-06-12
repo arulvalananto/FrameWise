@@ -8,6 +8,7 @@ import Labels from './Labels';
 import Mentions from './Mentions';
 import Keywords from './Keywords';
 import Emotions from './Emotions';
+import Sentiments from './Sentiments';
 
 const VideoInsights: React.FC = () => {
     return (
@@ -20,6 +21,7 @@ const VideoInsights: React.FC = () => {
             <Topics />
             <Labels />
             <Mentions />
+            <Sentiments />
         </div>
     );
 };

@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
-import { videoDetailsSelector } from '../../../../store/reducers/videoDetails';
 import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+
+import { chartColors } from '../../../../static/data';
 import useIsMobile from '../../../../hooks/useIsMobile';
+import { videoDetailsSelector } from '../../../../store/reducers/videoDetails';
 
 type EmotionChartProps = {
     labels: string[];
@@ -32,7 +34,7 @@ const EmotionsChart: React.FC = () => {
                 currentSeries.push(series);
             });
 
-            currentLabels.push('Others');
+            currentLabels.push('Other');
             const totalEmotionSeenRatio = currentEmotions.reduce(
                 (prev, curr) =>
                     prev +
@@ -56,18 +58,12 @@ const EmotionsChart: React.FC = () => {
     if (!videoDetails.summarizedInsights?.emotions) {
         return null;
     }
-
+    
     return (
         <div>
             <Chart
                 options={{
-                    colors: [
-                        '#FFC850',
-                        '#6BE898',
-                        '#CD92D8',
-                        '#825A50',
-                        '#999999',
-                    ],
+                    colors: chartColors,
                     labels: emotion.labels,
                     legend: {
                         horizontalAlign: 'center',
