@@ -82,8 +82,8 @@ export const viewList: string[] = [
     'brand',
     'emotion',
     'sentiment',
-    'namedLocation',
+    'place',
     'topic',
     'label',
-    'namedPerson',
+    'mention',
 ];

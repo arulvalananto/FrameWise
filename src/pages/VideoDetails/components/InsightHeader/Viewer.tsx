@@ -8,7 +8,7 @@ import {
     FormControlLabel,
     checkboxClasses,
 } from '@mui/material';
-import { faChevronDown, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { AppDispatch } from '../../../../store';
@@ -76,7 +76,9 @@ const Viewer: React.FC = () => {
                 {viewList?.map((view) => (
                     <MenuItem key={view}>
                         <FormControlLabel
-                            label={view}
+                            label={
+                                view[0].toUpperCase() + view.substring(1) + 's'
+                            }
                             control={
                                 <Checkbox
                                     name={view}

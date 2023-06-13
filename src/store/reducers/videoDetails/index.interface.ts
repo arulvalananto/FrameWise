@@ -148,12 +148,12 @@ export interface VideoDetailsState {
         [key: string]: boolean;
         keyword: boolean;
         label: boolean;
-        namedLocation: boolean;
+        place: boolean;
         topic: boolean;
         brand: boolean;
         face: boolean;
         emotion: boolean;
-        namedPerson: boolean;
+        mention: boolean;
         sentiment: boolean;
     };
 }

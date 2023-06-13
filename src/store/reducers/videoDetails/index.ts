@@ -45,10 +45,10 @@ const initialState: VideoDetailsState = {
         brand: true,
         emotion: true,
         sentiment: true,
-        namedLocation: false,
-        topic: false,
+        place: true,
+        topic: true,
         label: false,
-        namedPerson: false,
+        mention: false,
     },
 };
 

@@ -21,10 +21,10 @@ const VideoInsights: React.FC = () => {
             brand,
             emotion,
             sentiment,
-            namedLocation,
+            place,
             topic,
             label,
-            namedPerson,
+            mention,
         },
     } = useSelector(videoDetailsSelector);
 
@@ -36,10 +36,10 @@ const VideoInsights: React.FC = () => {
             {brand && <Brands />}
             {emotion && <Emotions />}
             {sentiment && <Sentiments />}
-            {namedLocation && <Places />}
+            {place && <Places />}
+            {mention && <Mentions />}
             {topic && <Topics />}
             {label && <Labels />}
-            {namedPerson     && <Mentions />}
         </div>
     );
 };
