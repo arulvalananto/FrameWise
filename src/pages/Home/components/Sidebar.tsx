@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { navLinks } from '../../../static/data';
+import { trimStr } from '../../../common/helpers';
 import logoIcon from '../../../assets/logo-icon.svg';
 import { LinkProps } from '../../../interfaces/common';
 import logo from '../../../assets/logo-transparent.svg';
@@ -57,7 +58,7 @@ const Sidebar: React.FC = () => {
                         alt="profile"
                         className="w-16 h-full rounded-full"
                     />
-                    <p>{user && user.name ? user.name : 'Guest'}</p>
+                    <p>{trimStr(user && user.name ? user.name : 'Guest')}</p>
                 </div>
                 <div className="flex flex-col items-center w-full md:w-48 gap-5 mt-20 md:mt-0">
                     {navLinks?.map((link: LinkProps) => (
