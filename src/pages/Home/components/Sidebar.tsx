@@ -16,8 +16,6 @@ import MemoziedCustomLink from '../../../components/CustomLink';
 const Sidebar: React.FC = () => {
     const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
-    console.log(user);
-
     const imageUrl = useMemo(() => {
         return user && user.picture
             ? user.picture
@@ -105,4 +103,5 @@ const Sidebar: React.FC = () => {
     );
 };
 
-export default Sidebar;
+const MemoziedSidebar = React.memo(Sidebar);
+export default MemoziedSidebar;

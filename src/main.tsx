@@ -13,7 +13,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Provider store={store}>
             <Auth0Provider
                 domain={constants.AUTH0_CONFIG.DOMAIN}
-                clientId={constants.AUTH0_CONFIG.PROD_CLIENT_ID}
+                clientId={
+                    process.env.NODE_ENV === 'development'
+                        ? constants.AUTH0_CONFIG.DEV_CLIENT_ID
+                        : constants.AUTH0_CONFIG.PROD_CLIENT_ID
+                }
                 authorizationParams={{
                     redirect_uri: window.location.origin,
                 }}
