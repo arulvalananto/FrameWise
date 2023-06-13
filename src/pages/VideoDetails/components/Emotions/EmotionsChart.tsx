@@ -11,11 +11,14 @@ import {
     videoDetailsSelector,
 } from '../../../../store/reducers/videoDetails';
 import { emotions } from '../../../../static/data';
+import useIsMobile from '../../../../hooks/useIsMobile';
 
 const EmotionsChart: React.FC = () => {
     const dispatch = useDispatch();
     const { videoDetails, insights, selectedInsight } =
         useSelector(videoDetailsSelector);
+
+    const isMobile = useIsMobile();
 
     const handleChangeCurrentEmotion = (emotionType: string): void => {
         if (emotionType) {
@@ -75,7 +78,7 @@ const EmotionsChart: React.FC = () => {
                                 value={+fixedPercent}
                                 styles={buildStyles({
                                     strokeLinecap: 'round',
-                                    textSize: '16px',
+                                    textSize: isMobile ? '8px' : '16px',
                                     pathTransitionDuration: 0.5,
                                     pathColor: 'white',
                                     trailColor: 'transparent',
@@ -85,10 +88,10 @@ const EmotionsChart: React.FC = () => {
                                 background
                                 backgroundPadding={6}
                             >
-                                <span className="text-xl hover:scale-105 transition-all">
+                                <span className="text-xs md:text-xl hover:scale-105 transition-all">
                                     {icon}
                                 </span>
-                                <div style={{ fontSize: 12 }}>
+                                <div style={{ fontSize: isMobile ? 6 : 12 }}>
                                     <strong>{fixedPercent}%</strong>
                                 </div>
                             </CircularProgressbarWithChildren>

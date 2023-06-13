@@ -21,7 +21,9 @@ const CircularProgressWithLabel = (
                 }}
                 style={{
                     borderRadius: '100%',
-                    boxShadow: 'inset 0 0 0px 9px gray',
+                    boxShadow: isMobile
+                        ? 'inset 0 0 0px 4px gray'
+                        : 'inset 0 0 0px 9px gray',
                     backgroundColor: 'transparent',
                 }}
             />
