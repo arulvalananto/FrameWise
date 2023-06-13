@@ -27,6 +27,7 @@ const Video: React.FC<VideoProps> = ({ video }) => {
     const shouldRender = useRef(true);
     const [thumbnail, setThumbnail] = useState('');
     const [isDeleteProcessing, setIsDeleteProcessing] = useState(false);
+    const [invalidImageURLError, setInvalidImageURLError] = useState(false);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -39,6 +40,10 @@ const Video: React.FC<VideoProps> = ({ video }) => {
     const handlePlayVideo = (): void => {
         if (!isProcessedVideo) return;
         navigate(`/library/${id}`);
+    };
+
+    const handleInvalidImageURLError = (): void => {
+        setInvalidImageURLError(true);
     };
 
     const handleDeleteVideo = async (
@@ -68,10 +73,12 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                 try {
                     const response = await getThumbnail(id, thumbnailId);
                     setThumbnail(response);
+                    setInvalidImageURLError(false);
                 } catch (error: unknown) {
                     if (error instanceof Error) toast.error(error?.message);
                     else if (error instanceof AxiosError)
                         toast.error(error?.response?.data?.message);
+                    setInvalidImageURLError(true);
                 }
             }
         })();
@@ -122,11 +129,14 @@ const Video: React.FC<VideoProps> = ({ video }) => {
             onClick={handlePlayVideo}
         >
             <div className="w-full h-full bg-secondary rounded overflow-hidden border border-gray-900">
-                <img
-                    className="w-full h-full object-cover lg:max-h-60 xl:max-h-48 2xl:max-h-52"
-                    src={`${constants.AZURE_VIDEO_INDEXER.IMAGE_URL_PREFIX}${thumbnail}`}
-                    alt={trimStr(name)}
-                />
+                {!invalidImageURLError && (
+                    <img
+                        className="w-full h-full object-cover lg:max-h-60 xl:max-h-48 2xl:max-h-52"
+                        src={`${constants.AZURE_VIDEO_INDEXER.IMAGE_URL_PREFIX}${thumbnail}`}
+                        alt={trimStr(name)}
+                        onError={handleInvalidImageURLError}
+                    />
+                )}
             </div>
             {isProcessedVideo ? (
                 <>

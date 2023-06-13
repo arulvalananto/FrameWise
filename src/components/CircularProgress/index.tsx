@@ -19,6 +19,11 @@ const CircularProgressWithLabel = (
                 sx={{
                     color: props.color ? '' : '#BFED37',
                 }}
+                style={{
+                    borderRadius: '100%',
+                    boxShadow: 'inset 0 0 0px 9px gray',
+                    backgroundColor: 'transparent',
+                }}
             />
             <Box
                 sx={{
