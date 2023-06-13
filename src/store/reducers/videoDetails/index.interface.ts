@@ -123,6 +123,17 @@ export interface VideoDetailsState {
     videoDetails: VideoDetails;
     currentStartTime: number;
     selectedInsight: {
+        [key: string]:
+            | Keyword
+            | Label
+            | NamedLocation
+            | Topic
+            | Brand
+            | Face
+            | Emotion
+            | NamedLocation
+            | Sentiment
+            | null;
         keyword: Keyword | null;
         label: Label | null;
         namedLocation: NamedLocation | null;
@@ -132,6 +143,18 @@ export interface VideoDetailsState {
         emotion: Emotion | null;
         namedPerson: NamedPerson | null;
         sentiment: Sentiment | null;
+    };
+    show: {
+        [key: string]: boolean;
+        keyword: boolean;
+        label: boolean;
+        namedLocation: boolean;
+        topic: boolean;
+        brand: boolean;
+        face: boolean;
+        emotion: boolean;
+        namedPerson: boolean;
+        sentiment: boolean;
     };
 }
 

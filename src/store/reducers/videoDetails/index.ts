@@ -39,6 +39,17 @@ const initialState: VideoDetailsState = {
         namedPerson: null,
         sentiment: null,
     },
+    show: {
+        keyword: true,
+        face: true,
+        brand: true,
+        emotion: true,
+        sentiment: true,
+        namedLocation: false,
+        topic: false,
+        label: false,
+        namedPerson: false,
+    },
 };
 
 export const videosSlice = createSlice({
@@ -51,25 +62,11 @@ export const videosSlice = createSlice({
         },
         changeSelectedInsight: (state, action) => {
             const { key, value } = action.payload;
-            if (key === 'keyword') {
-                state.selectedInsight.keyword = value;
-            } else if (key === 'label') {
-                state.selectedInsight.label = value;
-            } else if (key === 'namedLocation') {
-                state.selectedInsight.namedLocation = value;
-            } else if (key === 'topic') {
-                state.selectedInsight.topic = value;
-            } else if (key === 'brand') {
-                state.selectedInsight.brand = value;
-            } else if (key === 'face') {
-                state.selectedInsight.face = value;
-            } else if (key === 'emotion') {
-                state.selectedInsight.emotion = value;
-            } else if (key === 'namedPerson') {
-                state.selectedInsight.namedPerson = value;
-            } else if (key === 'sentiment') {
-                state.selectedInsight.sentiment = value;
-            }
+            state.selectedInsight[key] = value;
+        },
+        changeShowInsightState: (state, action) => {
+            const { key, value } = action.payload;
+            state.show[key] = value;
         },
     },
     extraReducers: (builder) => {
@@ -123,7 +120,11 @@ export const videosSlice = createSlice({
     },
 });
 
-export const { changeStartTime, changeSelectedInsight } = videosSlice.actions;
+export const {
+    changeStartTime,
+    changeSelectedInsight,
+    changeShowInsightState,
+} = videosSlice.actions;
 export const videoDetailsSelector = (state: RootState) => state.videoDetails;
 
 export default videosSlice.reducer;

@@ -58,3 +58,32 @@ export const emotions: any = {
     fear: { color: '#F6911F', icon: '😨', textColor: 'text-fear' },
     disgusted: { color: '#612D91', icon: '🤢', textColor: 'text-disgusted' },
 };
+
+export const paperStyles = {
+    elevation: 0,
+    sx: {
+        background: '#1A1C1E',
+        color: '#ffffff',
+        overflow: 'visible',
+        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+        mt: 1.5,
+        '& .MuiAvatar-root': {
+            width: 32,
+            height: 32,
+            ml: -0.5,
+            mr: 1,
+        },
+    },
+};
+
+export const viewList: string[] = [
+    'keyword',
+    'face',
+    'brand',
+    'emotion',
+    'sentiment',
+    'namedLocation',
+    'topic',
+    'label',
+    'namedPerson',
+];

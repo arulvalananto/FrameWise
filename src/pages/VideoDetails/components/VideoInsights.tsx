@@ -10,20 +10,36 @@ import Keywords from './Keywords';
 import Emotions from './Emotions';
 import Sentiments from './Sentiments';
 import InsightHeader from './InsightHeader';
+import { useSelector } from 'react-redux';
+import { videoDetailsSelector } from '../../../store/reducers/videoDetails';
 
 const VideoInsights: React.FC = () => {
+    const {
+        show: {
+            keyword,
+            face,
+            brand,
+            emotion,
+            sentiment,
+            namedLocation,
+            topic,
+            label,
+            namedPerson,
+        },
+    } = useSelector(videoDetailsSelector);
+
     return (
         <div className="flex flex-col gap-2">
             <InsightHeader />
-            <Keywords />
-            <Faces />
-            <Brands />
-            <Emotions />
-            <Sentiments />
-            <Places />
-            <Topics />
-            <Labels />
-            <Mentions />
+            {keyword && <Keywords />}
+            {face && <Faces />}
+            {brand && <Brands />}
+            {emotion && <Emotions />}
+            {sentiment && <Sentiments />}
+            {namedLocation && <Places />}
+            {topic && <Topics />}
+            {label && <Labels />}
+            {namedPerson     && <Mentions />}
         </div>
     );
 };
