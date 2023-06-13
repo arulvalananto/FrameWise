@@ -4,6 +4,7 @@ import { AxiosError } from 'axios';
 import axiosInstance, { headerConfig } from '.';
 import constants from '../static/constants.json';
 import { isTokenExpired } from '../common/helpers';
+import { Language } from '../store/reducers/app/index.interface';
 import { VideoState } from '../store/reducers/videos/index.interface';
 import { VideoDetails } from '../store/reducers/videoDetails/index.interface';
 
@@ -216,7 +217,7 @@ export const deleteVideo = (videoId: string): Promise<{ status: number }> => {
     });
 };
 
-export const getSupportedLanguages = (): Promise<string[]> => {
+export const getSupportedLanguages = (): Promise<Language[]> => {
     return new Promise(async (resolve, reject) => {
         try {
             await checkTokenExpiry();
@@ -224,7 +225,6 @@ export const getSupportedLanguages = (): Promise<string[]> => {
             const response = await axiosInstance.get(
                 `/trial/SupportedLanguages`
             );
-            console.log(response);
             if (response?.status === 200 && response?.data) {
                 resolve(response.data);
             } else {

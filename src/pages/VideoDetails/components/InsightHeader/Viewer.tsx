@@ -38,7 +38,6 @@ const Viewer: React.FC = () => {
         event: React.ChangeEvent<HTMLInputElement>,
         checked: boolean
     ): void => {
-        console.log(event, checked);
         const { name } = event.target;
         if (name) {
             dispatch(changeShowInsightState({ key: name, value: checked }));

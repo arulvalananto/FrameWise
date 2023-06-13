@@ -7,7 +7,6 @@ export const getAllSupportedLanguages = createAsyncThunk(
     async (_payload, thunkAPI) => {
         try {
             const languages = await getSupportedLanguages();
-            console.log(languages);
             return thunkAPI.fulfillWithValue(languages);
         } catch (error) {
             return thunkAPI.rejectWithValue('');
