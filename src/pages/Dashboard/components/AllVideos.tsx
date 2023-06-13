@@ -2,10 +2,10 @@ import React, { memo, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import Video from './Video';
+import { dynamicSort } from '../../../common/helpers';
+import MemoziedLoader from '../../../components/Loader';
 import { videosSelector } from '../../../store/reducers/videos';
 import { VideoState } from '../../../store/reducers/videos/index.interface';
-import MemoziedLoader from '../../../components/Loader';
-import { dynamicSort } from '../../../common/helpers';
 
 const AllVideos: React.FC = () => {
     const { videos, isLoading, sortedBy, searchText } =

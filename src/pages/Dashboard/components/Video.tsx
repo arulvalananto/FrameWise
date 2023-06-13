@@ -2,20 +2,20 @@ import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 import { Tooltip } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
 
 import constants from '../../../static/constants.json';
-import { deleteVideo, getAllVideos, getThumbnail } from '../../../api/helpers';
 import { fancyTimeFormat, trimStr } from '../../../common/helpers';
+import MemoziedCircularProgress from '../../../components/CircularProgress';
+import { VideoState } from '../../../store/reducers/videos/index.interface';
+import { deleteVideo, getAllVideos, getThumbnail } from '../../../api/videos';
+import MemoziedConfirmationModal from '../../../components/DeleteConfirmationModal';
 import {
     deleteByVideoId,
     updateVideoProcessingState,
 } from '../../../store/reducers/videos';
-import { VideoState } from '../../../store/reducers/videos/index.interface';
-import MemoziedConfirmationModal from '../../../components/DeleteConfirmationModal';
-import MemoziedCircularProgress from '../../../components/CircularProgress';
-import { useNavigate } from 'react-router-dom';
 
 interface VideoProps {
     video: VideoState;
@@ -138,13 +138,13 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                     />
                 )}
             </div>
+            <Tooltip title={name} placement="top" arrow>
+                <p className="bg-darkgrey absolute hidden sm:block text-xs lg:text-sm top-4 lg:top-2 left-2 bg-opacity-75 rounded px-2 py-1 cursor-default">
+                    {trimStr(name)}
+                </p>
+            </Tooltip>
             {isProcessedVideo ? (
                 <>
-                    <Tooltip title={name} placement="top" arrow>
-                        <p className="bg-darkgrey absolute hidden sm:block text-xs lg:text-sm top-4 lg:top-2 left-2 bg-opacity-75 rounded px-2 py-1 cursor-default">
-                            {trimStr(name)}
-                        </p>
-                    </Tooltip>
                     <MemoziedConfirmationModal
                         title="Delete"
                         handleSubmit={handleDeleteVideo}

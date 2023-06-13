@@ -81,7 +81,7 @@ const Sidebar: React.FC = () => {
                         className="w-10 md:w-48 items-center gap-3 py-2 px-3 rounded-md text-white hover:bg-primary hover:text-black hidden md:flex"
                     >
                         <FontAwesomeIcon
-                            icon={faRightFromBracket}
+                            icon={faRightToBracket}
                             fontSize={20}
                         />
                         <p className="text-base font-semibold">Logout</p>
@@ -93,7 +93,7 @@ const Sidebar: React.FC = () => {
                         className="w-10 md:w-48 items-center gap-3 py-2 px-3 rounded-md text-white hover:bg-primary hover:text-black hidden md:flex"
                     >
                         <FontAwesomeIcon
-                            icon={faRightToBracket}
+                            icon={faRightFromBracket}
                             fontSize={20}
                         />
                         <p className="text-base font-semibold">Login</p>

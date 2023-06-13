@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { memo, useEffect, useState } from 'react';
 
 import constants from '../../../../static/constants.json';
-import { getThumbnail } from '../../../../api/helpers';
+import { getThumbnail } from '../../../../api/videos';
 import {
     changeSelectedInsight,
     videoDetailsSelector,

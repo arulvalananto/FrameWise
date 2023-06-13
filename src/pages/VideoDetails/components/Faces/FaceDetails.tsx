@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { getThumbnail } from '../../../../api/helpers';
+import { getThumbnail } from '../../../../api/videos';
 import constants from '../../../../static/constants.json';
 import { getSeenDuration } from '../../../../common/helpers';
 import { videoDetailsSelector } from '../../../../store/reducers/videoDetails';

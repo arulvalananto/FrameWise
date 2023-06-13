@@ -19,6 +19,9 @@ const Dashboard: React.FC = () => {
 
     return (
         <section id="dashboard" className="w-full h-full flex flex-col">
+            <h3 className="text-xl md:text-2xl font-bold mt-3 md:mt-0 mb-3">
+                Library
+            </h3>
             <Header />
             <AllVideos />
         </section>

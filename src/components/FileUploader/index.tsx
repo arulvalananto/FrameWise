@@ -9,7 +9,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 import { storage } from '../../firebase';
 import { AppDispatch } from '../../store';
-import { uploadVideo } from '../../api/helpers';
+import { uploadVideo } from '../../api/videos';
 import { trimStr } from '../../common/helpers';
 import useIsMobile from '../../hooks/useIsMobile';
 import constants from '../../static/constants.json';

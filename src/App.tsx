@@ -9,10 +9,10 @@ import Home from './pages/Home';
 import { AppDispatch } from './store';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
+import MemoziedLoader from './components/Loader';
 import MemoziedDashboard from './pages/Dashboard';
 import MemoziedVideoDetails from './pages/VideoDetails';
 import { getAllSupportedLanguages } from './store/reducers/app/index.thunk';
-import MemoziedLoader from './components/Loader';
 
 const App = () => {
     const shouldRender = useRef(true);

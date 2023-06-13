@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { getVideoIndexDetails } from '../../../api/helpers';
-import { VideoDetails, fetchVideoDetailsPayload } from './index.interface';
 import { RootState } from '../..';
+import { getVideoIndexDetails } from '../../../api/videoDetails';
+import { VideoDetails, fetchVideoDetailsPayload } from './index.interface';
 
 export const fetchVideoDetails = createAsyncThunk(
     'videoDetails/fetchVideoDetails',

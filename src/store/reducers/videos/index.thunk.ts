@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { getAllVideos } from '../../../api/helpers';
+import { getAllVideos } from '../../../api/videos';
 import { VideoFullFillState, VideoState } from './index.interface';
 
 export const fetchAllVideos = createAsyncThunk(

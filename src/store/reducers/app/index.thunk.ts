@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { getSupportedLanguages } from '../../../api/helpers';
+import { getSupportedLanguages } from '../../../api/settings';
 
 export const getAllSupportedLanguages = createAsyncThunk(
     'app/getAllSupportedLanguages',

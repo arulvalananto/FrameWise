@@ -8,8 +8,8 @@ import {
     changeLanguageCode,
 } from '../../../../store/reducers/app';
 import { AppDispatch } from '../../../../store';
-import { fetchInsightsDetails } from '../../../../store/reducers/videoDetails/index.thunk';
 import { videoDetailsSelector } from '../../../../store/reducers/videoDetails';
+import { fetchInsightsDetails } from '../../../../store/reducers/videoDetails/index.thunk';
 
 const LanguageSelector: React.FC = () => {
     const { id } = useParams();

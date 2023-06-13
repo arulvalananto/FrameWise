@@ -1,7 +1,7 @@
 import {
-    faPager,
     faSliders,
     faArrowUpZA,
+    faPhotoFilm,
     faArrowDownAZ,
     faArrowUpWideShort,
     faArrowDownShortWide,
@@ -12,8 +12,8 @@ import { LinkProps, SorterOptionProps } from '../interfaces/common';
 
 export const navLinks: LinkProps[] = [
     {
-        title: 'Dashboard',
-        icon: faPager,
+        title: 'Library',
+        icon: faPhotoFilm,
         to: '/',
     },
     {
