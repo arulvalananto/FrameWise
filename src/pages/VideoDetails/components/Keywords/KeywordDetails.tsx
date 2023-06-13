@@ -50,7 +50,7 @@ const KeywordDetails: React.FC = () => {
 
     return (
         <div className="flex flex-col w-full gap-5">
-            <div className="w-full">
+            <div>
                 <MemoziedWordCloud words={words} />
             </div>
             <div className="flex flex-row items-center gap-3">
