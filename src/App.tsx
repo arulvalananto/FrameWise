@@ -26,6 +26,8 @@ const App: React.FC = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    console.log(process.env.NODE_ENV);
+
     return (
         <div>
             <BrowserRouter>

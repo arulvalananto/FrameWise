@@ -6,13 +6,14 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import './index.css';
 import App from './App.tsx';
 import { store } from './store';
+import constants from './static/constants.json';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         <Provider store={store}>
             <Auth0Provider
-                domain="framewise.au.auth0.com"
-                clientId="mfkzdfSOXE0BclGxSChhdcvIvCkkqblY"
+                domain={constants.AUTH0_CONFIG.DOMAIN}
+                clientId={constants.AUTH0_CONFIG.PROD_CLIENT_ID}
                 authorizationParams={{
                     redirect_uri: window.location.origin,
                 }}
