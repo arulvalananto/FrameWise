@@ -9,6 +9,7 @@ type SearchboxProps = {
     icon?: IconProp | IconDefinition;
     className?: string;
     inputClassName?: string;
+    placeholder?: string;
 };
 
 const Searchbox: React.FC<SearchboxProps> = ({
@@ -17,6 +18,7 @@ const Searchbox: React.FC<SearchboxProps> = ({
     icon = faMagnifyingGlass,
     className = '',
     inputClassName = '',
+    placeholder = 'Search something...',
     ...props
 }) => {
     return (
@@ -27,7 +29,7 @@ const Searchbox: React.FC<SearchboxProps> = ({
             <input
                 name="search"
                 type="search"
-                placeholder="Search something..."
+                placeholder={placeholder}
                 value={value}
                 onChange={onChange}
                 aria-label="Search"

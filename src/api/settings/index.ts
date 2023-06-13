@@ -8,7 +8,7 @@ import { AxiosError } from 'axios';
 import axiosInstance from '..';
 import { checkTokenExpiry } from '../helpers';
 import constants from '../../static/constants.json';
-import { Language } from '../../store/reducers/app/index.interface';
+import { CustomBrand, Language } from '../../store/reducers/app/index.interface';
 
 /**
  * Get all supported languages
@@ -41,7 +41,7 @@ export const getSupportedLanguages = (): Promise<Language[]> => {
  * Get All custom brands
  * @returns
  */
-export const getAllBrands = (): Promise<string[]> => {
+export const getAllBrands = (): Promise<CustomBrand[]> => {
     return new Promise(async (resolve, reject) => {
         try {
             await checkTokenExpiry();
