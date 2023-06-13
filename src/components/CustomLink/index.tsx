@@ -7,11 +7,6 @@ import { CustomLinkProps } from '../../interfaces/common';
 const CustomLink: React.FC<CustomLinkProps> = ({ link }) => {
     const { title, to, icon } = link;
     const location = useLocation();
-    console.log(
-        location.pathname === 'library',
-        to,
-        to === '/' && location.pathname.includes('library')
-    );
 
     return (
         <NavLink

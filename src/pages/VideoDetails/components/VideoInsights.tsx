@@ -19,11 +19,11 @@ const VideoInsights: React.FC = () => {
             <Faces />
             <Brands />
             <Emotions />
+            <Sentiments />
             <Places />
             <Topics />
             <Labels />
             <Mentions />
-            <Sentiments />
         </div>
     );
 };

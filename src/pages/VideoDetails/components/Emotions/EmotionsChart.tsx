@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import {
+    CircularProgressbarWithChildren,
+    buildStyles,
+} from 'react-circular-progressbar';
 
 import 'react-circular-progressbar/dist/styles.css';
 import {
     changeSelectedInsight,
     videoDetailsSelector,
 } from '../../../../store/reducers/videoDetails';
-import { emotionsColors } from '../../../../static/data';
+import { emotions } from '../../../../static/data';
 
 const EmotionsChart: React.FC = () => {
     const dispatch = useDispatch();
@@ -42,9 +45,10 @@ const EmotionsChart: React.FC = () => {
                     ? emotion?.seenDurationRatio * 100
                     : 0;
                 const emotionType = emotion?.type;
-                const color = emotionsColors[emotionType.toLowerCase()];
+                const { color, icon, textColor } =
+                    emotions[emotionType.toLowerCase()];
 
-                const fixedPercent = parseInt(percent.toFixed(2));
+                const fixedPercent = percent.toFixed(2);
                 return (
                     <div
                         className="flex flex-col gap-3 items-center cursor-pointer"
@@ -54,25 +58,40 @@ const EmotionsChart: React.FC = () => {
                         <p
                             className={`text-sm capitalize ${
                                 emotionType === selectedInsight.emotion?.type
-                                    ? 'underline underline-offset-2'
+                                    ? `underline underline-offset-2 ${textColor} font-bold`
                                     : ''
                             }`}
                         >
                             {emotionType}
                         </p>
-                        <div className="w-10 h-10 md:w-20 md:h-20">
-                            <CircularProgressbar
-                                value={fixedPercent}
-                                text={`${fixedPercent}%`}
+                        <div
+                            className={`w-10 h-10 md:w-20 md:h-20 transition-all ${
+                                emotionType === selectedInsight.emotion?.type
+                                    ? `scale-110`
+                                    : ''
+                            }`}
+                        >
+                            <CircularProgressbarWithChildren
+                                value={+fixedPercent}
                                 styles={buildStyles({
-                                    strokeLinecap: 'butt',
+                                    strokeLinecap: 'round',
                                     textSize: '16px',
                                     pathTransitionDuration: 0.5,
-                                    pathColor: color,
-                                    trailColor: 'white',
+                                    pathColor: 'white',
+                                    trailColor: 'transparent',
                                     textColor: 'white',
+                                    backgroundColor: color ? color : 'white',
                                 })}
-                            />
+                                background
+                                backgroundPadding={6}
+                            >
+                                <span className="text-xl hover:scale-105 transition-all">
+                                    {icon}
+                                </span>
+                                <div style={{ fontSize: 12 }}>
+                                    <strong>{fixedPercent}%</strong>
+                                </div>
+                            </CircularProgressbarWithChildren>
                         </div>
                     </div>
                 );

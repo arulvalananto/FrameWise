@@ -14,7 +14,7 @@ export default {
                 place: '#6BE898',
                 topic: '#CD92D8',
                 mention: '#825A50',
-                angry: '#E71E24',
+                anger: '#E71E24',
                 joy: '#48B83E',
                 sad: '#1A61AF',
                 suprised: '#FBE925',
