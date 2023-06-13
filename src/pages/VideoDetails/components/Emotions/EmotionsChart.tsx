@@ -68,7 +68,7 @@ const EmotionsChart: React.FC = () => {
                             {emotionType}
                         </p>
                         <div
-                            className={`w-10 h-10 md:w-20 md:h-20 transition-all ${
+                            className={`w-12 h-12 md:w-20 md:h-20 transition-all ${
                                 emotionType === selectedInsight.emotion?.type
                                     ? `scale-110`
                                     : ''
@@ -91,7 +91,7 @@ const EmotionsChart: React.FC = () => {
                                 <span className="text-xs md:text-xl hover:scale-105 transition-all">
                                     {icon}
                                 </span>
-                                <div style={{ fontSize: isMobile ? 6 : 12 }}>
+                                <div style={{ fontSize: isMobile ? 8 : 12 }}>
                                     <strong>{fixedPercent}%</strong>
                                 </div>
                             </CircularProgressbarWithChildren>
