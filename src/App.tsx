@@ -1,15 +1,33 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
+import React, { useEffect, useRef } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.css';
 import Home from './pages/Home';
+import { AppDispatch } from './store';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
 import MemoziedDashboard from './pages/Dashboard';
 import MemoziedVideoDetails from './pages/VideoDetails';
+import { getAllSupportedLanguages } from './store/reducers/app/index.thunk';
 
 const App: React.FC = () => {
+    const shouldRender = useRef(true);
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        (async () => {
+            if (shouldRender.current) {
+                shouldRender.current = false;
+                dispatch(getAllSupportedLanguages());
+            }
+        })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    console.log(process.env.NODE_ENV);
+
     return (
         <div>
             <BrowserRouter>

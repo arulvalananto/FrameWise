@@ -6,7 +6,7 @@
     "FILE_SIZE_LIMIT": 500000000,
     "VIDEO_PROCESSED": "processed",
     "UPLOAD_VIDEO_STATUS": "uploaded",
-    "VIDEO_PROCESSING_API_CALL": 15000,
+    "VIDEO_PROCESSING_API_CALL": 10000,
     "VIDEO_INDEXING_MESSAGE": "Indexing",
     "VIDEO_PLAYER_ID": "framewise-player",
     "EXPAND_MAX_LIMIT": 20,
@@ -54,5 +54,10 @@
         "LABELS": "labels",
         "EMOTIONS": "emotion detection",
         "SENTIMENTS": "sentiment analysis"
+    },
+    "AUTH0_CONFIG": {
+        "DEV_CLIENT_ID": "UPxpLH61CS2PRVN5HkdipdJJwje1knBL",
+        "PROD_CLIENT_ID": "mfkzdfSOXE0BclGxSChhdcvIvCkkqblY",
+        "DOMAIN": "framewise.au.auth0.com"
     }
 }

@@ -38,7 +38,7 @@ const FaceDetails: React.FC = () => {
     }, [face?.thumbnailId, videoDetails?.id]);
 
     return (
-        <div className="flex gap-4 items-center mt-2">
+        <div className="flex gap-4 items-center mt-2 transition-all">
             <div
                 className={`w-[50px] h-[50px] md:w-[100px] md:h-[100px] rounded-full p-1`}
             >

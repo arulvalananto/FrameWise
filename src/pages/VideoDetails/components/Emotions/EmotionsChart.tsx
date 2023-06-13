@@ -1,97 +1,104 @@
-import Chart from 'react-apexcharts';
-import { useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import {
+    CircularProgressbarWithChildren,
+    buildStyles,
+} from 'react-circular-progressbar';
 
-import { chartColors } from '../../../../static/data';
+import 'react-circular-progressbar/dist/styles.css';
+import {
+    changeSelectedInsight,
+    videoDetailsSelector,
+} from '../../../../store/reducers/videoDetails';
+import { emotions } from '../../../../static/data';
 import useIsMobile from '../../../../hooks/useIsMobile';
-import { videoDetailsSelector } from '../../../../store/reducers/videoDetails';
-
-type EmotionChartProps = {
-    labels: string[];
-    series: number[];
-};
 
 const EmotionsChart: React.FC = () => {
-    const { videoDetails } = useSelector(videoDetailsSelector);
+    const dispatch = useDispatch();
+    const { videoDetails, insights, selectedInsight } =
+        useSelector(videoDetailsSelector);
+
     const isMobile = useIsMobile();
 
-    const [emotion, setEmotion] = useState<EmotionChartProps>({
-        labels: [],
-        series: [],
-    });
-
-    useEffect(() => {
-        const currentEmotions = videoDetails.summarizedInsights?.emotions;
-        if (currentEmotions) {
-            const currentLabels = [];
-            const currentSeries = [];
-
-            currentEmotions.forEach((emotion) => {
-                currentLabels.push(emotion.type);
-                const series = emotion.seenDurationRatio
-                    ? emotion.seenDurationRatio * 100
-                    : 0;
-                currentSeries.push(series);
-            });
-
-            currentLabels.push('Other');
-            const totalEmotionSeenRatio = currentEmotions.reduce(
-                (prev, curr) =>
-                    prev +
-                    (curr?.seenDurationRatio
-                        ? curr?.seenDurationRatio * 100
-                        : 0),
-                0
+    const handleChangeCurrentEmotion = (emotionType: string): void => {
+        if (emotionType) {
+            const currentEmotion = insights?.emotions?.find(
+                (key) => key.type === emotionType
             );
-            const remainingEmotionSeenRatio = 100 - totalEmotionSeenRatio;
-            currentSeries.push(remainingEmotionSeenRatio);
 
-            setEmotion({
-                ...emotion,
-                labels: currentLabels,
-                series: currentSeries,
-            });
+            if (currentEmotion) {
+                dispatch(
+                    changeSelectedInsight({
+                        key: 'emotion',
+                        value: currentEmotion,
+                    })
+                );
+            }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    };
 
     if (!videoDetails.summarizedInsights?.emotions) {
         return null;
     }
 
     return (
-        <div>
-            <Chart
-                options={{
-                    colors: chartColors,
-                    labels: emotion.labels,
-                    legend: {
-                        horizontalAlign: 'center',
-                        position: isMobile ? 'bottom' : 'right',
-                        showForSingleSeries: true,
-                        showForNullSeries: true,
-                        showForZeroSeries: true,
-                        floating: true,
-                        fontSize: isMobile ? '10px' : '14px',
-                        fontWeight: 'bold',
-                        labels: {
-                            useSeriesColors: true,
-                        },
-                    },
-                    plotOptions: {
-                        pie: {
-                            customScale: isMobile ? 0.8 : 1,
-                        },
-                    },
-                    xaxis: {
-                        type: 'category',
-                    },
-                    yaxis: {},
-                }}
-                series={emotion.series}
-                type="donut"
-                height={isMobile ? 200 : 250}
-            />
+        <div className="flex flex-row gap-8 md:gap-10 justify-center">
+            {videoDetails.summarizedInsights?.emotions.map((emotion) => {
+                const percent = emotion?.seenDurationRatio
+                    ? emotion?.seenDurationRatio * 100
+                    : 0;
+                const emotionType = emotion?.type;
+                const { color, icon, textColor } =
+                    emotions[emotionType.toLowerCase()];
+
+                const fixedPercent = percent.toFixed(2);
+                return (
+                    <div
+                        className="flex flex-col gap-3 items-center cursor-pointer"
+                        key={emotionType}
+                        onClick={() => handleChangeCurrentEmotion(emotionType)}
+                    >
+                        <p
+                            className={`text-sm capitalize ${
+                                emotionType === selectedInsight.emotion?.type
+                                    ? `underline underline-offset-2 ${textColor} font-bold`
+                                    : ''
+                            }`}
+                        >
+                            {emotionType}
+                        </p>
+                        <div
+                            className={`w-12 h-12 md:w-20 md:h-20 transition-all ${
+                                emotionType === selectedInsight.emotion?.type
+                                    ? `scale-110`
+                                    : ''
+                            }`}
+                        >
+                            <CircularProgressbarWithChildren
+                                value={+fixedPercent}
+                                styles={buildStyles({
+                                    strokeLinecap: 'round',
+                                    textSize: isMobile ? '8px' : '16px',
+                                    pathTransitionDuration: 0.5,
+                                    pathColor: 'white',
+                                    trailColor: 'transparent',
+                                    textColor: 'white',
+                                    backgroundColor: color ? color : 'white',
+                                })}
+                                background
+                                backgroundPadding={6}
+                            >
+                                <span className="text-xs md:text-xl hover:scale-105 transition-all">
+                                    {icon}
+                                </span>
+                                <div style={{ fontSize: isMobile ? 8 : 12 }}>
+                                    <strong>{fixedPercent}%</strong>
+                                </div>
+                            </CircularProgressbarWithChildren>
+                        </div>
+                    </div>
+                );
+            })}
         </div>
     );
 };

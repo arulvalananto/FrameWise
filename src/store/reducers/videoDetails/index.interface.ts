@@ -18,7 +18,7 @@ export interface Brand {
 
 export interface Emotion {
     id: string;
-    type: string;
+    type: 'angry' | 'joy' | 'surprised' | 'sad' | 'fear';
     instances: Instance[];
     seenDurationRatio?: number;
 }
@@ -119,10 +119,22 @@ export interface VideoDetails {
 
 export interface VideoDetailsState {
     isLoading: boolean;
+    isInsightsLoading: boolean;
     insights: Insights;
     videoDetails: VideoDetails;
     currentStartTime: number;
     selectedInsight: {
+        [key: string]:
+            | Keyword
+            | Label
+            | NamedLocation
+            | Topic
+            | Brand
+            | Face
+            | Emotion
+            | NamedLocation
+            | Sentiment
+            | null;
         keyword: Keyword | null;
         label: Label | null;
         namedLocation: NamedLocation | null;
@@ -132,6 +144,18 @@ export interface VideoDetailsState {
         emotion: Emotion | null;
         namedPerson: NamedPerson | null;
         sentiment: Sentiment | null;
+    };
+    show: {
+        [key: string]: boolean;
+        keyword: boolean;
+        label: boolean;
+        place: boolean;
+        topic: boolean;
+        brand: boolean;
+        face: boolean;
+        emotion: boolean;
+        mention: boolean;
+        sentiment: boolean;
     };
 }
 

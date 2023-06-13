@@ -4,25 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Tooltip, MenuItem, Menu, ListItemIcon } from '@mui/material';
 
 import { AppDispatch } from '../../store';
+import { paperStyles } from '../../static/data';
 import { SorterOptionProps } from '../../interfaces/common';
 import { changeSortBy, videosSelector } from '../../store/reducers/videos';
-
-const paperStyles = {
-    elevation: 0,
-    sx: {
-        background: '#1A1C1E',
-        color: '#ffffff',
-        overflow: 'visible',
-        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-        mt: 1.5,
-        '& .MuiAvatar-root': {
-            width: 32,
-            height: 32,
-            ml: -0.5,
-            mr: 1,
-        },
-    },
-};
 
 interface SorterProps {
     options: SorterOptionProps[];

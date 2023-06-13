@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import {
+    faAngleDown,
+    faAngleUp,
+    faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { trimStr } from '../../../../common/helpers';
 import constants from '../../../../static/constants.json';
@@ -26,7 +30,7 @@ const MentionDetails: React.FC = () => {
         <div className="flex flex-col gap-4">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row gap-3 items-center">
-                    <h5 className="text-white font-bold text-sm md:text-base">
+                    <h5 className="text-mention font-bold text-sm md:text-base">
                         {namedPerson?.name}
                     </h5>
                     <button

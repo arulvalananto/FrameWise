@@ -1,30 +1,38 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
 
-import { AppDispatch } from '../../store';
-import { changeSearchText, videosSelector } from '../../store/reducers/videos';
+type SearchboxProps = {
+    value: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    icon?: IconProp | IconDefinition;
+    className?: string;
+    inputClassName?: string;
+};
 
-const Searchbox: React.FC = () => {
-    const dispatch = useDispatch<AppDispatch>();
-    const { searchText } = useSelector(videosSelector);
-
-    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(changeSearchText(event?.target?.value));
-    };
-
+const Searchbox: React.FC<SearchboxProps> = ({
+    value,
+    onChange,
+    icon = faMagnifyingGlass,
+    className = '',
+    inputClassName = '',
+    ...props
+}) => {
     return (
-        <div className="bg-secondary flex flex-row gap-2 items-center px-4 py-2 rounded w-full md:w-1/2 lg:w-1/4 mt-2 md:mt-0  text-sm md:text-base">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+        <div
+            className={`bg-secondary flex flex-row gap-2 items-center px-4 py-2 rounded w-full md:w-1/2 lg:w-1/4 mt-2 md:mt-0  text-sm md:text-base ${className}`}
+        >
+            <FontAwesomeIcon icon={icon} />
             <input
                 name="search"
                 type="search"
                 placeholder="Search something..."
-                value={searchText}
-                onChange={handleSearchChange}
+                value={value}
+                onChange={onChange}
                 aria-label="Search"
-                className="bg-transparent w-full border-none outline-none text-input"
+                className={`bg-transparent w-full border-none outline-none text-input ${inputClassName}`}
+                {...props}
             />
         </div>
     );
