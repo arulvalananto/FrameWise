@@ -119,6 +119,7 @@ export interface VideoDetails {
 
 export interface VideoDetailsState {
     isLoading: boolean;
+    isInsightsLoading: boolean;
     insights: Insights;
     videoDetails: VideoDetails;
     currentStartTime: number;

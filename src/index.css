@@ -47,18 +47,14 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: #999999;
 }
 
-@layer components {
-    .container-center {
-        @apply w-full h-full flex items-center justify-center;
-    }
-}
-
-.MuiPaper-root {
-    background: black !important;
-}
-
 @media (max-width: 768px) {
     .insights {
         overflow-y: auto !important;
+    }
+}
+
+@layer components {
+    .container-center {
+        @apply w-full h-full flex items-center justify-center;
     }
 }

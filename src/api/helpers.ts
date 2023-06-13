@@ -1,3 +1,4 @@
+/* eslint-disable no-async-promise-executor */
 import { AxiosError } from 'axios';
 
 import axiosInstance, { headerConfig } from '.';
@@ -132,14 +133,15 @@ export const getThumbnail = (
  * @returns
  */
 export const getVideoIndexDetails = (
-    videoId: string
+    videoId: string,
+    language: string
 ): Promise<VideoDetails> => {
     return new Promise(async (resolve, reject) => {
         try {
             await checkTokenExpiry();
 
             const response = await axiosInstance.get(
-                `/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos/${videoId}/Index`
+                `/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos/${videoId}/Index?language=${language}`
             );
             if (response?.status === 200 && response.data) {
                 resolve(response.data);
@@ -201,6 +203,30 @@ export const deleteVideo = (videoId: string): Promise<{ status: number }> => {
             );
             if (response?.status === 204) {
                 resolve({ status: response?.status });
+            } else {
+                reject({
+                    message: constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG,
+                });
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) reject(error?.message);
+            else if (error instanceof AxiosError)
+                reject(error?.response?.data?.message);
+        }
+    });
+};
+
+export const getSupportedLanguages = (): Promise<string[]> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await checkTokenExpiry();
+
+            const response = await axiosInstance.get(
+                `/trial/SupportedLanguages`
+            );
+            console.log(response);
+            if (response?.status === 200 && response?.data) {
+                resolve(response.data);
             } else {
                 reject({
                     message: constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG,

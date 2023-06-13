@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { RootState } from '../..';
-import { fetchVideoDetails } from './index.thunk';
 import { VideoDetailsState } from './index.interface';
 import { sortInsightByInstances } from '../../../common/helpers';
+import { fetchInsightsDetails, fetchVideoDetails } from './index.thunk';
 
 const videoDetailsInitialState = {
     name: '',
@@ -15,6 +15,7 @@ const videoDetailsInitialState = {
 
 const initialState: VideoDetailsState = {
     isLoading: true,
+    isInsightsLoading: false,
     insights: {
         brands: [],
         labels: [],
@@ -116,6 +117,50 @@ export const videosSlice = createSlice({
             .addCase(fetchVideoDetails.rejected, (state) => {
                 state.videoDetails = videoDetailsInitialState;
                 state.isLoading = false;
+            })
+            .addCase(fetchInsightsDetails.pending, (state) => {
+                state.isInsightsLoading = true;
+            })
+            .addCase(fetchInsightsDetails.fulfilled, (state, action) => {
+                const { insights } = action.payload;
+
+                state.isInsightsLoading = false;
+
+                const sortedKeywords = sortInsightByInstances(
+                    insights.keywords
+                );
+                const sortedLabels = sortInsightByInstances(insights.labels);
+
+                state.insights = insights;
+                state.insights.keywords = sortedKeywords;
+                state.insights.labels = sortedLabels;
+
+                state.selectedInsight = {
+                    keyword: sortedKeywords?.length ? sortedKeywords[0] : null,
+                    label: sortedLabels?.length ? sortedLabels[0] : null,
+                    topic: insights?.topics?.length
+                        ? insights?.topics[0]
+                        : null,
+                    brand: insights?.brands?.length
+                        ? insights?.brands[0]
+                        : null,
+                    face: insights?.faces?.length ? insights?.faces[0] : null,
+                    emotion: insights?.emotions?.length
+                        ? insights?.emotions[0]
+                        : null,
+                    namedPerson: insights?.namedPeople?.length
+                        ? insights?.namedPeople[0]
+                        : null,
+                    namedLocation: insights?.namedLocations?.length
+                        ? insights?.namedLocations[0]
+                        : null,
+                    sentiment: insights?.sentiments?.length
+                        ? insights?.sentiments[0]
+                        : null,
+                };
+            })
+            .addCase(fetchInsightsDetails.rejected, (state) => {
+                state.isInsightsLoading = false;
             });
     },
 });
