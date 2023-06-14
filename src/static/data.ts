@@ -1,19 +1,23 @@
 import {
-    faPager,
     faSliders,
     faArrowUpZA,
+    faPhotoFilm,
     faArrowDownAZ,
     faArrowUpWideShort,
     faArrowDownShortWide,
 } from '@fortawesome/free-solid-svg-icons';
 
 import constants from './constants.json';
-import { LinkProps, SorterOptionProps } from '../interfaces/common';
+import {
+    EmotionColors,
+    LinkProps,
+    SorterOptionProps,
+} from '../interfaces/common';
 
 export const navLinks: LinkProps[] = [
     {
-        title: 'Dashboard',
-        icon: faPager,
+        title: 'Library',
+        icon: faPhotoFilm,
         to: '/',
     },
     {
@@ -38,9 +42,9 @@ export const sorterOptions: SorterOptionProps[] = [
     { title: 'Name (asc)', icon: faArrowUpZA, value: 'name' },
 ];
 
-export const fileSupportTypes = [constants.VIDEO_FILE_FORMAT];
+export const fileSupportTypes: string[] = [constants.UPLOAD.VIDEO_FILE_FORMAT];
 
-export const chartColors = [
+export const chartColors: string[] = [
     '#FFC850',
     '#6BE898',
     '#CD92D8',
@@ -48,9 +52,9 @@ export const chartColors = [
     '#999999',
 ];
 
-export const sentimentColors = ['chip', 'place', 'topic'];
+export const sentimentColors: string[] = ['chip', 'place', 'topic'];
 
-export const emotions: any = {
+export const emotions: EmotionColors = {
     anger: { color: '#E71E24', icon: '😡', textColor: 'text-anger' },
     sad: { color: '#1A61AF', icon: '🥺', textColor: 'text-sad' },
     joy: { color: '#48B83E', icon: '😀', textColor: 'text-joy' },

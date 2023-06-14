@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import React, { useMemo, useState } from 'react';
 
-import Topic from './Topic';
+import Topic from './components/Topic';
 import MemoziedTimeline from '../Timeline';
 import InsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
@@ -37,7 +37,8 @@ const Topics: React.FC = () => {
                 <div
                     className={`flex flex-row flex-wrap items-center gap-2 overflow-hidden ${
                         isExpanded ||
-                        insights?.topics?.length < constants.EXPAND_MAX_LIMIT
+                        insights?.topics?.length <
+                            constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT
                             ? 'h-auto'
                             : 'h-6 md:h-10'
                     }`}
@@ -52,4 +53,5 @@ const Topics: React.FC = () => {
     );
 };
 
-export default Topics;
+const MemoziedTopics = React.memo(Topics);
+export default MemoziedTopics;

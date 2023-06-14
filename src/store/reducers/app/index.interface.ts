@@ -10,7 +10,18 @@ export interface Language {
     name: string;
 }
 
+export interface CustomBrand {
+    referenceUrl: string;
+    id: number;
+    name: string;
+    enabled: boolean;
+    description: string;
+    tags: string[];
+}
+
 export interface AppInitialState {
     defaultLanguageCode: string;
+    customBrandSearchText: string;
     supportedLanguages: Language[];
+    customBrands: CustomBrand[];
 }

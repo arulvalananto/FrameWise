@@ -1,17 +1,18 @@
 import { AxiosError } from 'axios';
+import { Tooltip } from '@mui/material';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import React, { useCallback, useState } from 'react';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { DialogContent, DialogTitle, Dialog, Tooltip } from '@mui/material';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
+import './index.css';
 import { storage } from '../../firebase';
 import { AppDispatch } from '../../store';
-import { uploadVideo } from '../../api/helpers';
+import CustomDialogbox from '../Dialogbox';
 import { trimStr } from '../../common/helpers';
-import useIsMobile from '../../hooks/useIsMobile';
+import { indexVideo } from '../../api/videos';
 import constants from '../../static/constants.json';
 import { fileSupportTypes } from '../../static/data';
 import MemoziedFileUploaderState from './components/FileUploaderState';
@@ -24,7 +25,6 @@ const FileUploader: React.FC = () => {
     const [isDragging, setIsDragging] = useState(false);
     const [uploadProgressState, setUploadProgressState] = useState(0);
 
-    const isMobile = useIsMobile();
     const dispatch = useDispatch<AppDispatch>();
 
     const handleOpen = () => {
@@ -42,7 +42,7 @@ const FileUploader: React.FC = () => {
             toast.error(constants.ERROR_MESSAGE.UNSUPPORTED_FILE_TYPE);
             return false;
         }
-        if (file.size > constants.FILE_SIZE_LIMIT) {
+        if (file.size > constants.UPLOAD.FILE_SIZE_LIMIT) {
             toast.error(constants.ERROR_MESSAGE.FILE_LIMIT_EXIST);
             return false;
         }
@@ -53,14 +53,14 @@ const FileUploader: React.FC = () => {
         async (fileName: string, blobUrl: string): Promise<void> => {
             try {
                 if (fileName && blobUrl) {
-                    const indexDetails: VideoState = await uploadVideo(
+                    const indexDetails: VideoState = await indexVideo(
                         fileName,
                         blobUrl
                     );
 
                     if (
                         indexDetails?.state?.toLowerCase() ===
-                        constants.UPLOAD_VIDEO_STATUS
+                        constants.UPLOAD.VIDEO_STATUS
                     ) {
                         dispatch(fetchAllVideos());
                         toast.success(constants.SUCCESS_MESSAGE.FILE_UPLOAD);
@@ -195,88 +195,70 @@ const FileUploader: React.FC = () => {
                     type="button"
                     onClick={handleOpen}
                     aria-label="Upload"
-                    className="bg-primary text-black px-4 py-2 rounded hover:scale-95 transition-all text-xs md:text-base"
+                    className="file-uploader-button"
                 >
                     <FontAwesomeIcon icon={faPlus} />
                 </button>
             </Tooltip>
-            <Dialog
+            <CustomDialogbox
+                title="Upload and Index"
                 open={open}
-                onClose={handleClose}
-                fullScreen={isMobile}
-                fullWidth={!isMobile}
+                handleClose={handleClose}
             >
-                <DialogTitle className="bg-secondary text-white">
-                    Upload and Index
-                </DialogTitle>
-                <DialogContent className="bg-secondary">
-                    {isFileUploading ? (
-                        <MemoziedFileUploaderState
-                            uploadProgressState={uploadProgressState}
-                        />
-                    ) : (
-                        <div
-                            className={`relative flex flex-col items-center text-white justify-center gap-4 pt-1 w-full h-48 ${
-                                isDragging
-                                    ? 'border-2 border-gray-700 border-dashed'
-                                    : ''
-                            }`}
-                            onDragOver={handleDragOver}
-                        >
-                            {isDragging ? (
-                                <p
-                                    className="absolute top-0 left-0  w-full h-full bg-light-secondary"
-                                    onDrop={handleDrop}
-                                    onDragEnter={handleDragEnter}
-                                    onDragLeave={handleDragLeave}
-                                >
-                                    <span className="flex items-center justify-center w-full h-full">
-                                        🚀 Please drop your file here 🚀
-                                    </span>
-                                </p>
-                            ) : (
-                                <>
-                                    <p>Drag and drop files</p>
-                                    <span className="text-sm text-slate-300">
-                                        or
-                                    </span>
-                                    <div className="cursor-pointer">
-                                        <label
-                                            htmlFor="video"
-                                            className="px-4 py-2 cursor-pointer w-full h-full bg-primary text-black rounded"
-                                        >
-                                            <span className="text-sm">
-                                                Browse files
-                                            </span>
-                                            <input
-                                                type="file"
-                                                id="video"
-                                                accept="video/*"
-                                                required
-                                                className="hidden"
-                                                onChange={handleFileChange}
-                                            />
-                                        </label>
-                                    </div>
-                                </>
-                            )}
-                        </div>
-                    )}
-                </DialogContent>
-                <button
-                    type="button"
-                    onClick={handleClose}
-                    aria-label="close dialog"
-                >
-                    <FontAwesomeIcon
-                        icon={faCircleXmark}
-                        className="absolute top-5 right-6 cursor-pointer text-white"
-                        fontSize={24}
+                {isFileUploading ? (
+                    <MemoziedFileUploaderState
+                        uploadProgressState={uploadProgressState}
                     />
-                </button>
-            </Dialog>
+                ) : (
+                    <div
+                        className={`file-uploader-container ${
+                            isDragging ? 'file-uploader-container-drag' : ''
+                        }`}
+                        onDragOver={handleDragOver}
+                    >
+                        {isDragging ? (
+                            <p
+                                className="file-uploader-drop-container"
+                                onDrop={handleDrop}
+                                onDragEnter={handleDragEnter}
+                                onDragLeave={handleDragLeave}
+                            >
+                                <span className="file-uploader-drop-message">
+                                    {constants.UPLOAD.DROP_MESSAGE}
+                                </span>
+                            </p>
+                        ) : (
+                            <>
+                                <p>{constants.UPLOAD.DRAG_AND_DROP_LABEL}</p>
+                                <span className="file-uploader-drag-option">
+                                    or
+                                </span>
+                                <div className="cursor-pointer">
+                                    <label
+                                        htmlFor="video"
+                                        className="file-uploader-label"
+                                    >
+                                        <span className="text-sm">
+                                            {constants.UPLOAD.LABEL}
+                                        </span>
+                                        <input
+                                            type="file"
+                                            id="video"
+                                            accept="video/*"
+                                            required
+                                            className="hidden"
+                                            onChange={handleFileChange}
+                                        />
+                                    </label>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                )}
+            </CustomDialogbox>
         </>
     );
 };
 
-export default FileUploader;
+const MemoizedFileUploader = React.memo(FileUploader);
+export default MemoizedFileUploader;

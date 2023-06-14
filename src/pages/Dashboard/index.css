@@ -1,0 +1,7 @@
+.library {
+    @apply w-full h-full flex flex-col;
+}
+
+.library-title {
+    @apply text-xl md:text-2xl font-bold mt-3 md:mt-0 mb-3;
+}

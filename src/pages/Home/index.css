@@ -1,0 +1,7 @@
+.home {
+    @apply w-screen h-screen flex items-center;
+}
+
+.home-content {
+    @apply w-full h-full flex-1 p-1 md:px-5 md:py-10;
+}

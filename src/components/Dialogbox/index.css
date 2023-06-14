@@ -1,0 +1,11 @@
+.dialog-title {
+    @apply bg-secondary text-white;
+}
+
+.dialog-content {
+    @apply bg-secondary;
+}
+
+.dialog-close-button {
+    @apply absolute top-5 right-6 cursor-pointer text-white;
+}

@@ -1,0 +1,31 @@
+.confirmation-button {
+    @apply bg-darkgrey absolute text-xs bg-opacity-75 rounded px-2 py-1 top-4 lg:top-2 right-2 hover:scale-95;
+}
+
+.modal-container {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 rounded w-[280px] sm:w-[350px] md:w-[400px] bg-secondary;
+}
+
+.modal-wrapper {
+    @apply flex flex-col gap-3;
+}
+
+.modal-title {
+    @apply text-sm md:text-3xl;
+}
+
+.modal-message {
+    @apply text-xs md:text-base;
+}
+
+.modal-button-container {
+    @apply flex flex-row justify-end gap-6 mt-6;
+}
+
+.modal-cancel-button {
+    @apply bg-gray-100 capitalize text-black px-4 py-2 border rounded hover:scale-105 text-xs md:text-base;
+}
+
+.modal-submit-button {
+    @apply bg-primary capitalize px-4 py-2 text-black rounded hover:scale-105 text-xs md:text-base;
+}

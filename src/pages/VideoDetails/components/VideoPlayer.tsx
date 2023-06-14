@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import constants from '../../../static/constants.json';
-import { getVideoAccessToken } from '../../../api/helpers';
+import { getVideoAccessToken } from '../../../api/auth';
 import { getVideoPlayerURL } from '../../../common/helpers';
 import { videoDetailsSelector } from '../../../store/reducers/videoDetails';
 
@@ -91,4 +91,5 @@ const VideoPlayer: React.FC = () => {
     );
 };
 
-export default VideoPlayer;
+const MemoizedVideoPlayer = React.memo(VideoPlayer);
+export default MemoizedVideoPlayer;

@@ -1,0 +1,27 @@
+.video {
+    @apply col-span-1 relative cursor-pointer;
+}
+
+.video-image-container {
+    @apply w-full h-full bg-secondary rounded overflow-hidden border border-gray-900;
+}
+
+.video-image {
+    @apply w-full h-full object-cover lg:max-h-60 xl:max-h-48 2xl:max-h-52;
+}
+
+.video-title {
+    @apply bg-darkgrey absolute hidden sm:block text-xs lg:text-sm top-4 lg:top-2 left-2 bg-opacity-75 rounded px-2 py-1 cursor-default;
+}
+
+.video-length {
+    @apply bg-darkgrey absolute text-xs lg:text-sm bottom-4 lg:bottom-2 font-cherry right-2 bg-opacity-75 rounded px-2 py-1 cursor-default;
+}
+
+.video-reIndex-button {
+    @apply bg-darkgrey absolute text-xs bg-opacity-75 rounded px-2 py-1 top-4 lg:top-2 right-12 hover:scale-95 cursor-pointer z-30;
+}
+
+.video-circular-progress {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center flex-col;
+}

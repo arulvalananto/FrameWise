@@ -1,6 +1,7 @@
+import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
-import React, { useEffect, useRef } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.css';
@@ -8,13 +9,16 @@ import Home from './pages/Home';
 import { AppDispatch } from './store';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
+import constants from './static/constants.json';
+import MemoziedLoader from './components/Loader';
 import MemoziedDashboard from './pages/Dashboard';
 import MemoziedVideoDetails from './pages/VideoDetails';
 import { getAllSupportedLanguages } from './store/reducers/app/index.thunk';
 
-const App: React.FC = () => {
+const App = () => {
     const shouldRender = useRef(true);
     const dispatch = useDispatch<AppDispatch>();
+    const { isLoading } = useAuth0();
 
     useEffect(() => {
         (async () => {
@@ -23,10 +27,15 @@ const App: React.FC = () => {
                 dispatch(getAllSupportedLanguages());
             }
         })();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch]);
 
-    console.log(process.env.NODE_ENV);
+    if (isLoading) {
+        return (
+            <div className="container-screen-center">
+                <MemoziedLoader message={constants.LOADER_MESSAGE.DEFAULT} />
+            </div>
+        );
+    }
 
     return (
         <div>

@@ -1,0 +1,39 @@
+.sidebar {
+    @apply w-[65px] md:w-[240px] h-full flex-none min-w-[50px] border-r border-zinc-900 py-10 md:p-2 md:pb-10 flex flex-col items-center gap-5 justify-between;
+}
+
+.sidebar-logo-container {
+    @apply flex flex-col gap-6;
+}
+
+.sidebar-link {
+    @apply w-16 md:w-48 h-16 md:h-32 flex items-center justify-center;
+}
+
+.sidebar-logo {
+    @apply w-48 hidden md:block scale-125;
+}
+
+.sidebar-mobile-logo {
+    @apply w-16 h-16 block md:hidden;
+}
+
+.sidebar-profile-container {
+    @apply w-full h-16 rounded-full my-16 flex-col gap-2 items-center hidden md:flex;
+}
+
+.sidebar-profile {
+    @apply w-16 h-full rounded-full;
+}
+
+.sidebar-navlinks {
+    @apply flex flex-col items-center w-full md:w-48 gap-5 mt-20 md:mt-0;
+}
+
+.sidebar-logout {
+    @apply w-10 md:w-48 items-center gap-3 py-2 px-3 rounded-md text-white hover:bg-primary hover:text-black hidden md:flex;
+}
+
+.sidebar-login {
+    @apply w-10 md:w-48 items-center gap-3 py-2 px-3 rounded-md text-white hover:bg-primary hover:text-black hidden md:flex;
+}

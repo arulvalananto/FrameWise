@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import React, { useMemo, useState } from 'react';
 
-import Mention from './Mention';
+import Mention from './components/Mention';
 import MemoziedTimeline from '../Timeline';
-import MentionDetails from './MentionDetails';
+import MentionDetails from './components/MentionDetails';
 import InsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
 import { getTimelineInfo } from '../../../../common/helpers';
@@ -40,7 +40,7 @@ const Mentions: React.FC = () => {
                     className={`flex flex-row flex-wrap gap-2 overflow-hidden ${
                         isExpanded ||
                         insights?.namedPeople?.length <
-                            constants.EXPAND_MAX_LIMIT
+                            constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT
                             ? 'h-auto'
                             : 'h-6 md:h-7'
                     }`}
@@ -56,4 +56,5 @@ const Mentions: React.FC = () => {
     );
 };
 
-export default Mentions;
+const MemoziedMentions = React.memo(Mentions);
+export default MemoziedMentions;

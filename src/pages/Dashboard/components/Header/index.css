@@ -1,0 +1,7 @@
+.header {
+    @apply flex items-center justify-between flex-col md:flex-row gap-4 h-14 flex-none;
+}
+
+.header-acion-buttons {
+    @apply flex flex-row gap-3 items-center self-end md:self-center;
+}

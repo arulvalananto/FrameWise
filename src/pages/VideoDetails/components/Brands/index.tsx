@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import React, { useMemo, useState } from 'react';
 
-import Brand from './Brand';
-import BrandDetails from './BrandDetails';
+import Brand from './components/Brand';
+import BrandDetails from './components/BrandDetails';
 import MemoziedTimeline from '../Timeline';
 import InsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
@@ -43,7 +43,8 @@ const Brands: React.FC = () => {
                 <div
                     className={`flex flex-row flex-wrap gap-2 overflow-hidden ${
                         isExpanded ||
-                        insights.brands.length < constants.EXPAND_MAX_LIMIT
+                        insights.brands.length <
+                            constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT
                             ? 'h-auto'
                             : 'h-6 md:h-9'
                     }`}
@@ -59,4 +60,5 @@ const Brands: React.FC = () => {
     );
 };
 
-export default Brands;
+const MemoziedBrands = React.memo(Brands);
+export default MemoziedBrands;

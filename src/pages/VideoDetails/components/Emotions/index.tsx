@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import React, { useMemo } from 'react';
 
 import MemoziedTimeline from '../Timeline';
-import EmotionsChart from './EmotionsChart';
+import EmotionsChart from './components/EmotionsChart';
 import MemoziedInsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
 import { getTimelineInfo } from '../../../../common/helpers';
@@ -35,4 +35,5 @@ const Emotions: React.FC = () => {
     );
 };
 
-export default Emotions;
+const MemoziedEmotions = React.memo(Emotions);
+export default MemoziedEmotions;

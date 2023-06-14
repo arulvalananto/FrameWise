@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import React, { useMemo, useState } from 'react';
 
-import Face from './Face';
-import FaceDetails from './FaceDetails';
+import Face from './components/Face';
+import FaceDetails from './components/FaceDetails';
 import MemoziedTimeline from '../Timeline';
 import MemoziedInsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
@@ -43,7 +43,8 @@ const Faces: React.FC = () => {
             <div className="flex flex-col w-full gap-4">
                 <div
                     className={`flex flex-row flex-wrap items-center overflow-hidden ${
-                        isExpanded || facesLength < constants.EXPAND_MAX_LIMIT
+                        isExpanded ||
+                        facesLength < constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT
                             ? 'h-auto'
                             : 'h-8 md:h-12'
                     }`}
@@ -59,4 +60,5 @@ const Faces: React.FC = () => {
     );
 };
 
-export default Faces;
+const MemoziedFaces = React.memo(Faces);
+export default MemoziedFaces;

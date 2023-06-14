@@ -6,9 +6,9 @@ export interface LinkProps {
     icon: IconProp | IconDefinition;
 }
 
-export interface CustomLinkProps {
+export type CustomLinkProps = {
     link: LinkProps;
-}
+};
 
 export interface SorterOptionProps {
     icon: IconProp | IconDefinition;
@@ -21,4 +21,23 @@ export interface TimelineProps {
     end: number;
     width: number;
     period: string;
+}
+
+interface EmotionColor {
+    color: string;
+    icon: string;
+    textColor: string;
+}
+export interface EmotionColors {
+    [key: string]: EmotionColor;
+    anger: EmotionColor;
+    sad: EmotionColor;
+    joy: EmotionColor;
+    surprised: EmotionColor;
+    fear: EmotionColor;
+    disgusted: EmotionColor;
+}
+
+export interface IJWTToken {
+    exp: number;
 }

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import Sentiment from './Sentiment';
+import Sentiment from './components/Sentiment';
 import MemoziedTimeline from '../Timeline';
 import MemoziedInsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
@@ -46,4 +46,5 @@ const Sentiments: React.FC = () => {
     );
 };
 
-export default Sentiments;
+const MemoziedSentiments = React.memo(Sentiments);
+export default MemoziedSentiments;
