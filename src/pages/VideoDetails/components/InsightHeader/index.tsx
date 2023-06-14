@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Viewer from './Viewer';
-import LanguageSelector from './LanguageSelector';
+import Viewer from './components/Viewer';
+import LanguageSelector from './components/LanguageSelector';
 
 const InsightHeader: React.FC = () => {
     return (
@@ -12,4 +12,5 @@ const InsightHeader: React.FC = () => {
     );
 };
 
-export default InsightHeader;
+const MemoziedInsightHeader = React.memo(InsightHeader);
+export default MemoziedInsightHeader;

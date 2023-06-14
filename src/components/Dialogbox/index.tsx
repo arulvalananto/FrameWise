@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { DialogContent, DialogTitle, Dialog } from '@mui/material';
 
+import './index.css';
 import useIsMobile from '../../hooks/useIsMobile';
 
 type DialogboxProps = {
@@ -27,10 +28,8 @@ const Dialogbox: React.FC<DialogboxProps> = ({
             fullScreen={isMobile}
             fullWidth={!isMobile}
         >
-            <DialogTitle className="bg-secondary text-white">
-                {title}
-            </DialogTitle>
-            <DialogContent className="bg-secondary">{children}</DialogContent>
+            <DialogTitle className="dialog-title">{title}</DialogTitle>
+            <DialogContent className="dialog-content">{children}</DialogContent>
             <button
                 type="button"
                 onClick={handleClose}
@@ -38,7 +37,7 @@ const Dialogbox: React.FC<DialogboxProps> = ({
             >
                 <FontAwesomeIcon
                     icon={faCircleXmark}
-                    className="absolute top-5 right-6 cursor-pointer text-white"
+                    className="dialog-close-button"
                     fontSize={24}
                 />
             </button>

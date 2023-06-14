@@ -42,9 +42,9 @@ export const sorterOptions: SorterOptionProps[] = [
     { title: 'Name (asc)', icon: faArrowUpZA, value: 'name' },
 ];
 
-export const fileSupportTypes = [constants.UPLOAD.VIDEO_FILE_FORMAT];
+export const fileSupportTypes: string[] = [constants.UPLOAD.VIDEO_FILE_FORMAT];
 
-export const chartColors = [
+export const chartColors: string[] = [
     '#FFC850',
     '#6BE898',
     '#CD92D8',
@@ -52,7 +52,7 @@ export const chartColors = [
     '#999999',
 ];
 
-export const sentimentColors = ['chip', 'place', 'topic'];
+export const sentimentColors: string[] = ['chip', 'place', 'topic'];
 
 export const emotions: EmotionColors = {
     anger: { color: '#E71E24', icon: '😡', textColor: 'text-anger' },

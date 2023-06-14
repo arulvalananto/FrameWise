@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import { AppDispatch } from './store';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
+import constants from './static/constants.json';
 import MemoziedLoader from './components/Loader';
 import MemoziedDashboard from './pages/Dashboard';
 import MemoziedVideoDetails from './pages/VideoDetails';
@@ -26,13 +27,12 @@ const App = () => {
                 dispatch(getAllSupportedLanguages());
             }
         })();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch]);
 
     if (isLoading) {
         return (
-            <div className="w-screen h-screen flex items-center justify-center">
-                <MemoziedLoader message="Loading...Please wait" />
+            <div className="container-screen-center">
+                <MemoziedLoader message={constants.LOADER_MESSAGE.DEFAULT} />
             </div>
         );
     }

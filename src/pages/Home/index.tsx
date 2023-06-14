@@ -1,13 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Sidebar from './components/Sidebar.tsx';
+import './index.css';
+import Sidebar from './components/Sidebar';
 
 const Home: React.FC = () => {
     return (
-        <div className="w-screen h-screen flex items-center">
+        <div className="home">
             <Sidebar />
-            <div className="w-full h-full flex-1 p-1 md:px-5 md:py-10">
+            <div className="home-content">
                 <Outlet />
             </div>
         </div>

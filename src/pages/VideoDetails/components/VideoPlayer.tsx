@@ -91,4 +91,5 @@ const VideoPlayer: React.FC = () => {
     );
 };
 
-export default VideoPlayer;
+const MemoizedVideoPlayer = React.memo(VideoPlayer);
+export default MemoizedVideoPlayer;

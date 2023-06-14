@@ -1,0 +1,31 @@
+.file-uploader-button {
+    @apply bg-primary text-black px-4 py-2 rounded hover:scale-95 transition-all text-xs md:text-base;
+}
+
+.file-uploader-container {
+    @apply relative flex flex-col items-center text-white justify-center gap-4 pt-1 w-full h-48;
+}
+
+.file-uploader-container-drag {
+    @apply border-2 border-gray-700 border-dashed;
+}
+
+.file-uploader-drop-container {
+    @apply absolute top-0 left-0  w-full h-full bg-light-secondary;
+}
+
+.file-uploader-drop-message {
+    @apply flex items-center justify-center w-full h-full;
+}
+
+.file-uploader-drag-option {
+    @apply text-sm text-slate-300;
+}
+
+.file-uploader-label {
+    @apply px-4 py-2 cursor-pointer w-full h-full bg-primary text-black rounded;
+}
+
+.file-uploader-loader {
+    @apply text-white h-48 flex flex-col items-center justify-center;
+}

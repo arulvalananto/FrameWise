@@ -1,0 +1,11 @@
+.loader-container {
+    @apply w-full h-full flex flex-col items-center justify-center;
+}
+
+.loader-wrapper {
+    @apply w-20 h-20;
+}
+
+.loader {
+    @apply w-full h-full;
+}

@@ -85,17 +85,23 @@ export const videosSlice = createSlice({
                     insights.keywords
                 );
                 const sortedLabels = sortInsightByInstances(insights.labels);
+                const filteredLocations = insights?.namedLocations?.filter(
+                    (location) => location.description
+                );
+                const filteredTopics = insights?.topics?.filter(
+                    (topic) => topic.referenceUrl
+                );
 
                 state.insights = insights;
                 state.insights.keywords = sortedKeywords;
                 state.insights.labels = sortedLabels;
+                state.insights.namedLocations = filteredLocations;
+                state.insights.topics = filteredTopics;
 
                 state.selectedInsight = {
                     keyword: sortedKeywords?.length ? sortedKeywords[0] : null,
                     label: sortedLabels?.length ? sortedLabels[0] : null,
-                    topic: insights?.topics?.length
-                        ? insights?.topics[0]
-                        : null,
+                    topic: filteredTopics?.length ? filteredTopics[0] : null,
                     brand: insights?.brands?.length
                         ? insights?.brands[0]
                         : null,
@@ -106,8 +112,8 @@ export const videosSlice = createSlice({
                     namedPerson: insights?.namedPeople?.length
                         ? insights?.namedPeople[0]
                         : null,
-                    namedLocation: insights?.namedLocations?.length
-                        ? insights?.namedLocations[0]
+                    namedLocation: filteredLocations?.length
+                        ? filteredLocations[0]
                         : null,
                     sentiment: insights?.sentiments?.length
                         ? insights?.sentiments[0]

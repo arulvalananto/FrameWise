@@ -1,7 +1,8 @@
-import { useNavigate, useParams } from 'react-router-dom';
 import React, { memo, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import './index.css';
 import { AppDispatch } from '../../store';
 import VideoPlayer from './components/VideoPlayer';
 import MemoziedLoader from '../../components/Loader';
@@ -39,11 +40,11 @@ const VideoDetails: React.FC = () => {
     }
 
     return (
-        <section className="w-full h-full flex flex-col xl:flex-row overflow-auto gap-2 relative">
-            <div className="xl:flex-1 rounded bg-secondary">
+        <section className="video-details">
+            <div className="video-player-container">
                 <VideoPlayer />
             </div>
-            <div className="flex-1 insights xl:overflow-auto xl:flex-none xl:w-[400px] 2xl:w-[600px]">
+            <div className="video-insights-container insights">
                 <VideoInsights />
             </div>
             <MemoziedBackButton

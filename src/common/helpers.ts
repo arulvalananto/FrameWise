@@ -1,11 +1,12 @@
 import jwtDecode from 'jwt-decode';
 
 import constants from '../static/constants.json';
-import { Instance } from '../store/reducers/videoDetails/index.interface';
-
-interface IJWTToken {
-    exp: number;
-}
+import { IJWTToken, TimelineProps } from '../interfaces/common';
+import {
+    Instance,
+    Keyword,
+    Label,
+} from '../store/reducers/videoDetails/index.interface';
 
 export const isTokenExpired = (token: string): boolean => {
     const decoded: IJWTToken = jwtDecode(token);
@@ -92,7 +93,7 @@ export const getSeenDuration = (
     }
 };
 
-export const getTimelineInfo = (insight: Instance) => {
+export const getTimelineInfo = (insight: Instance): TimelineProps => {
     const start = getTimeInSeconds(insight?.start);
     const end = getTimeInSeconds(insight?.end);
     const totalLength = end - start;
@@ -105,8 +106,13 @@ export const getTimelineInfo = (insight: Instance) => {
     };
 };
 
-export const sortInsightByInstances = (insightList: any[]) => {
+export const sortInsightByInstances = (
+    insightList: Keyword[] | Label[]
+): any[] => {
     return insightList
         ?.filter((insight) => insight?.instances?.length)
-        ?.sort((a: any, b: any) => b?.instances?.length - a?.instances?.length);
+        ?.sort(
+            (a: Keyword | Label, b: Keyword | Label) =>
+                b?.instances?.length - a?.instances?.length
+        );
 };

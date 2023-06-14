@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Tooltip, MenuItem, Menu, ListItemIcon } from '@mui/material';
 
+import './index.css';
 import { AppDispatch } from '../../store';
 import { paperStyles } from '../../static/data';
 import { SorterOptionProps } from '../../interfaces/common';
 import { changeSortBy, videosSelector } from '../../store/reducers/videos';
 
-interface SorterProps {
+type SorterProps = {
     options: SorterOptionProps[];
-}
+};
 
 const Sorter: React.FC<SorterProps> = ({ options }) => {
     const dispatch = useDispatch<AppDispatch>();
@@ -45,7 +46,7 @@ const Sorter: React.FC<SorterProps> = ({ options }) => {
                     type="button"
                     onClick={handleClick}
                     aria-label="Upload"
-                    className="bg-white text-black px-4 py-2 rounded hover:scale-95 transition-all text-xs md:text-base"
+                    className="sorter-button"
                 >
                     {currentSelectedOption?.icon && (
                         <FontAwesomeIcon icon={currentSelectedOption?.icon} />

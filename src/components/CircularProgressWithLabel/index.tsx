@@ -2,8 +2,8 @@ import * as React from 'react';
 import CircularProgress, {
     CircularProgressProps,
 } from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 
+import './index.css';
 import useIsMobile from '../../hooks/useIsMobile';
 
 const CircularProgressWithLabel = (
@@ -12,15 +12,13 @@ const CircularProgressWithLabel = (
     const isMobile = useIsMobile();
 
     return (
-        <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+        <div className="circularProgressWithLabel">
             <CircularProgress
                 variant="determinate"
                 size={isMobile ? '3rem' : 100}
                 {...props}
                 sx={{
                     color: props.color ? '' : '#BFED37',
-                }}
-                style={{
                     borderRadius: '100%',
                     boxShadow: isMobile
                         ? 'inset 0 0 0px 4px gray'
@@ -28,23 +26,12 @@ const CircularProgressWithLabel = (
                     backgroundColor: 'transparent',
                 }}
             />
-            <Box
-                sx={{
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    right: 0,
-                    position: 'absolute',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-            >
-                <p className="text-white text-xs">{Math.round(props.value)}%</p>
-            </Box>
-        </Box>
+            <p className="circularProgressWithLabelPercent">
+                {Math.round(props.value)}%
+            </p>
+        </div>
     );
 };
 
-const MemoziedCircularProgress = React.memo(CircularProgressWithLabel);
-export default MemoziedCircularProgress;
+const MemoziedCircularProgressWithLabel = React.memo(CircularProgressWithLabel);
+export default MemoziedCircularProgressWithLabel;

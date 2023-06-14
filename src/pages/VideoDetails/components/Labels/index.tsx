@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import React, { useMemo, useState } from 'react';
 
-import Label from './Label';
+import Label from './components/Label';
 import MemoziedTimeline from '../Timeline';
 import InsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
@@ -55,4 +55,5 @@ const Labels: React.FC = () => {
     );
 };
 
-export default Labels;
+const MemoziedLabels = React.memo(Labels);
+export default MemoziedLabels;

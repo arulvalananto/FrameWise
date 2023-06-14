@@ -1,0 +1,15 @@
+.settings {
+    @apply text-xl md:text-2xl font-bold mt-3 md:mt-0 mb-3;
+}
+
+.custombrands-container {
+    @apply w-full h-full p-2;
+}
+
+.custombrands-list {
+    @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6 justify-items-stretch gap-2;
+}
+
+.addcustombrand-button {
+    @apply bg-primary text-black px-2 rounded hover:scale-95 transition-all text-xs md:text-base;
+}

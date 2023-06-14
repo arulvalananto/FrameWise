@@ -40,7 +40,8 @@
         }
     },
     "MESSAGE": {
-        "DELETE_PROMPT_DEFAULT": "Are you sure you want to delete this item?"
+        "DELETE_PROMPT_DEFAULT": "Are you sure you want to delete this item?",
+        "REINDEX_PROMPT_DEFAULT": "Are you sure to re-index this video?"
     },
     "SUCCESS_MESSAGE": {
         "FILE_UPLOAD": "File uploaded successfully",
@@ -81,5 +82,11 @@
         "VIDEO_STATUS": "uploaded",
         "DRAG_AND_DROP_LABEL": "Drag and drop files",
         "DROP_MESSAGE": "🚀 Please drop your file here 🚀"
+    },
+    "LOADER_MESSAGE": {
+        "DEFAULT": "Loading...Please wait"
+    },
+    "SEARCH": {
+        "DEFAULT": "Search something..."
     }
 }

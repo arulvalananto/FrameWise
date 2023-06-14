@@ -54,4 +54,5 @@ const VideoInsights: React.FC = () => {
     );
 };
 
-export default VideoInsights;
+const MemoizedVideoInsights = React.memo(VideoInsights);
+export default MemoizedVideoInsights;

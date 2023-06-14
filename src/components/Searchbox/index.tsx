@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
 
+import './index.css';
+import constants from '../../static/constants.json';
+
 type SearchboxProps = {
     value: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -18,13 +21,11 @@ const Searchbox: React.FC<SearchboxProps> = ({
     icon = faMagnifyingGlass,
     className = '',
     inputClassName = '',
-    placeholder = 'Search something...',
+    placeholder = constants.SEARCH.DEFAULT,
     ...props
 }) => {
     return (
-        <div
-            className={`bg-secondary flex flex-row gap-2 items-center px-4 py-2 rounded w-full md:w-1/2 lg:w-1/4 mt-2 md:mt-0  text-sm md:text-base ${className}`}
-        >
+        <div className={`searchbox ${className}`}>
             <FontAwesomeIcon icon={icon} />
             <input
                 name="search"
@@ -33,11 +34,12 @@ const Searchbox: React.FC<SearchboxProps> = ({
                 value={value}
                 onChange={onChange}
                 aria-label="Search"
-                className={`bg-transparent w-full border-none outline-none text-input ${inputClassName}`}
+                className={`searchbox-inputbox ${inputClassName}`}
                 {...props}
             />
         </div>
     );
 };
 
-export default Searchbox;
+const MemoziedSearchbox = React.memo(Searchbox);
+export default MemoziedSearchbox;

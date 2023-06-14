@@ -1,0 +1,7 @@
+.searchbox {
+    @apply bg-secondary flex flex-row gap-2 items-center px-4 py-2 rounded w-full md:w-1/2 lg:w-1/4 mt-2 md:mt-0  text-sm md:text-base;
+}
+
+.searchbox-inputbox {
+    @apply bg-transparent w-full border-none outline-none text-input;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './index.css';
-import MemoziedInstance from './Instance';
+import MemoziedInstance from './components/Instance';
 import { TimelineProps } from '../../../../interfaces/common';
 
 interface TimelineCompProps {
@@ -18,7 +18,6 @@ const Timeline: React.FC<TimelineCompProps> = ({ timeline }) => {
             <svg
                 width="100%"
                 height="25"
-                xmlns="http://www.w3.org/2000/svg"
                 tabIndex={-1}
                 className="border-none outline-none"
             >

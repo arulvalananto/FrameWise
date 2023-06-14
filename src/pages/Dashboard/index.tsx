@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux';
 import React, { memo, useEffect, useRef } from 'react';
 
-import Header from './components/Header';
-import AllVideos from './components/AllVideos';
+import './index.css';
+import Header from './components/Header/index.tsx';
 import { AppDispatch } from '../../store/index.ts';
+import AllVideos from './components/AllVideos/index.tsx';
 import { fetchAllVideos } from '../../store/reducers/videos/index.thunk.ts';
 
 const Dashboard: React.FC = () => {
@@ -18,10 +19,8 @@ const Dashboard: React.FC = () => {
     }, [dispatch]);
 
     return (
-        <section id="dashboard" className="w-full h-full flex flex-col">
-            <h3 className="text-xl md:text-2xl font-bold mt-3 md:mt-0 mb-3">
-                Library
-            </h3>
+        <section id="library" className="library">
+            <h3 className="library-title">Library</h3>
             <Header />
             <AllVideos />
         </section>

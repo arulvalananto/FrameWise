@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 
+import './index.css';
 import spinner from '../../assets/spinner.svg';
 
 type LoaderProps = {
@@ -8,13 +9,9 @@ type LoaderProps = {
 
 const Loader: React.FC<LoaderProps> = ({ message }) => {
     return (
-        <div className="w-full h-full flex flex-col items-center justify-center">
-            <div className="w-20 h-20">
-                <img
-                    src={spinner}
-                    alt="framewise spinner"
-                    className="w-full h-full "
-                />
+        <div className="loader-container">
+            <div className="loader-wrapper">
+                <img src={spinner} alt="framewise spinner" className="loader" />
             </div>
             {message && <p>{message}</p>}
         </div>

@@ -1,0 +1,15 @@
+.video-details {
+    @apply w-full h-full flex flex-col xl:flex-row overflow-auto gap-2 relative;
+}
+
+.video-player-container {
+    @apply xl:flex-1 rounded bg-secondary;
+}
+
+.video-insights-container {
+    @apply flex-1 xl:overflow-auto xl:flex-none xl:w-[400px] 2xl:w-[600px];
+}
+
+.back-button {
+    @apply absolute top-4 left-4 px-2 py-1 bg-primary text-black rounded text-xs md:text-base;
+}

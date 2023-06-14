@@ -6,9 +6,9 @@ export interface LinkProps {
     icon: IconProp | IconDefinition;
 }
 
-export interface CustomLinkProps {
+export type CustomLinkProps = {
     link: LinkProps;
-}
+};
 
 export interface SorterOptionProps {
     icon: IconProp | IconDefinition;
@@ -36,4 +36,8 @@ export interface EmotionColors {
     surprised: EmotionColor;
     fear: EmotionColor;
     disgusted: EmotionColor;
+}
+
+export interface IJWTToken {
+    exp: number;
 }

@@ -1,13 +1,12 @@
 import React from 'react';
 
+import './index.css';
 import CustomBrands from './components/CustomBrands';
 
 const Settings: React.FC = () => {
     return (
         <div>
-            <h3 className="text-xl md:text-2xl font-bold mt-3 md:mt-0 mb-3">
-                Settings
-            </h3>
+            <h3 className="settings">Settings</h3>
             <CustomBrands />
         </div>
     );

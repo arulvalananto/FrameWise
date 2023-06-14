@@ -118,7 +118,7 @@ const AddCustomBrand: React.FC = () => {
                     type="button"
                     onClick={handleOpen}
                     aria-label="Upload"
-                    className="bg-primary text-black px-2 rounded hover:scale-95 transition-all text-xs md:text-base"
+                    className="addcustombrand-button"
                 >
                     <FontAwesomeIcon icon={faPlus} />
                 </button>

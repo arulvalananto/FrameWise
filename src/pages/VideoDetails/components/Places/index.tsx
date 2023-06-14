@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import React, { useMemo, useState } from 'react';
 
-import Place from './Place';
-import PlaceDetails from './PlaceDetails';
+import Place from './components/Place';
+import PlaceDetails from './components/PlaceDetails';
 import MemoziedTimeline from '../Timeline';
 import InsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
@@ -60,4 +60,5 @@ const Places: React.FC = () => {
     );
 };
 
-export default Places;
+const MemoziedPlaces = React.memo(Places);
+export default MemoziedPlaces;

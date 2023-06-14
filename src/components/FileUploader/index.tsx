@@ -7,6 +7,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
+import './index.css';
 import { storage } from '../../firebase';
 import { AppDispatch } from '../../store';
 import CustomDialogbox from '../Dialogbox';
@@ -194,7 +195,7 @@ const FileUploader: React.FC = () => {
                     type="button"
                     onClick={handleOpen}
                     aria-label="Upload"
-                    className="bg-primary text-black px-4 py-2 rounded hover:scale-95 transition-all text-xs md:text-base"
+                    className="file-uploader-button"
                 >
                     <FontAwesomeIcon icon={faPlus} />
                 </button>
@@ -210,34 +211,32 @@ const FileUploader: React.FC = () => {
                     />
                 ) : (
                     <div
-                        className={`relative flex flex-col items-center text-white justify-center gap-4 pt-1 w-full h-48 ${
-                            isDragging
-                                ? 'border-2 border-gray-700 border-dashed'
-                                : ''
+                        className={`file-uploader-container ${
+                            isDragging ? 'file-uploader-container-drag' : ''
                         }`}
                         onDragOver={handleDragOver}
                     >
                         {isDragging ? (
                             <p
-                                className="absolute top-0 left-0  w-full h-full bg-light-secondary"
+                                className="file-uploader-drop-container"
                                 onDrop={handleDrop}
                                 onDragEnter={handleDragEnter}
                                 onDragLeave={handleDragLeave}
                             >
-                                <span className="flex items-center justify-center w-full h-full">
+                                <span className="file-uploader-drop-message">
                                     {constants.UPLOAD.DROP_MESSAGE}
                                 </span>
                             </p>
                         ) : (
                             <>
                                 <p>{constants.UPLOAD.DRAG_AND_DROP_LABEL}</p>
-                                <span className="text-sm text-slate-300">
+                                <span className="file-uploader-drag-option">
                                     or
                                 </span>
                                 <div className="cursor-pointer">
                                     <label
                                         htmlFor="video"
-                                        className="px-4 py-2 cursor-pointer w-full h-full bg-primary text-black rounded"
+                                        className="file-uploader-label"
                                     >
                                         <span className="text-sm">
                                             {constants.UPLOAD.LABEL}
@@ -261,4 +260,5 @@ const FileUploader: React.FC = () => {
     );
 };
 
-export default FileUploader;
+const MemoizedFileUploader = React.memo(FileUploader);
+export default MemoizedFileUploader;

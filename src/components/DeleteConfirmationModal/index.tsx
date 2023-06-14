@@ -4,9 +4,10 @@ import Modal from '@mui/material/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
 
+import './index.css';
 import constants from '../../static/constants.json';
 
-interface DeleteConfirmationProps {
+type DeleteConfirmationProps = {
     title: string;
     buttonIcon: IconProp | IconDefinition;
     handleSubmit: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -15,25 +16,28 @@ interface DeleteConfirmationProps {
     message?: string;
     submitText?: string;
     cancelText?: string;
-}
+    className?: string;
+};
 
-const DeleteConfirmationModal: React.FC<DeleteConfirmationProps> = ({
+const ConfirmationModal: React.FC<DeleteConfirmationProps> = ({
     title,
     buttonIcon,
     handleSubmit,
     disabled = false,
     isDeleteProcessing = false,
+    className = '',
     submitText = 'Delete',
     cancelText = 'Cancel',
     message = constants.MESSAGE.DELETE_PROMPT_DEFAULT,
 }) => {
     const [open, setOpen] = React.useState(false);
+
     const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event?.stopPropagation();
+        event.stopPropagation();
         setOpen(true);
     };
     const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event?.stopPropagation();
+        event.stopPropagation();
         setOpen(false);
     };
 
@@ -41,8 +45,8 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationProps> = ({
         <>
             <button
                 type="button"
-                aria-label="delete video"
-                className="bg-darkgrey absolute text-xs bg-opacity-75 rounded px-2 py-1 top-4 lg:top-2 right-2 hover:scale-95"
+                aria-label={title}
+                className={className ? className : 'confirmation-button'}
                 disabled={isDeleteProcessing || disabled}
                 onClick={handleOpen}
             >
@@ -54,17 +58,17 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationProps> = ({
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 rounded w-[280px] sm:w-[350px] md:w-[400px] bg-secondary">
-                    <div className="flex flex-col gap-3">
-                        <h3 className="text-sm md:text-3xl">{title}</h3>
+                <div className="modal-container">
+                    <div className="modal-wrapper">
+                        <h3 className="modal-title">{title}</h3>
                         <Divider />
-                        <p className="text-xs md:text-base">{message}</p>
-                        <div className="flex flex-row justify-end gap-6 mt-6">
+                        <p className="modal-message">{message}</p>
+                        <div className="modal-button-container">
                             <button
                                 type="button"
                                 onClick={handleClose}
                                 disabled={isDeleteProcessing}
-                                className="bg-gray-100 text-black px-4 py-2 border rounded hover:scale-105 text-xs md:text-base"
+                                className="modal-cancel-button"
                             >
                                 {cancelText}
                             </button>
@@ -72,7 +76,7 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationProps> = ({
                                 type="button"
                                 onClick={handleSubmit}
                                 disabled={isDeleteProcessing}
-                                className="bg-primary px-4 py-2 text-black rounded hover:scale-105 text-xs md:text-base"
+                                className="modal-submit-button"
                             >
                                 {isDeleteProcessing ? (
                                     <span>Loading</span>
@@ -88,5 +92,5 @@ const DeleteConfirmationModal: React.FC<DeleteConfirmationProps> = ({
     );
 };
 
-const MemoziedConfirmationModal = React.memo(DeleteConfirmationModal);
+const MemoziedConfirmationModal = React.memo(ConfirmationModal);
 export default MemoziedConfirmationModal;
