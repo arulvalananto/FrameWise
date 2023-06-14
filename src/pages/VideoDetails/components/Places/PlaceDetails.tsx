@@ -49,7 +49,7 @@ const PlaceDetails: React.FC = () => {
                     </button>
                 </div>
                 <MemoziedRedirectLink
-                    href={`${constants.GOOGLE_MAP_PREFIX}${namedLocation?.name}`}
+                    href={`${constants.INSIGHTS.CONFIG.GOOGLE_MAP_PREFIX}${namedLocation?.name}`}
                 >
                     <p className="text-xs bg-black px-2 py-1 border rounded flex items-center gap-2">
                         <FontAwesomeIcon
@@ -58,7 +58,7 @@ const PlaceDetails: React.FC = () => {
                             className="text-place"
                         />
                         <span className="hidden sm:block">
-                            {constants.FIND_ON_GOOGLE_MAPS}
+                            {constants.INSIGHTS.CONFIG.FIND_ON_GOOGLE_MAPS}
                         </span>
                     </p>
                 </MemoziedRedirectLink>

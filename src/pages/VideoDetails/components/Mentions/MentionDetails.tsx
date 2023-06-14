@@ -49,12 +49,12 @@ const MentionDetails: React.FC = () => {
                     </button>
                 </div>
                 <MemoziedRedirectLink
-                    href={`${constants.GOOGLE_PREFIX}${namedPerson?.name}`}
+                    href={`${constants.INSIGHTS.CONFIG.GOOGLE_PREFIX}${namedPerson?.name}`}
                 >
                     <p className="text-xs bg-black px-2 py-1 border rounded flex items-center gap-2">
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                         <span className="hidden md:block">
-                            {constants.FIND_ON_GOOGLE}
+                            {constants.INSIGHTS.CONFIG.FIND_ON_GOOGLE}
                         </span>
                     </p>
                 </MemoziedRedirectLink>

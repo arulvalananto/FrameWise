@@ -40,7 +40,7 @@ const Mentions: React.FC = () => {
                     className={`flex flex-row flex-wrap gap-2 overflow-hidden ${
                         isExpanded ||
                         insights?.namedPeople?.length <
-                            constants.EXPAND_MAX_LIMIT
+                            constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT
                             ? 'h-auto'
                             : 'h-6 md:h-7'
                     }`}

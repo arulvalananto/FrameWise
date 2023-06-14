@@ -40,7 +40,8 @@ const Labels: React.FC = () => {
         >
             <div
                 className={`flex flex-row flex-wrap items-center gap-2 overflow-hidden ${
-                    isExpanded || labels.length < constants.EXPAND_MAX_LIMIT
+                    isExpanded ||
+                    labels.length < constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT
                         ? 'h-auto'
                         : 'h-8'
                 }`}

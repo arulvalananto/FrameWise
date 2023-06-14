@@ -8,7 +8,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import constants from './constants.json';
-import { LinkProps, SorterOptionProps } from '../interfaces/common';
+import {
+    EmotionColors,
+    LinkProps,
+    SorterOptionProps,
+} from '../interfaces/common';
 
 export const navLinks: LinkProps[] = [
     {
@@ -38,7 +42,7 @@ export const sorterOptions: SorterOptionProps[] = [
     { title: 'Name (asc)', icon: faArrowUpZA, value: 'name' },
 ];
 
-export const fileSupportTypes = [constants.VIDEO_FILE_FORMAT];
+export const fileSupportTypes = [constants.UPLOAD.VIDEO_FILE_FORMAT];
 
 export const chartColors = [
     '#FFC850',
@@ -50,7 +54,7 @@ export const chartColors = [
 
 export const sentimentColors = ['chip', 'place', 'topic'];
 
-export const emotions: any = {
+export const emotions: EmotionColors = {
     anger: { color: '#E71E24', icon: '😡', textColor: 'text-anger' },
     sad: { color: '#1A61AF', icon: '🥺', textColor: 'text-sad' },
     joy: { color: '#48B83E', icon: '😀', textColor: 'text-joy' },

@@ -37,7 +37,8 @@ const Topics: React.FC = () => {
                 <div
                     className={`flex flex-row flex-wrap items-center gap-2 overflow-hidden ${
                         isExpanded ||
-                        insights?.topics?.length < constants.EXPAND_MAX_LIMIT
+                        insights?.topics?.length <
+                            constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT
                             ? 'h-auto'
                             : 'h-6 md:h-10'
                     }`}

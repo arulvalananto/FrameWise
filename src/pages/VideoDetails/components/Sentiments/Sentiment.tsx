@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { sentimentColors } from '../../../../static/data';
-import MemoziedCircularProgress from '../../../../components/CircularProgress';
+import MemoziedCircularProgress from '../../../../components/CircularProgressWithLabel';
 import { Sentiment } from '../../../../store/reducers/videoDetails/index.interface';
 import {
     changeSelectedInsight,

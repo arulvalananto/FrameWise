@@ -41,7 +41,7 @@ const Places: React.FC = () => {
                     className={`flex flex-row flex-wrap items-center gap-2 overflow-hidden ${
                         isExpanded ||
                         insights?.namedLocations?.length <
-                            constants.EXPAND_MAX_LIMIT
+                            constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT
                             ? 'h-auto'
                             : 'h-6 md:h-10'
                     }`}

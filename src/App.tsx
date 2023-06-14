@@ -29,8 +29,6 @@ const App = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log(isLoading);
-
     if (isLoading) {
         return (
             <div className="w-screen h-screen flex items-center justify-center">

@@ -68,7 +68,7 @@ export const getThumbnail = (
  * @param {*} fileName
  * @param {*} url
  */
-export const uploadVideo = async (
+export const indexVideo = async (
     fileName: string,
     url: string
 ): Promise<VideoState> => {
@@ -109,6 +109,34 @@ export const deleteVideo = (videoId: string): Promise<{ status: number }> => {
             );
             if (response?.status === 204) {
                 resolve({ status: response?.status });
+            } else {
+                reject({
+                    message: constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG,
+                });
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) reject(error?.message);
+            else if (error instanceof AxiosError)
+                reject(error?.response?.data?.message);
+        }
+    });
+};
+
+/**
+ *
+ * Post Video to video indexer
+ * @param {string} videoId
+ */
+export const reIndexVideo = async (videoId: string): Promise<string> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await checkTokenExpiry();
+
+            const response = await axiosInstance.put(
+                `https://api.videoindexer.ai/trial/accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/videos/${videoId}/reIndex/?indexingPreset=Default&sourceLanguage=en-US&streamingPreset=SingleBitrate`
+            );
+            if (response?.status === 204) {
+                resolve('ok');
             } else {
                 reject({
                     message: constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG,

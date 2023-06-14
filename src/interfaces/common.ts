@@ -22,3 +22,18 @@ export interface TimelineProps {
     width: number;
     period: string;
 }
+
+interface EmotionColor {
+    color: string;
+    icon: string;
+    textColor: string;
+}
+export interface EmotionColors {
+    [key: string]: EmotionColor;
+    anger: EmotionColor;
+    sad: EmotionColor;
+    joy: EmotionColor;
+    surprised: EmotionColor;
+    fear: EmotionColor;
+    disgusted: EmotionColor;
+}

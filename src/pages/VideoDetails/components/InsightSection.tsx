@@ -33,25 +33,26 @@ const InsightSection: React.FC<InsightSectionProps> = ({
                     <p className="text-xs font-semibold text-gray-400">
                         ({count} items)
                     </p>
-                    {count > constants.EXPAND_MAX_LIMIT && showExpand && (
-                        <button
-                            type="button"
-                            className="text-xs bg-black px-2 py-1 rounded"
-                            onClick={handleIsExpanded}
-                        >
-                            {isExpanded ? (
-                                <span className="flex items-center gap-1">
-                                    <span>collapse</span>
-                                    <FontAwesomeIcon icon={faAngleDown} />
-                                </span>
-                            ) : (
-                                <span className="flex items-center gap-1">
-                                    <span>expand</span>
-                                    <FontAwesomeIcon icon={faAngleUp} />
-                                </span>
-                            )}
-                        </button>
-                    )}
+                    {count > constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT &&
+                        showExpand && (
+                            <button
+                                type="button"
+                                className="text-xs bg-black px-2 py-1 rounded"
+                                onClick={handleIsExpanded}
+                            >
+                                {isExpanded ? (
+                                    <span className="flex items-center gap-1">
+                                        <span>collapse</span>
+                                        <FontAwesomeIcon icon={faAngleDown} />
+                                    </span>
+                                ) : (
+                                    <span className="flex items-center gap-1">
+                                        <span>expand</span>
+                                        <FontAwesomeIcon icon={faAngleUp} />
+                                    </span>
+                                )}
+                            </button>
+                        )}
                 </div>
             </div>
             <div className="p-3 flex flex-row flex-wrap gap-x-3 gap-y-2 bg-secondary">

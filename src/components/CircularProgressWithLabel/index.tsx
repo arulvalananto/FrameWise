@@ -3,6 +3,7 @@ import CircularProgress, {
     CircularProgressProps,
 } from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+
 import useIsMobile from '../../hooks/useIsMobile';
 
 const CircularProgressWithLabel = (

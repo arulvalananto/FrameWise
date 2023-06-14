@@ -43,7 +43,8 @@ const Brands: React.FC = () => {
                 <div
                     className={`flex flex-row flex-wrap gap-2 overflow-hidden ${
                         isExpanded ||
-                        insights.brands.length < constants.EXPAND_MAX_LIMIT
+                        insights.brands.length <
+                            constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT
                             ? 'h-auto'
                             : 'h-6 md:h-9'
                     }`}

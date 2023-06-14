@@ -43,7 +43,8 @@ const Faces: React.FC = () => {
             <div className="flex flex-col w-full gap-4">
                 <div
                     className={`flex flex-row flex-wrap items-center overflow-hidden ${
-                        isExpanded || facesLength < constants.EXPAND_MAX_LIMIT
+                        isExpanded ||
+                        facesLength < constants.INSIGHTS.CONFIG.EXPAND_MAX_LIMIT
                             ? 'h-auto'
                             : 'h-8 md:h-12'
                     }`}
