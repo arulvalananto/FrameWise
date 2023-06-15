@@ -1,19 +1,23 @@
-import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { useAuth0 } from '@auth0/auth0-react';
+import React, { useEffect, useRef } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.css';
-import Home from './pages/Home';
+import routes from './static/routes';
 import { AppDispatch } from './store';
-import Settings from './pages/Settings';
-import NotFound from './pages/NotFound';
+import Loader from './components/Loader';
 import constants from './static/constants.json';
-import MemoziedLoader from './components/Loader';
-import MemoziedDashboard from './pages/Dashboard';
-import MemoziedVideoDetails from './pages/VideoDetails';
 import { getAllSupportedLanguages } from './store/reducers/app/index.thunk';
+
+const FallbackLoader = () => {
+    return (
+        <div className="container-screen-center">
+            <Loader message={constants.LOADER_MESSAGE.DEFAULT} />
+        </div>
+    );
+};
 
 const App = () => {
     const shouldRender = useRef(true);
@@ -30,30 +34,31 @@ const App = () => {
     }, [dispatch]);
 
     if (isLoading) {
-        return (
-            <div className="container-screen-center">
-                <MemoziedLoader message={constants.LOADER_MESSAGE.DEFAULT} />
-            </div>
-        );
+        return <FallbackLoader />;
     }
 
     return (
-        <div>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home />}>
-                        <Route path="/settings" element={<Settings />} />
-                        <Route
-                            path="/library/:id"
-                            element={<MemoziedVideoDetails />}
-                        />
-                        <Route path="/" element={<MemoziedDashboard />} />
-                    </Route>
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-            </BrowserRouter>
-            <Toaster position="top-right" reverseOrder={true} />
-        </div>
+        <React.Suspense fallback={<FallbackLoader />}>
+            <React.Fragment>
+                <BrowserRouter>
+                    <Routes>
+                        {routes.map(({ path, Element, sub }) => (
+                            <Route path={path} element={<Element />}>
+                                {sub && sub.length
+                                    ? sub.map((subRoute) => (
+                                          <Route
+                                              path={subRoute.path}
+                                              element={<subRoute.Element />}
+                                          />
+                                      ))
+                                    : null}
+                            </Route>
+                        ))}
+                    </Routes>
+                </BrowserRouter>
+                <Toaster position="top-right" reverseOrder={true} />
+            </React.Fragment>
+        </React.Suspense>
     );
 };
 

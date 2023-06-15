@@ -14,7 +14,7 @@ import { fancyTimeFormat, trimStr } from '../../../../common/helpers';
 import { VideoState } from '../../../../store/reducers/videos/index.interface';
 import { fetchAllVideos } from '../../../../store/reducers/videos/index.thunk';
 import MemoziedConfirmationModal from '../../../../components/DeleteConfirmationModal';
-import MemoziedCircularProgress from '../../../../components/CircularProgressWithLabel';
+import { MemoziedCircularProgressWithLabel } from '../../../../components/CircularProgressWithLabel';
 import {
     deleteByVideoId,
     updateVideoProcessingState,
@@ -201,7 +201,7 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                 </>
             ) : (
                 <div className="video-circular-progress">
-                    <MemoziedCircularProgress
+                    <MemoziedCircularProgressWithLabel
                         value={parseInt(processingProgress)}
                     />
                     {constants.VIDEOS.VIDEO_INDEXING_MESSAGE}

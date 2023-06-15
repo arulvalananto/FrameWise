@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
-
-import MemoziedBackButton from '.';
 import { BrowserRouter } from 'react-router-dom';
+
+import { MemoziedBackButton } from './BackButton';
 
 export default {
     title: 'BackButton',

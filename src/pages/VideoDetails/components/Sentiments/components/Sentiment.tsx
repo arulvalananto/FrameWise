@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { sentimentColors } from '../../../../../static/data';
-import MemoziedCircularProgress from '../../../../../components/CircularProgressWithLabel';
+import { MemoziedCircularProgressWithLabel } from '../../../../../components/CircularProgressWithLabel';
 import { Sentiment } from '../../../../../store/reducers/videoDetails/index.interface';
 import {
     changeSelectedInsight,
@@ -32,7 +32,7 @@ const Sentiment: React.FC<SentimentProps> = ({ sentiment, index }) => {
             className={`flex flex-col gap-3 items-center cursor-pointer text-${sentimentColors[index]}`}
             onClick={handleMoveToSpecificTime}
         >
-            <MemoziedCircularProgress
+            <MemoziedCircularProgressWithLabel
                 value={sentiment.averageScore * 100}
                 color="inherit"
             />
