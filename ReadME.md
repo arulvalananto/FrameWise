@@ -16,5 +16,11 @@ pnpm install
 ## Run locally
 
 ```bash
-npm run dev
+pnpm dev
+```
+
+## To start storybook
+
+```bash
+pnpm storybook
 ```
