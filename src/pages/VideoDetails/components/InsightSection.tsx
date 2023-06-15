@@ -4,7 +4,7 @@ import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 import constants from '../../../static/constants.json';
 
-interface InsightSectionProps {
+type InsightSectionProps = {
     title: string;
     count: number;
     children: React.ReactNode;
@@ -12,7 +12,7 @@ interface InsightSectionProps {
     isExpanded?: boolean;
     showExpand?: boolean;
     handleIsExpanded?: () => void;
-}
+};
 
 const InsightSection: React.FC<InsightSectionProps> = ({
     title,

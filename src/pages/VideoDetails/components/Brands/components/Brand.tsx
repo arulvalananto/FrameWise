@@ -10,7 +10,7 @@ import {
 } from '../../../../../store/reducers/videoDetails';
 import { Brand } from '../../../../../store/reducers/videoDetails/index.interface';
 
-interface BrandProps {
+type BrandProps = {
     brand: Brand;
 }
 

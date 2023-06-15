@@ -26,9 +26,9 @@ import {
     reIndexVideo,
 } from '../../../../api/videos';
 
-interface VideoProps {
+type VideoProps = {
     video: VideoState;
-}
+};
 
 const Video: React.FC<VideoProps> = ({ video }) => {
     const { isAuthenticated } = useAuth0();

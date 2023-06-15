@@ -6,7 +6,7 @@ import { Tooltip, MenuItem, Menu, ListItemIcon } from '@mui/material';
 import './index.css';
 import { AppDispatch } from '../../store';
 import { paperStyles } from '../../static/data';
-import { SorterOptionProps } from '../../interfaces/common';
+import { SorterOptionProps } from '../../interfaces';
 import { changeSortBy, videosSelector } from '../../store/reducers/videos';
 
 type SorterProps = {

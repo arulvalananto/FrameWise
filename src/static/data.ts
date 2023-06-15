@@ -8,11 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import constants from './constants.json';
-import {
-    EmotionColors,
-    LinkProps,
-    SorterOptionProps,
-} from '../interfaces/common';
+import { EmotionColors, LinkProps, SorterOptionProps } from '../interfaces';
 
 export const navLinks: LinkProps[] = [
     {

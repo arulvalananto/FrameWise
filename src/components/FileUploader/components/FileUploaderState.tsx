@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import MemoziedLoader from '../../Loader';
 
-interface FileUploaderStateProps {
+type FileUploaderStateProps = {
     uploadProgressState: number;
-}
+};
 
 const FileUploaderState: React.FC<FileUploaderStateProps> = ({
     uploadProgressState,

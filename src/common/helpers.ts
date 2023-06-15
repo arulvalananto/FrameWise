@@ -1,7 +1,7 @@
 import jwtDecode from 'jwt-decode';
 
 import constants from '../static/constants.json';
-import { IJWTToken, TimelineProps } from '../interfaces/common';
+import { IJWTToken, TimelineProps } from '../interfaces';
 import { Instance } from '../store/reducers/videoDetails/index.interface';
 
 export const isTokenExpired = (token: string): boolean => {

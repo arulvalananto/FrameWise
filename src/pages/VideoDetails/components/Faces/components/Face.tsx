@@ -9,7 +9,7 @@ import {
 } from '../../../../../store/reducers/videoDetails';
 import { Face } from '../../../../../store/reducers/videoDetails/index.interface';
 
-interface FaceProps {
+type FaceProps = {
     face: Face;
 }
 

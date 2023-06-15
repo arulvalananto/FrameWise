@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-interface BackButtonProps {
+type BackButtonProps =  {
     to: string;
     title: string;
     className: string;
