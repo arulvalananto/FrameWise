@@ -7,7 +7,7 @@ import {
 } from '../../../../../store/reducers/videoDetails';
 import { NamedPerson } from '../../../../../store/reducers/videoDetails/index.interface';
 
-interface MentionProps {
+type MentionProps = {
     mention: NamedPerson;
 }
 

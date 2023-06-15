@@ -7,9 +7,9 @@ import {
 } from '../../../../../store/reducers/videoDetails';
 import { NamedLocation } from '../../../../../store/reducers/videoDetails/index.interface';
 
-interface PlaceProps {
+type PlaceProps = {
     namedLocation: NamedLocation;
-}
+};
 
 const Place: React.FC<PlaceProps> = ({ namedLocation }) => {
     const dispatch = useDispatch();

@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface RedirectLinkProps {
+type RedirectLinkProps = {
     href: string;
     title?: string | React.ReactNode;
     children?: React.ReactNode;
     className?: string;
-}
+};
 
 const RedirectLink: React.FC<RedirectLinkProps> = ({
     href,

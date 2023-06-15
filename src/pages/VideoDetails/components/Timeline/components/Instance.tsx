@@ -6,12 +6,12 @@ import {
     changeStartTime,
     videoDetailsSelector,
 } from '../../../../../store/reducers/videoDetails';
-import { TimelineProps } from '../../../../../interfaces/common';
+import { TimelineProps } from '../../../../../interfaces';
 import { getVideoSpecificTime } from '../../../../../common/helpers';
 
-interface TimeInstanceProps {
+type TimeInstanceProps = {
     time: TimelineProps;
-}
+};
 
 const Instance: React.FC<TimeInstanceProps> = ({ time }) => {
     const dispatch = useDispatch();

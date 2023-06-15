@@ -2,11 +2,11 @@ import React from 'react';
 
 import './index.css';
 import MemoziedInstance from './components/Instance';
-import { TimelineProps } from '../../../../interfaces/common';
+import { TimelineProps } from '../../../../interfaces';
 
-interface TimelineCompProps {
+type TimelineCompProps = {
     timeline: TimelineProps[];
-}
+};
 
 const Timeline: React.FC<TimelineCompProps> = ({ timeline }) => {
     if (!timeline?.length) {

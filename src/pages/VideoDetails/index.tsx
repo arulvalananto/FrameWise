@@ -7,7 +7,7 @@ import { AppDispatch } from '../../store';
 import VideoPlayer from './components/VideoPlayer';
 import MemoziedLoader from '../../components/Loader';
 import VideoInsights from './components/VideoInsights';
-import MemoziedBackButton from '../../components/BackButton';
+import { MemoziedBackButton } from '../../components/BackButton';
 import { videoDetailsSelector } from '../../store/reducers/videoDetails';
 import { fetchVideoDetails } from '../../store/reducers/videoDetails/index.thunk';
 
@@ -47,11 +47,8 @@ const VideoDetails: React.FC = () => {
             <div className="video-insights-container insights">
                 <VideoInsights />
             </div>
-            <MemoziedBackButton
-                to="/"
-                title="Go back"
-                className="absolute top-4 left-4 px-2 py-1 bg-primary text-black rounded text-xs md:text-base"
-            />
+
+            <MemoziedBackButton to="/" title="Go back" />
         </section>
     );
 };

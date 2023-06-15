@@ -11,9 +11,9 @@ import {
 import MemoziedRedirectLink from '../../../../../components/RedirectLink';
 import { Topic } from '../../../../../store/reducers/videoDetails/index.interface';
 
-interface TopicProps {
+type TopicProps = {
     topic: Topic;
-}
+};
 
 const Topic: React.FC<TopicProps> = ({ topic }) => {
     const dispatch = useDispatch();

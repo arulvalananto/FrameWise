@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './index.css';
-import { CustomLinkProps } from '../../interfaces/common';
+import { CustomLinkProps } from '../../interfaces';
 
 const CustomLink: React.FC<CustomLinkProps> = ({ link }) => {
     const location = useLocation();

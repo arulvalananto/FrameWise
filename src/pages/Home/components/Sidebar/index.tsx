@@ -11,7 +11,7 @@ import './index.css';
 import { navLinks } from '../../../../static/data';
 import { trimStr } from '../../../../common/helpers';
 import logoIcon from '../../../../assets/logo-icon.svg';
-import { LinkProps } from '../../../../interfaces/common';
+import { LinkProps } from '../../../../interfaces';
 import logo from '../../../../assets/logo-transparent.svg';
 import MemoziedCustomLink from '../../../../components/CustomLink';
 

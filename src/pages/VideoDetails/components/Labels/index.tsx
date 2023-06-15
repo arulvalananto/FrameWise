@@ -6,7 +6,7 @@ import MemoziedTimeline from '../Timeline';
 import InsightSection from '../InsightSection';
 import constants from '../../../../static/constants.json';
 import { getTimelineInfo } from '../../../../common/helpers';
-import { TimelineProps } from '../../../../interfaces/common';
+import { TimelineProps } from '../../../../interfaces';
 import { videoDetailsSelector } from '../../../../store/reducers/videoDetails';
 
 const Labels: React.FC = () => {
