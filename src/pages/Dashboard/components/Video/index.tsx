@@ -9,7 +9,6 @@ import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
 
 import './index.css';
 import { AppDispatch } from '../../../../store';
-import fallback from '../../../../assets/fallback.png';
 import constants from '../../../../static/constants.json';
 import { fancyTimeFormat, trimStr } from '../../../../common/helpers';
 import { VideoState } from '../../../../store/reducers/videos/index.interface';
