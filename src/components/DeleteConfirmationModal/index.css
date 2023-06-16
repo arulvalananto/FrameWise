@@ -1,5 +1,5 @@
 .confirmation-button {
-    @apply bg-darkgrey absolute text-xs bg-opacity-75 rounded px-2 py-1 top-4 lg:top-2 right-2 hover:scale-95;
+    @apply bg-darkgrey absolute text-sm bg-opacity-75 rounded px-2 py-1 bottom-4 lg:bottom-2 left-12 hover:scale-95;
 }
 
 .modal-container {

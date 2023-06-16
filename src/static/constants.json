@@ -1,12 +1,8 @@
 {
     "TOKEN_NAME": "fw_token",
+    "VIDEOS_LAST_LOADED": "videos_last_loaded",
+    "VIDEOS_FREQUENCY_SPAN_TIME": 100000,
     "VIDEO_PLAYER_ID": "framewise-player",
-    "IMAGE_URL_PREFIX": "data:image/jpeg;base64,",
-    "AUTH0_CONFIG": {
-        "DEV_CLIENT_ID": "UPxpLH61CS2PRVN5HkdipdJJwje1knBL",
-        "PROD_CLIENT_ID": "mfkzdfSOXE0BclGxSChhdcvIvCkkqblY",
-        "DOMAIN": "framewise.au.auth0.com"
-    },
     "CUSTOM_BRAND": {
         "TITLE": "Custom Brands",
         "FORM": {
@@ -17,8 +13,6 @@
         }
     },
     "AZURE_VIDEO_INDEXER": {
-        "SUBSCRIPTION_KEY": "f472288beabf4146b6729fbfdea131d7",
-        "ACCOUNT_ID": "dd73ffe1-6a72-4af9-b565-7bec166593af",
         "IMAGE_URL_PREFIX": "data:image/jpeg;base64,"
     },
     "INSIGHTS": {
@@ -57,7 +51,8 @@
         "UPLOAD_FAILED": "Upload failed",
         "VIDEO_TOKEN_AUTHENTICATION_FAILED": "Authentication failed",
         "VIDEO_NEXT_MOVE": "Something went wrong with moving video to specific point",
-        "GUEST_RESTRICTION": "You must be authenticated to do certain actions"
+        "GUEST_RESTRICTION": "You must be authenticated to do certain actions",
+        "FREQUENT_RELOAD_CALLS": "Frequent calls made...Please reload it after sometime"
     },
     "TOOLTIP": {
         "UPLOAD_FILE": "Upload file",

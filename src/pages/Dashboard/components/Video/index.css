@@ -11,7 +11,7 @@
 }
 
 .video-title {
-    @apply bg-darkgrey absolute hidden sm:block text-xs lg:text-sm top-4 lg:top-2 left-2 bg-opacity-75 rounded px-2 py-1 cursor-default;
+    @apply bg-darkgrey absolute text-xs lg:text-sm top-4 lg:top-2 left-2 bg-opacity-75 rounded px-2 py-1 cursor-default;
 }
 
 .video-length {
@@ -19,7 +19,7 @@
 }
 
 .video-reIndex-button {
-    @apply bg-darkgrey absolute text-xs bg-opacity-75 rounded px-2 py-1 top-4 lg:top-2 right-12 hover:scale-95 cursor-pointer z-30;
+    @apply bg-darkgrey absolute text-sm bg-opacity-75 rounded px-2 py-1 bottom-4 lg:bottom-2 left-2 hover:scale-95 cursor-pointer z-30;
 }
 
 .video-circular-progress {

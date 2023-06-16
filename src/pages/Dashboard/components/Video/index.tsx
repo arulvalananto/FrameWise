@@ -9,6 +9,7 @@ import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
 
 import './index.css';
 import { AppDispatch } from '../../../../store';
+import fallback from '../../../../assets/fallback.png';
 import constants from '../../../../static/constants.json';
 import { fancyTimeFormat, trimStr } from '../../../../common/helpers';
 import { VideoState } from '../../../../store/reducers/videos/index.interface';
@@ -36,8 +37,8 @@ const Video: React.FC<VideoProps> = ({ video }) => {
 
     const shouldRender = useRef(true);
     const [thumbnail, setThumbnail] = useState('');
-    const [isDeleteProcessing, setIsDeleteProcessing] = useState(false);
     const [isReIndexing, setIsReIndexing] = useState(false);
+    const [isDeleteProcessing, setIsDeleteProcessing] = useState(false);
     const [invalidImageURLError, setInvalidImageURLError] = useState(false);
 
     const dispatch = useDispatch<AppDispatch>();
@@ -162,7 +163,7 @@ const Video: React.FC<VideoProps> = ({ video }) => {
 
     return (
         <div className="video" onClick={handlePlayVideo}>
-            <div className="video-image-container">
+            <div className="video-image-container h-[200px]">
                 {!invalidImageURLError && (
                     <img
                         className="video-image"
@@ -182,6 +183,8 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                     </p>
                     <MemoziedConfirmationModal
                         title="Delete"
+                        cancelText="no, buddy"
+                        submitText="yes, dude"
                         handleSubmit={handleDeleteVideo}
                         buttonIcon={faTrashCan}
                         disabled={!isProcessedVideo}
@@ -190,8 +193,8 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                     <MemoziedConfirmationModal
                         title="Re-Index"
                         message={constants.MESSAGE.REINDEX_PROMPT_DEFAULT}
-                        cancelText="no"
-                        submitText="yes"
+                        cancelText="nah"
+                        submitText="yes, I want to"
                         handleSubmit={handleReIndexVideo}
                         buttonIcon={faRecycle}
                         disabled={!isProcessedVideo}

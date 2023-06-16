@@ -14,7 +14,9 @@ export const getAllVideos = (): Promise<VideoState[]> => {
             await checkTokenExpiry();
 
             const response = await axiosInstance.get(
-                `/trial/accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/videos`
+                `/trial/accounts/${
+                    import.meta.env.VITE_AZURE_ACCOUNT_ID
+                }/videos`
             );
 
             if (response?.status === 200 && response?.data?.results) {
@@ -46,7 +48,9 @@ export const getThumbnail = (
             await checkTokenExpiry();
 
             const response = await axiosInstance.get(
-                `/trial/accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/videos/${videoId}/thumbnails/${thumbnailId}?format=Base64`
+                `/trial/accounts/${
+                    import.meta.env.VITE_AZURE_ACCOUNT_ID
+                }/videos/${videoId}/thumbnails/${thumbnailId}?format=Base64`
             );
 
             if (response) {
@@ -77,7 +81,9 @@ export const indexVideo = async (
             await checkTokenExpiry();
 
             const response = await axiosInstance.post(
-                `/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos?name=${fileName}&privacy=Private&language=en-US&videoUrl=${url}&indexingPreset=Default&streamingPreset=SingleBitrate`
+                `/trial/Accounts/${
+                    import.meta.env.VITE_AZURE_ACCOUNT_ID
+                }/Videos?name=${fileName}&privacy=Private&language=en-US&videoUrl=${url}&indexingPreset=Default&streamingPreset=SingleBitrate`
             );
             if (response?.status === 200 && response?.data) {
                 resolve(response.data);
@@ -105,7 +111,9 @@ export const deleteVideo = (videoId: string): Promise<{ status: number }> => {
             await checkTokenExpiry();
 
             const response = await axiosInstance.delete(
-                `/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos/${videoId}`
+                `/trial/Accounts/${
+                    import.meta.env.VITE_AZURE_ACCOUNT_ID
+                }/Videos/${videoId}`
             );
             if (response?.status === 204) {
                 resolve({ status: response?.status });
@@ -133,7 +141,9 @@ export const reIndexVideo = async (videoId: string): Promise<string> => {
             await checkTokenExpiry();
 
             const response = await axiosInstance.put(
-                `https://api.videoindexer.ai/trial/accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/videos/${videoId}/reIndex/?indexingPreset=Default&sourceLanguage=en-US&streamingPreset=SingleBitrate`
+                `https://api.videoindexer.ai/trial/accounts/${
+                    import.meta.env.VITE_AZURE_ACCOUNT_ID
+                }/videos/${videoId}/reIndex/?indexingPreset=Default&sourceLanguage=en-US&streamingPreset=SingleBitrate`
             );
             if (response?.status === 204) {
                 resolve('ok');

@@ -9,7 +9,7 @@ class AuthAPI {
     urlPrefix: string;
 
     constructor() {
-        this.accountId = constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID;
+        this.accountId = import.meta.env.VITE_AZURE_ACCOUNT_ID;
         this.urlPrefix = `/auth/trial/accounts/${this.accountId}`;
     }
 

@@ -22,8 +22,7 @@ axiosInstance.interceptors.request.use(async (config) => {
 
 export const headerConfig = {
     headers: {
-        'Ocp-Apim-Subscription-Key':
-            constants.AZURE_VIDEO_INDEXER.SUBSCRIPTION_KEY,
+        'Ocp-Apim-Subscription-Key': import.meta.env.VITE_AZURE_SUBSCRIPTION_KEY,
     },
 };
 
