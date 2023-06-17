@@ -43,9 +43,10 @@ const Sorter: React.FC<SorterProps> = ({ options }) => {
         <React.Fragment>
             <Tooltip title={currentSelectedOption?.title} arrow>
                 <button
+                    data-testid="Sort"
                     type="button"
                     onClick={handleClick}
-                    aria-label="Upload"
+                    aria-label="Sort"
                     className="sorter-button"
                 >
                     {currentSelectedOption?.icon && (
@@ -66,7 +67,11 @@ const Sorter: React.FC<SorterProps> = ({ options }) => {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 {options?.map(({ title, icon, value }) => (
-                    <MenuItem key={title} onClick={() => handleSelect(value)}>
+                    <MenuItem
+                        key={title}
+                        onClick={() => handleSelect(value)}
+                        aria-label={title}
+                    >
                         <ListItemIcon>
                             <FontAwesomeIcon icon={icon} color="white" />
                         </ListItemIcon>

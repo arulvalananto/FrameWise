@@ -192,6 +192,7 @@ const FileUploader: React.FC = () => {
         <>
             <Tooltip title={constants.TOOLTIP.UPLOAD_FILE} arrow>
                 <button
+                    data-testid="Upload"
                     type="button"
                     onClick={handleOpen}
                     aria-label="Upload"

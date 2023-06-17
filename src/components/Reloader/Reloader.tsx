@@ -17,8 +17,10 @@ const Reloader: React.FC<ReloadProps> = ({
     return (
         <Tooltip title={title} arrow placement="bottom">
             <button
+                data-testid={title}
                 type="button"
                 onClick={handleReload}
+                aria-label={title}
                 className={`bg-red-500 px-4 py-3 rounded flex items-center justify-center ${className}`}
             >
                 <FontAwesomeIcon icon={faRotateRight} />
