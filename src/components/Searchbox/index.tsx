@@ -25,7 +25,7 @@ const Searchbox: React.FC<SearchboxProps> = ({
     ...props
 }) => {
     return (
-        <div className={`searchbox ${className}`}>
+        <div className={`searchbox ${className}`} data-testid="searchbox">
             <FontAwesomeIcon icon={icon} />
             <input
                 name="search"
