@@ -38,9 +38,7 @@ const PlaceDetails: React.FC = () => {
                         type="button"
                         onClick={toggleShowDescription}
                     >
-                        <span className="hidden sm:block">
-                            show description
-                        </span>
+                        <span className="hidden sm:block">show more</span>
                         {isShowDescription ? (
                             <FontAwesomeIcon icon={faAngleUp} />
                         ) : (

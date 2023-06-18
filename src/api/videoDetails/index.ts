@@ -36,3 +36,39 @@ export const getVideoIndexDetails = (
         }
     });
 };
+
+/**
+ * Get video transcript
+ * @param {*} videoId
+ * @param {*} language
+ * @returns
+ */
+export const getVideoTranscript = (
+    videoId: string,
+    language: string
+): Promise<Blob> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await checkTokenExpiry();
+
+            const response = await axiosInstance.get(
+                `/trial/Accounts/${
+                    import.meta.env.VITE_AZURE_ACCOUNT_ID
+                }/Videos/${videoId}/captions?format=txt&includeAudioEffects=false&includeSpeakers=true&language=${language}`,
+                {
+                    responseType: 'blob',
+                }
+            );
+
+            if (response?.status === 200 && response.data) {
+                resolve(response.data);
+            } else {
+                reject(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+            }
+        } catch (error: unknown) {
+            if (error instanceof Error) reject(error?.message);
+            else if (error instanceof AxiosError)
+                reject(error?.response?.data?.message);
+        }
+    });
+};

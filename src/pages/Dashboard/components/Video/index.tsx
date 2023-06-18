@@ -13,7 +13,7 @@ import constants from '../../../../static/constants.json';
 import { fancyTimeFormat, trimStr } from '../../../../common/helpers';
 import { VideoState } from '../../../../store/reducers/videos/index.interface';
 import { fetchAllVideos } from '../../../../store/reducers/videos/index.thunk';
-import MemoziedConfirmationModal from '../../../../components/DeleteConfirmationModal';
+import MemoziedConfirmationModal from '../../../../components/ConfirmationModal';
 import { MemoziedCircularProgressWithLabel } from '../../../../components/CircularProgressWithLabel';
 import {
     deleteByVideoId,

@@ -30,12 +30,12 @@ const LanguageSelector: React.FC = () => {
     };
 
     return (
-        <div className="mr-4">
+        <div className="hidden md:block">
             <Select
                 showSearch
                 value={defaultLanguageCode}
                 defaultValue={defaultLanguageCode}
-                className="bg-black w-38"
+                className="bg-black w-38 text-xs"
                 placeholder="Language"
                 optionFilterProp="children"
                 onChange={onChange}
