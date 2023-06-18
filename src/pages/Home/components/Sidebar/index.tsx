@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+    faEnvelope,
     faRightFromBracket,
     faRightToBracket,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './index.css';
+import { LinkProps } from '../../../../interfaces';
 import { navLinks } from '../../../../static/data';
 import { trimStr } from '../../../../common/helpers';
 import logoIcon from '../../../../assets/logo-icon.svg';
-import { LinkProps } from '../../../../interfaces';
 import logo from '../../../../assets/logo-transparent.svg';
 import MemoziedCustomLink from '../../../../components/CustomLink';
 
@@ -65,6 +66,13 @@ const Sidebar: React.FC = () => {
                         className="w-full h-full rounded-full"
                     />
                 </div>
+                <a
+                    href="mailto:arulvalananto@gmail.com"
+                    className="sidebar-supportlink"
+                >
+                    <FontAwesomeIcon icon={faEnvelope} fontSize={20} />
+                    <p className="text-base font-semibold">Support</p>
+                </a>
                 {isAuthenticated ? (
                     <button
                         type="button"
