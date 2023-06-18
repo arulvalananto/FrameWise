@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider } from '@mui/material';
+import { Divider, Tooltip } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -43,15 +43,17 @@ const ConfirmationModal: React.FC<DeleteConfirmationProps> = ({
 
     return (
         <>
-            <button
-                type="button"
-                aria-label={title}
-                className={className ? className : 'confirmation-button'}
-                disabled={isDeleteProcessing || disabled}
-                onClick={handleOpen}
-            >
-                <FontAwesomeIcon icon={buttonIcon} />
-            </button>
+            <Tooltip title={title} arrow placement="top">
+                <button
+                    type="button"
+                    aria-label={title}
+                    className={className ? className : 'confirmation-button'}
+                    disabled={isDeleteProcessing || disabled}
+                    onClick={handleOpen}
+                >
+                    <FontAwesomeIcon icon={buttonIcon} />
+                </button>
+            </Tooltip>
             <Modal
                 open={open}
                 onClose={handleClose}

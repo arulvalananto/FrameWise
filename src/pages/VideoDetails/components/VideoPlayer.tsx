@@ -2,8 +2,8 @@ import { toast } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
+import AuthAPI from '../../../api/auth';
 import constants from '../../../static/constants.json';
-import { getVideoAccessToken } from '../../../api/auth';
 import { getVideoPlayerURL } from '../../../common/helpers';
 import { videoDetailsSelector } from '../../../store/reducers/videoDetails';
 
@@ -54,7 +54,7 @@ const VideoPlayer: React.FC = () => {
         (async () => {
             try {
                 if (videoDetails?.id) {
-                    const response = await getVideoAccessToken(
+                    const response = await AuthAPI.getVideoAccessToken(
                         videoDetails?.id
                     );
                     setVideoAccessToken(response);

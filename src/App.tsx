@@ -43,10 +43,11 @@ const App = () => {
                 <BrowserRouter>
                     <Routes>
                         {routes.map(({ path, Element, sub }) => (
-                            <Route path={path} element={<Element />}>
+                            <Route key={path} path={path} element={<Element />}>
                                 {sub && sub.length
                                     ? sub.map((subRoute) => (
                                           <Route
+                                              key={subRoute.path}
                                               path={subRoute.path}
                                               element={<subRoute.Element />}
                                           />

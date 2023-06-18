@@ -1,4 +1,4 @@
-import { getAuthToken } from './auth';
+import AuthAPI from './auth';
 import constants from '../static/constants.json';
 import { isTokenExpired } from '../common/helpers';
 
@@ -8,6 +8,6 @@ import { isTokenExpired } from '../common/helpers';
 export const checkTokenExpiry = async () => {
     const token = localStorage.getItem(constants.TOKEN_NAME);
     if ((token && isTokenExpired(token)) || !token) {
-        await getAuthToken();
+        await AuthAPI.getAuthToken();
     }
 };

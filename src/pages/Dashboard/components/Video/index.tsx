@@ -36,9 +36,8 @@ const Video: React.FC<VideoProps> = ({ video }) => {
 
     const shouldRender = useRef(true);
     const [thumbnail, setThumbnail] = useState('');
-    const [isDeleteProcessing, setIsDeleteProcessing] = useState(false);
     const [isReIndexing, setIsReIndexing] = useState(false);
-    const [invalidImageURLError, setInvalidImageURLError] = useState(false);
+    const [isDeleteProcessing, setIsDeleteProcessing] = useState(false);
 
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
@@ -53,8 +52,11 @@ const Video: React.FC<VideoProps> = ({ video }) => {
         navigate(`/library/${id}`);
     };
 
-    const handleInvalidImageURLError = (): void => {
-        setInvalidImageURLError(true);
+    const handleInvalidImageURLError = (
+        event: React.SyntheticEvent<HTMLImageElement>
+    ): void => {
+        event.currentTarget.src =
+            'https://placehold.co/600x400/000000/FFFFFF.png';
     };
 
     const handleDeleteVideo = async (
@@ -110,12 +112,10 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                 try {
                     const response = await getThumbnail(id, thumbnailId);
                     setThumbnail(response);
-                    setInvalidImageURLError(false);
                 } catch (error: unknown) {
                     if (error instanceof Error) toast.error(error?.message);
                     else if (error instanceof AxiosError)
                         toast.error(error?.response?.data?.message);
-                    setInvalidImageURLError(true);
                 }
             }
         })();
@@ -162,15 +162,14 @@ const Video: React.FC<VideoProps> = ({ video }) => {
 
     return (
         <div className="video" onClick={handlePlayVideo}>
-            <div className="video-image-container">
-                {!invalidImageURLError && (
-                    <img
-                        className="video-image"
-                        src={`${constants.AZURE_VIDEO_INDEXER.IMAGE_URL_PREFIX}${thumbnail}`}
-                        alt={trimStr(name)}
-                        onError={handleInvalidImageURLError}
-                    />
-                )}
+            <div className="video-image-container h-[200px]">
+                <img
+                    className="video-image"
+                    src={`${constants.AZURE_VIDEO_INDEXER.IMAGE_URL_PREFIX}${thumbnail}`}
+                    alt={trimStr(name)}
+                    onError={handleInvalidImageURLError}
+                    loading="lazy"
+                />
             </div>
             <Tooltip title={name} placement="top" arrow>
                 <p className="video-title">{trimStr(name)}</p>
@@ -182,6 +181,8 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                     </p>
                     <MemoziedConfirmationModal
                         title="Delete"
+                        cancelText="no, buddy"
+                        submitText="yes, dude"
                         handleSubmit={handleDeleteVideo}
                         buttonIcon={faTrashCan}
                         disabled={!isProcessedVideo}
@@ -190,8 +191,8 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                     <MemoziedConfirmationModal
                         title="Re-Index"
                         message={constants.MESSAGE.REINDEX_PROMPT_DEFAULT}
-                        cancelText="no"
-                        submitText="yes"
+                        cancelText="nah"
+                        submitText="yes, I want to"
                         handleSubmit={handleReIndexVideo}
                         buttonIcon={faRecycle}
                         disabled={!isProcessedVideo}
@@ -203,6 +204,7 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                 <div className="video-circular-progress">
                     <MemoziedCircularProgressWithLabel
                         value={parseInt(processingProgress)}
+                        issmall={true}
                     />
                     {constants.VIDEOS.VIDEO_INDEXING_MESSAGE}
                 </div>

@@ -20,7 +20,9 @@ export const getVideoIndexDetails = (
             await checkTokenExpiry();
 
             const response = await axiosInstance.get(
-                `/trial/Accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/Videos/${videoId}/Index?language=${language}`
+                `/trial/Accounts/${
+                    import.meta.env.VITE_AZURE_ACCOUNT_ID
+                }/Videos/${videoId}/Index?language=${language}`
             );
             if (response?.status === 200 && response.data) {
                 resolve(response.data);

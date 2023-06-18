@@ -45,7 +45,7 @@ const FaceDetails: React.FC = () => {
                 {!isThumbnailLoading ? (
                     <img
                         className="object-cover w-full h-full rounded-full"
-                        src={`${constants.IMAGE_URL_PREFIX}${thumbnail}`}
+                        src={`${constants.AZURE_VIDEO_INDEXER.IMAGE_URL_PREFIX}${thumbnail}`}
                         alt="thumb"
                     ></img>
                 ) : null}

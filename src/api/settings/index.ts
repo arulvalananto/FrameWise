@@ -47,7 +47,9 @@ export const getAllBrands = (): Promise<CustomBrand[]> => {
             await checkTokenExpiry();
 
             const response = await axiosInstance.get(
-                `/trial/accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/customization/brands/`
+                `/trial/accounts/${
+                    import.meta.env.VITE_AZURE_ACCOUNT_ID
+                }/customization/brands/`
             );
             if (response?.status === 200 && response?.data) {
                 resolve(response.data);
@@ -77,7 +79,9 @@ export const createNewCustomBrand = (
             await checkTokenExpiry();
 
             const response = await axiosInstance.post(
-                `/trial/accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/customization/brands/`,
+                `/trial/accounts/${
+                    import.meta.env.VITE_AZURE_ACCOUNT_ID
+                }/customization/brands/`,
                 brand
             );
             if (response?.status === 201 && response?.data) {
@@ -105,7 +109,9 @@ export const deleteCustomBrand = (customBrandId: number): Promise<string> => {
             await checkTokenExpiry();
 
             const response = await axiosInstance.delete(
-                `/trial/accounts/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/customization/brands/${customBrandId}`
+                `/trial/accounts/${
+                    import.meta.env.VITE_AZURE_ACCOUNT_ID
+                }/customization/brands/${customBrandId}`
             );
             if (response?.status === 204) {
                 resolve('ok');

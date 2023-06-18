@@ -11,7 +11,7 @@ import { Face } from '../../../../../store/reducers/videoDetails/index.interface
 
 type FaceProps = {
     face: Face;
-}
+};
 
 const Face: React.FC<FaceProps> = ({ face }) => {
     const [thumbnail, setThumbnail] = useState<string>('');
@@ -53,7 +53,7 @@ const Face: React.FC<FaceProps> = ({ face }) => {
                 {!isThumbnailLoading ? (
                     <img
                         className="object-cover w-full h-full rounded-full"
-                        src={`${constants.IMAGE_URL_PREFIX}${thumbnail}`}
+                        src={`${constants.AZURE_VIDEO_INDEXER.IMAGE_URL_PREFIX}${thumbnail}`}
                         alt="thumb"
                     ></img>
                 ) : null}

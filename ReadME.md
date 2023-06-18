@@ -30,3 +30,15 @@ pnpm dev
 ```bash
 pnpm storybook
 ```
+
+## To run e2e tests
+
+```bash
+pnpm playwright-ui-test
+```
+
+## To generate e2e testcode
+
+```bash
+pnpm playwright-codegen
+```

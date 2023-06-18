@@ -6,8 +6,12 @@ import CircularProgress, {
 import './CircularProgressWithLabel.css';
 import useIsMobile from '../../hooks/useIsMobile';
 
+interface CircularProgressWithLabel extends CircularProgressProps {
+    issmall?: boolean;
+}
+
 const CircularProgressWithLabel = (
-    props: CircularProgressProps & {
+    props: CircularProgressWithLabel & {
         value: number;
         color?:
             | 'primary'
@@ -25,16 +29,17 @@ const CircularProgressWithLabel = (
         <div className="circularProgressWithLabel">
             <CircularProgress
                 variant="determinate"
-                size={isMobile ? '3rem' : 100}
+                size={isMobile || props.issmall ? '3rem' : 100}
                 {...props}
                 thickness={3.6}
                 color={props.color}
                 sx={{
                     color: props.color ? '' : '#BFED37',
                     borderRadius: '100%',
-                    boxShadow: isMobile
-                        ? 'inset 0 0 0px 4px gray'
-                        : 'inset 0 0 0px 9px gray',
+                    boxShadow:
+                        isMobile || props.issmall
+                            ? 'inset 0 0 0px 4px gray'
+                            : 'inset 0 0 0px 9px gray',
                     backgroundColor: 'transparent',
                 }}
             />

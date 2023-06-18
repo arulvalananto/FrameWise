@@ -1,6 +1,5 @@
 import jwtDecode from 'jwt-decode';
 
-import constants from '../static/constants.json';
 import { IJWTToken, TimelineProps } from '../interfaces';
 import { Instance } from '../store/reducers/videoDetails/index.interface';
 
@@ -48,7 +47,9 @@ export const getVideoPlayerURL = (
     videoId: string,
     videoAccessToken: string
 ): string => {
-    return `https://www.videoindexer.ai/embed/player/${constants.AZURE_VIDEO_INDEXER.ACCOUNT_ID}/${videoId}/?accessToken=${videoAccessToken}&autoplay=true`;
+    return `https://www.videoindexer.ai/embed/player/${
+        import.meta.env.VITE_AZURE_ACCOUNT_ID
+    }/${videoId}/?accessToken=${videoAccessToken}&autoplay=true`;
 };
 
 export const getVideoSpecificTime = (
