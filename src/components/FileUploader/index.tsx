@@ -90,7 +90,7 @@ const FileUploader: React.FC = () => {
                 if (files) {
                     const file = files[0];
                     if (isValidFile(file)) {
-                        const fileName = trimStr(file?.name, 50);
+                        const fileName = trimStr(file?.name?.split('.')[0], 50);
                         const storageRef = ref(storage, fileName);
 
                         const uploadTask = uploadBytesResumable(
