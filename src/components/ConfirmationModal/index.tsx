@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { Divider, Tooltip } from '@mui/material';
+import { toast } from 'react-hot-toast';
 import Modal from '@mui/material/Modal';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Divider, Tooltip } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
 
 import './index.css';
 import constants from '../../static/constants.json';
 
-type DeleteConfirmationProps = {
+type ConfrimationModalProps = {
     title: string;
     buttonIcon: IconProp | IconDefinition;
     handleSubmit: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -19,7 +21,7 @@ type DeleteConfirmationProps = {
     className?: string;
 };
 
-const ConfirmationModal: React.FC<DeleteConfirmationProps> = ({
+const ConfirmationModal: React.FC<ConfrimationModalProps> = ({
     title,
     buttonIcon,
     handleSubmit,
@@ -31,10 +33,15 @@ const ConfirmationModal: React.FC<DeleteConfirmationProps> = ({
     message = constants.MESSAGE.DELETE_PROMPT_DEFAULT,
 }) => {
     const [open, setOpen] = React.useState(false);
+    const { isAuthenticated } = useAuth0();
 
     const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
-        setOpen(true);
+        if (isAuthenticated) {
+            setOpen(true);
+        } else if (!isAuthenticated) {
+            toast.error(constants.ERROR_MESSAGE.GUEST_RESTRICTION);
+        }
     };
     const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();

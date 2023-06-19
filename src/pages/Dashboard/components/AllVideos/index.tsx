@@ -20,7 +20,7 @@ const AllVideos: React.FC = () => {
 
     const filteredVideos = useMemo(() => {
         return sortedVideos?.filter((video) =>
-            video?.name?.toLowerCase()?.includes(searchText)
+            video?.name?.toLowerCase()?.includes(searchText.toLowerCase())
         );
     }, [sortedVideos, searchText]);
 

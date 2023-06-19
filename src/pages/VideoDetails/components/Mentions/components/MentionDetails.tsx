@@ -38,9 +38,7 @@ const MentionDetails: React.FC = () => {
                         type="button"
                         onClick={toggleShowDescription}
                     >
-                        <span className="hidden md:block">
-                            show description
-                        </span>
+                        <span className="hidden md:block">show more</span>
                         {isShowDescription ? (
                             <FontAwesomeIcon icon={faAngleUp} />
                         ) : (

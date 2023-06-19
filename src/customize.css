@@ -1,7 +1,9 @@
-
 .ant-select-selector {
-    background: black !important;
     color: white !important;
+    font-size: 12px !important;
+    background: black !important;
+    border-radius: 3px !important;
+    border: 1px solid #6b7280 !important;
 }
 
 .ant-select-arrow {

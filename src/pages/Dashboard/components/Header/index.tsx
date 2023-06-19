@@ -36,12 +36,11 @@ const Header: React.FC = () => {
                 currentTime
         ) {
             dispatch(fetchAllVideos());
+            const time = Date.now() + '';
+            localStorage.setItem(constants.VIDEOS_LAST_LOADED, time);
         } else {
             toast.error(constants.ERROR_MESSAGE.FREQUENT_RELOAD_CALLS);
         }
-
-        const time = Date.now() + '';
-        localStorage.setItem(constants.VIDEOS_LAST_LOADED, time);
     };
 
     return (

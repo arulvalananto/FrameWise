@@ -13,7 +13,7 @@ import constants from '../../../../../static/constants.json';
 import { deleteCustomBrand } from '../../../../../api/settings';
 import MemoziedRedirectLink from '../../../../../components/RedirectLink';
 import { deleteCustomBrandById } from '../../../../../store/reducers/app';
-import MemoziedConfirmationModal from '../../../../../components/DeleteConfirmationModal';
+import MemoziedConfirmationModal from '../../../../../components/ConfirmationModal';
 import { CustomBrand as ICustomBrand } from '../../../../../store/reducers/app/index.interface';
 import Tags from './Tags';
 

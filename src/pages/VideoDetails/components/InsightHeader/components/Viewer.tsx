@@ -50,7 +50,7 @@ const Viewer: React.FC = () => {
                 <button
                     onClick={handleClick}
                     type="button"
-                    className="flex flex-row items-center gap-2 text-white p-2 font-bold text-xs md:text-sm transition duration-500"
+                    className="flex flex-row items-center gap-2 text-white p-2 font-bold text-xs transition duration-500"
                     aria-label="view"
                 >
                     <span>View</span>
