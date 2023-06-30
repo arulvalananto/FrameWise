@@ -1,6 +1,7 @@
 {
     "TOKEN_NAME": "fw_token",
     "VIDEOS_LAST_LOADED": "videos_last_loaded",
+    "UPLOAD_VIDEO_AMOUNT": "uploaded_video_count",
     "VIDEOS_FREQUENCY_SPAN_TIME": 100000,
     "VIDEO_PLAYER_ID": "framewise-player",
     "CUSTOM_BRAND": {
@@ -45,6 +46,7 @@
         "REINDEX_INITIATED": "Re-indexing initiated"
     },
     "ERROR_MESSAGE": {
+        "FILE_UPLOAD_LIMIT": "You have reached your uploaded video amount..Please talk to support team if you need help.",
         "SOMETHING_WENT_WRONG": "Something went wrong",
         "UNSUPPORTED_FILE_TYPE": "Please upload supported file types",
         "FILE_LIMIT_EXIST": "File exceeds maximum allowed upload size of 50MB",

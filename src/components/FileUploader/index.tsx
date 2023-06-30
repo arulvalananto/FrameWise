@@ -28,6 +28,13 @@ const FileUploader: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const handleOpen = () => {
+        const uploadedVideoAmount = localStorage.getItem(
+            constants.UPLOAD_VIDEO_AMOUNT
+        );
+        if (uploadedVideoAmount && +uploadedVideoAmount > 3) {
+            toast.error(constants.ERROR_MESSAGE.FILE_UPLOAD_LIMIT);
+            return;
+        }
         setOpen(true);
     };
 
@@ -63,6 +70,16 @@ const FileUploader: React.FC = () => {
                         constants.UPLOAD.VIDEO_STATUS
                     ) {
                         dispatch(fetchAllVideos());
+                        const uploadedVideoAmount = localStorage.getItem(
+                            constants.UPLOAD_VIDEO_AMOUNT
+                        );
+                        const videoCount = uploadedVideoAmount
+                            ? +uploadedVideoAmount + 1
+                            : 1;
+                        localStorage.setItem(
+                            constants.UPLOAD_VIDEO_AMOUNT,
+                            videoCount + ''
+                        );
                         toast.success(constants.SUCCESS_MESSAGE.FILE_UPLOAD);
                     } else {
                         throw new Error(constants.ERROR_MESSAGE.UPLOAD_FAILED);
@@ -90,7 +107,7 @@ const FileUploader: React.FC = () => {
                 if (files) {
                     const file = files[0];
                     if (isValidFile(file)) {
-                        const fileName = trimStr(file?.name, 50);
+                        const fileName = trimStr(file?.name?.split('.')[0], 50);
                         const storageRef = ref(storage, fileName);
 
                         const uploadTask = uploadBytesResumable(

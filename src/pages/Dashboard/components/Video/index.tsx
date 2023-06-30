@@ -13,7 +13,7 @@ import constants from '../../../../static/constants.json';
 import { fancyTimeFormat, trimStr } from '../../../../common/helpers';
 import { VideoState } from '../../../../store/reducers/videos/index.interface';
 import { fetchAllVideos } from '../../../../store/reducers/videos/index.thunk';
-import MemoziedConfirmationModal from '../../../../components/ConfirmationModal';
+import { MemoziedConfirmationModal } from '../../../../components/ConfirmationModal';
 import { MemoziedCircularProgressWithLabel } from '../../../../components/CircularProgressWithLabel';
 import {
     deleteByVideoId,
@@ -66,9 +66,13 @@ const Video: React.FC<VideoProps> = ({ video }) => {
             event.stopPropagation();
             if (isProcessedVideo && isAuthenticated) {
                 setIsDeleteProcessing(true);
-                await deleteVideo(id);
-                dispatch(deleteByVideoId({ videoId: id }));
-                toast.success(constants.SUCCESS_MESSAGE.VIDEO_DELETED);
+                const response = await deleteVideo(id);
+                if (response.status === 204) {
+                    dispatch(deleteByVideoId({ videoId: id }));
+                    toast.success(constants.SUCCESS_MESSAGE.VIDEO_DELETED);
+                } else {
+                    toast.error(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
+                }
             } else if (!isAuthenticated) {
                 toast.error(constants.ERROR_MESSAGE.GUEST_RESTRICTION);
             }
@@ -92,6 +96,8 @@ const Video: React.FC<VideoProps> = ({ video }) => {
                 if (response === 'ok') {
                     toast.success(constants.SUCCESS_MESSAGE.REINDEX_INITIATED);
                     dispatch(fetchAllVideos());
+                } else {
+                    toast.error(constants.ERROR_MESSAGE.SOMETHING_WENT_WRONG);
                 }
                 setIsReIndexing(false);
             } else if (!isAuthenticated) {
