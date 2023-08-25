@@ -42,3 +42,9 @@ pnpm playwright-ui-test
 ```bash
 pnpm playwright-codegen
 ```
+
+## For Deployment
+
+```bash
+firebase deploy
+```
