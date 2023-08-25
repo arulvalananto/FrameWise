@@ -167,7 +167,7 @@ const Video: React.FC<VideoProps> = ({ video }) => {
     }, [dispatch, thumbnail, id, isProcessedVideo]);
 
     return (
-        <div className="video" onClick={handlePlayVideo}>
+        <div className="video h-[200px]" onClick={handlePlayVideo}>
             <div className="video-image-container h-[200px]">
                 <img
                     className="video-image"
